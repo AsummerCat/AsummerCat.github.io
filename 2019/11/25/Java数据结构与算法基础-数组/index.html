@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,数据结构与算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Java数据结构与算法基础-数组数组  数组是应用最广泛的数据存储结构，它被植入到大部分编程语言中。由于数组十分易懂，所以它被用来介绍数据结构的起点。 数组分为2种：无序数组与有序数组。有序数组就是无序数组经过排序后结果 ​     关于数组，大部分读者都已经非常熟悉了，不过需要注意的是，在数据结构与算法中，我们在讨论数组的时候，有一些特别要注意的地方  我们通常假设数组中是没有空洞的 当删除数组">
+<meta name="keywords" content="java,数据结构与算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java数据结构与算法基础-数组">
+<meta property="og:url" content="http://www.linjingc.top/2019/11/25/Java数据结构与算法基础-数组/index.html">
+<meta property="og:site_name" content="emmm读书使我快乐">
+<meta property="og:description" content="Java数据结构与算法基础-数组数组  数组是应用最广泛的数据存储结构，它被植入到大部分编程语言中。由于数组十分易懂，所以它被用来介绍数据结构的起点。 数组分为2种：无序数组与有序数组。有序数组就是无序数组经过排序后结果 ​     关于数组，大部分读者都已经非常熟悉了，不过需要注意的是，在数据结构与算法中，我们在讨论数组的时候，有一些特别要注意的地方  我们通常假设数组中是没有空洞的 当删除数组">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-25/1.png">
+<meta property="og:updated_time" content="2020-09-02T02:29:50.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java数据结构与算法基础-数组">
+<meta name="twitter:description" content="Java数据结构与算法基础-数组数组  数组是应用最广泛的数据存储结构，它被植入到大部分编程语言中。由于数组十分易懂，所以它被用来介绍数据结构的起点。 数组分为2种：无序数组与有序数组。有序数组就是无序数组经过排序后结果 ​     关于数组，大部分读者都已经非常熟悉了，不过需要注意的是，在数据结构与算法中，我们在讨论数组的时候，有一些特别要注意的地方  我们通常假设数组中是没有空洞的 当删除数组">
+<meta name="twitter:image" content="http://www.linjingc.top/img/2019-11-25/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.linjingc.top/2019/11/25/Java数据结构与算法基础-数组/">
+
+
+
+
+
+  <title>Java数据结构与算法基础-数组 | emmm读书使我快乐</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsummerCat/AsummerCat.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">emmm读书使我快乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/11/25/Java数据结构与算法基础-数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java数据结构与算法基础-数组</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-25T11:48:52+08:00">
+                2019-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Java数据结构与算法基础-数组"><a href="#Java数据结构与算法基础-数组" class="headerlink" title="Java数据结构与算法基础-数组"></a>Java数据结构与算法基础-数组</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>  数组是应用最广泛的数据存储结构，它被植入到大部分编程语言中。由于数组十分易懂，所以它被用来介绍数据结构的起点。 数组分为2种：<strong>无序数组</strong>与<strong>有序数组</strong>。有序数组就是无序数组经过排序后结果</p>
+<p>​     关于数组，大部分读者都已经非常熟悉了，不过需要注意的是，在数据结构与算法中，我们在讨论数组的时候，有一些特别要注意的地方</p>
+<ol>
+<li>我们通常假设数组中是没有空洞的</li>
+<li>当删除数组中一个元素时，这个数组中之后所有的元素位置都会前移一个位置</li>
+<li>如果是无序数组的话，添加一个元素时，总是添加到数组的最后位置；</li>
+<li>如果是有序数组的话，添加元素到某个位置时，当前位置的元素与之后的元素都要往后移动一个位置</li>
+<li>数组维护了当前元素的数量<a id="more"></a></li>
+</ol>
+<p>之所以有这些要求，主要是从操作方便的角度考虑，例如我有一个大小为5的数组，其中有3个元素，如下所示：</p>
+<p><img src="/img/2019-11-25/1.png" alt></p>
+<h3 id="1-我们通常假设数组中是没有空元素的"><a href="#1-我们通常假设数组中是没有空元素的" class="headerlink" title="1 我们通常假设数组中是没有空元素的"></a><strong>1 我们通常假设数组中是没有空元素的</strong></h3><p>   当我们想在数组查找某个元素时，当所有元素都查过了之后，依然没有查到，就说明数组中不包含此元素。那么我们如何知道所有的元素都已经查过了呢？按照规则1，只要我们保证数组所有非空元素，都排在数组的前面，那么当我们遇到第一个空元素时，就说明所有的元素都查找完了。</p>
+<h3 id="2-当删除数组中一个元素时，这个数组中之后所有的元素位置都会前移一个位置"><a href="#2-当删除数组中一个元素时，这个数组中之后所有的元素位置都会前移一个位置" class="headerlink" title="2 当删除数组中一个元素时，这个数组中之后所有的元素位置都会前移一个位置"></a><strong>2 当删除数组中一个元素时，这个数组中之后所有的元素位置都会前移一个位置</strong></h3><p>   例如我们删除了第二个元素，在java中，就是移除数组对这个对象的引用，只要将对应位置设为null即可，但是在这里我们却不能这样做，因为根据规则1，我们查找的时候，遇到第一个为null的元素的时候，就认为所有的元素都查找完了，例如现在查找5，那么就会查不到，因此删除必须将后面所有的元素都前移一个位置</p>
+<h3 id="3-如果是无序数组的话，添加一个元素时，总是添加到数组的最后位置；"><a href="#3-如果是无序数组的话，添加一个元素时，总是添加到数组的最后位置；" class="headerlink" title="3 如果是无序数组的话，添加一个元素时，总是添加到数组的最后位置；"></a><strong>3 如果是无序数组的话，添加一个元素时，总是添加到数组的最后位置；</strong></h3><p>   插入操作同样要满足，插入后，数组中依然不能存在空洞，否则查找依然会出现问题，例如现在还有2个位置可以插入，如果我们插入在最后一个位置上，根据规则1，之后在查找的时候又找不到这个元素了。</p>
+<h3 id="4、我们通常假设数组中没有相同的元素"><a href="#4、我们通常假设数组中没有相同的元素" class="headerlink" title="4、我们通常假设数组中没有相同的元素"></a><strong>4、我们通常假设数组中没有相同的元素</strong></h3><p>在查找的时候，如果有相同的元素，那么可能会有多个匹配值，那么到底返回哪个呢？还是全部都返回？为了方便，我们通常假设数组中没有相同的元素，因此只需要返回第一个匹配上的值即可。</p>
+<p>下面的代码是按照上述要求实现的数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Array</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object[] elements;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size=<span class="number">0</span>;<span class="comment">//数组中元素的数量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> capacity;<span class="comment">//数组的容量</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 数组的容量</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> capacity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Array</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line">        <span class="keyword">if</span>(capacity&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"capacity must &gt; 0"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        elements=<span class="keyword">new</span> Object[capacity];</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(V v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(size==capacity-<span class="number">1</span>)&#123;<span class="comment">//达到容量限制</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException();</span><br><span class="line">        &#125;</span><br><span class="line">        elements[size++]=v;<span class="comment">//插入元素</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(V v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(elements[i].equals(v))&#123;</span><br><span class="line">                elements[i]=<span class="keyword">null</span>;<span class="comment">//删除</span></span><br><span class="line">                moveUp(i,size);<span class="comment">//将后面的所有数据项都前移一个位置</span></span><br><span class="line">                size--;<span class="comment">//元素数量-1</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;<span class="comment">//找到第一个要删除的项，返回true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;<span class="comment">//所有元素都查找过了，依然没有找到要删除的项，犯规false</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">find</span><span class="params">(V v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(elements[i].equals(v))&#123;</span><br><span class="line">              <span class="keyword">return</span> (V) elements[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">moveUp</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (i&lt;size-<span class="number">1</span>)&#123;</span><br><span class="line">            elements[i]=elements[++i];</span><br><span class="line">        &#125;</span><br><span class="line">        elements[size-<span class="number">1</span>]=<span class="keyword">null</span>;<span class="comment">//最后一个元素置位null</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回指定下标的元素</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index&gt;capacity-<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (V) elements[index];</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回数组中元素的数量</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 显示所有元素</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">(String prefix)</span></span>&#123;</span><br><span class="line">        System.out.print(prefix);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; elements.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i&lt;size)&#123;</span><br><span class="line">                System.out.print(elements[i]+<span class="string">"    "</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                System.out.print(<span class="string">"null"</span>+<span class="string">"    "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Array&lt;Integer&gt; array=<span class="keyword">new</span> Array&lt;Integer&gt;(<span class="number">5</span>);</span><br><span class="line">        array.insert(<span class="number">1</span>);</span><br><span class="line">        array.insert(<span class="number">5</span>);</span><br><span class="line">        array.insert(<span class="number">3</span>);</span><br><span class="line">        array.display(<span class="string">"初始 1、5、3 ： "</span>);</span><br><span class="line">        array.insert(<span class="number">4</span>);</span><br><span class="line">        array.display(<span class="string">"添加 4       ： "</span>);</span><br><span class="line">        array.remove(<span class="number">3</span>);</span><br><span class="line">        array.display(<span class="string">"删除 3       ： "</span>);</span><br><span class="line">       System.out.println(<span class="string">"查找 4："</span>+array.find(<span class="number">4</span>) );</span><br><span class="line">       System.out.println(<span class="string">"查找 3："</span>+array.find(<span class="number">3</span>) );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行程序，输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">初始 <span class="number">1</span>、<span class="number">5</span>、<span class="number">3</span> ： <span class="number">1</span>    <span class="number">5</span>    <span class="number">3</span>    <span class="keyword">null</span>    <span class="keyword">null</span>   </span><br><span class="line"></span><br><span class="line">添加 <span class="number">4</span>       ： <span class="number">1</span>    <span class="number">5</span>    <span class="number">3</span>    <span class="number">4</span>    <span class="keyword">null</span>   </span><br><span class="line"></span><br><span class="line">删除 <span class="number">3</span>       ： <span class="number">1</span>    <span class="number">5</span>    <span class="number">4</span>    <span class="keyword">null</span>    <span class="keyword">null</span>   </span><br><span class="line"></span><br><span class="line">查找 <span class="number">4</span>：<span class="number">4</span></span><br><span class="line"></span><br><span class="line">查找 <span class="number">3</span>：<span class="keyword">null</span></span><br></pre></td></tr></table></figure>
+<h2 id="数组的效率"><a href="#数组的效率" class="headerlink" title="数组的效率"></a><strong>数组的效率</strong></h2><p>   在数据结构与算法中，衡量算法的效率是通过时间复杂度和空间复杂度来进行的，后面我们会有专门的讲解，下面是一个简单的介绍</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>插入</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>查找</td>
+<td>O(N)</td>
+</tr>
+</tbody>
+</table>
+<p>  其中：</p>
+<h3 id="O-1-表示，此操作不受数组元素个数的影响，不论数组中现有多少元素，插入操作总是1步就可以完成"><a href="#O-1-表示，此操作不受数组元素个数的影响，不论数组中现有多少元素，插入操作总是1步就可以完成" class="headerlink" title="O(1)表示，此操作不受数组元素个数的影响，不论数组中现有多少元素，插入操作总是1步就可以完成"></a><strong>O(1)</strong>表示，此操作不受数组元素个数的影响，不论数组中现有多少元素，插入操作总是1步就可以完成</h3><h3 id="O-N-表示此操作受到数据元素个数的影响，最直观的感受是，我们可以看到删除和查找操作，里面都有一个for循环来迭代数组中的所有元素，假设数组中有N个元素，我们随机查找或者删除一个数字，运气好的情况下，可能1次就查找了，运气不好，可能所有的N个元素迭代完了，还是没有找到，根据概率，平均可能需要进行N-2次循环，由于时间复杂度是忽略常数的，因此删除和查找操作的平均时间复杂度是O-N"><a href="#O-N-表示此操作受到数据元素个数的影响，最直观的感受是，我们可以看到删除和查找操作，里面都有一个for循环来迭代数组中的所有元素，假设数组中有N个元素，我们随机查找或者删除一个数字，运气好的情况下，可能1次就查找了，运气不好，可能所有的N个元素迭代完了，还是没有找到，根据概率，平均可能需要进行N-2次循环，由于时间复杂度是忽略常数的，因此删除和查找操作的平均时间复杂度是O-N" class="headerlink" title="O(N)表示此操作受到数据元素个数的影响，最直观的感受是，我们可以看到删除和查找操作，里面都有一个for循环来迭代数组中的所有元素，假设数组中有N个元素，我们随机查找或者删除一个数字，运气好的情况下，可能1次就查找了，运气不好，可能所有的N个元素迭代完了，还是没有找到，根据概率，平均可能需要进行N/2次循环，由于时间复杂度是忽略常数的，因此删除和查找操作的平均时间复杂度是O(N)"></a><strong>O(N)</strong>表示此操作受到数据元素个数的影响，最直观的感受是，我们可以看到删除和查找操作，里面都有一个for循环来迭代数组中的所有元素，假设数组中有N个元素，我们随机查找或者删除一个数字，运气好的情况下，可能1次就查找了，运气不好，可能所有的N个元素迭代完了，还是没有找到，根据概率，平均可能需要进行N/2次循环，由于时间复杂度是忽略常数的，因此删除和查找操作的平均时间复杂度是O(N)</h3><h2 id="关于查找的说明"><a href="#关于查找的说明" class="headerlink" title="关于查找的说明"></a><strong>关于查找的说明</strong></h2><p>   在数据结构与算法中，查找指的并不是根据数组的下标进行查找(上例中的get方法)，根据下标进行查找的时间复杂度总是O(1)，而是根据关键字进行查找(上例中的find方法) ，需要迭代数组中的每一个元素进行查找，有一个专门的术语，称之为线性查找</p>
+<p>这里我们往数组中存入对象，来说明根据关键字查找的含义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayQueryTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.id = id;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"User&#123;"</span> +</span><br><span class="line">                    <span class="string">"id="</span> + id +</span><br><span class="line">                    <span class="string">", name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                    <span class="string">'&#125;'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Array&lt;User&gt; userArray=<span class="keyword">new</span> Array&lt;User&gt;(<span class="number">5</span>);</span><br><span class="line">        userArray.insert(<span class="keyword">new</span> User(<span class="number">1</span>,<span class="string">"tianshouzhi"</span>));</span><br><span class="line">        userArray.insert(<span class="keyword">new</span> User(<span class="number">2</span>,<span class="string">"wangxiaoxiao"</span>));</span><br><span class="line">        userArray.insert(<span class="keyword">new</span> User(<span class="number">3</span>,<span class="string">"huhuamin"</span>));</span><br><span class="line"> </span><br><span class="line">        <span class="comment">//根据user的id进行查找</span></span><br><span class="line">        <span class="keyword">int</span> queryKeyWord=<span class="number">2</span>;</span><br><span class="line"> </span><br><span class="line">        User result=<span class="keyword">null</span>;<span class="comment">//查询结果</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; userArray.size(); i++) &#123;</span><br><span class="line">            User user=userArray.get(i);</span><br><span class="line">            <span class="keyword">if</span>(queryKeyWord==user.id)&#123;</span><br><span class="line">                System.out.println(user);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" <i class="fa fa-tag"> java</a>
+          
+            <a href="/tags/数据结构与算法/" <i class="fa fa-tag"> 数据结构与算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/22/javassist动态字节码生成技术/" rel="next" title="javassist动态字节码生成技术">
+                <i class="fa fa-chevron-left"></i> javassist动态字节码生成技术
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/25/Java数据结构与算法基础-基于数组的ArrayList/" rel="prev" title="Java数据结构与算法基础-基于数组的ArrayList">
+                Java数据结构与算法基础-基于数组的ArrayList <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/WechatIMG230.jpeg" alt="一只写Bug的猫">
+            
+              <p class="site-author-name" itemprop="name">一只写Bug的猫</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">569</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java数据结构与算法基础-数组"><span class="nav-number">1.</span> <span class="nav-text">Java数据结构与算法基础-数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-我们通常假设数组中是没有空元素的"><span class="nav-number">1.1.1.</span> <span class="nav-text">1 我们通常假设数组中是没有空元素的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-当删除数组中一个元素时，这个数组中之后所有的元素位置都会前移一个位置"><span class="nav-number">1.1.2.</span> <span class="nav-text">2 当删除数组中一个元素时，这个数组中之后所有的元素位置都会前移一个位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-如果是无序数组的话，添加一个元素时，总是添加到数组的最后位置；"><span class="nav-number">1.1.3.</span> <span class="nav-text">3 如果是无序数组的话，添加一个元素时，总是添加到数组的最后位置；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、我们通常假设数组中没有相同的元素"><span class="nav-number">1.1.4.</span> <span class="nav-text">4、我们通常假设数组中没有相同的元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的效率"><span class="nav-number">1.2.</span> <span class="nav-text">数组的效率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#O-1-表示，此操作不受数组元素个数的影响，不论数组中现有多少元素，插入操作总是1步就可以完成"><span class="nav-number">1.2.1.</span> <span class="nav-text">O(1)表示，此操作不受数组元素个数的影响，不论数组中现有多少元素，插入操作总是1步就可以完成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#O-N-表示此操作受到数据元素个数的影响，最直观的感受是，我们可以看到删除和查找操作，里面都有一个for循环来迭代数组中的所有元素，假设数组中有N个元素，我们随机查找或者删除一个数字，运气好的情况下，可能1次就查找了，运气不好，可能所有的N个元素迭代完了，还是没有找到，根据概率，平均可能需要进行N-2次循环，由于时间复杂度是忽略常数的，因此删除和查找操作的平均时间复杂度是O-N"><span class="nav-number">1.2.2.</span> <span class="nav-text">O(N)表示此操作受到数据元素个数的影响，最直观的感受是，我们可以看到删除和查找操作，里面都有一个for循环来迭代数组中的所有元素，假设数组中有N个元素，我们随机查找或者删除一个数字，运气好的情况下，可能1次就查找了，运气不好，可能所有的N个元素迭代完了，还是没有找到，根据概率，平均可能需要进行N/2次循环，由于时间复杂度是忽略常数的，因此删除和查找操作的平均时间复杂度是O(N)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于查找的说明"><span class="nav-number">1.3.</span> <span class="nav-text">关于查找的说明</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一只写Bug的猫</span>
+
+  
+</div>
+
+<span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共543.8k字</span>
+</div>
+
+<div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</body>
+</html>

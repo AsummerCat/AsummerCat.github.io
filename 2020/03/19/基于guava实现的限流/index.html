@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,guava,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基于guava实现的限流demodemo地址 导入pom12345678910111213141516171819&amp;lt;!--guava工具包--&amp;gt;   &amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;com.google.guava&amp;lt;/groupId&amp;gt;       &amp;lt;artifactId&amp;gt;guava&amp;lt;/artifactId&amp;g">
+<meta name="keywords" content="java,guava">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于guava实现的限流">
+<meta property="og:url" content="http://www.linjingc.top/2020/03/19/基于guava实现的限流/index.html">
+<meta property="og:site_name" content="emmm读书使我快乐">
+<meta property="og:description" content="基于guava实现的限流demodemo地址 导入pom12345678910111213141516171819&amp;lt;!--guava工具包--&amp;gt;   &amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;com.google.guava&amp;lt;/groupId&amp;gt;       &amp;lt;artifactId&amp;gt;guava&amp;lt;/artifactId&amp;g">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-02T02:29:51.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于guava实现的限流">
+<meta name="twitter:description" content="基于guava实现的限流demodemo地址 导入pom12345678910111213141516171819&amp;lt;!--guava工具包--&amp;gt;   &amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;com.google.guava&amp;lt;/groupId&amp;gt;       &amp;lt;artifactId&amp;gt;guava&amp;lt;/artifactId&amp;g">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.linjingc.top/2020/03/19/基于guava实现的限流/">
+
+
+
+
+
+  <title>基于guava实现的限流 | emmm读书使我快乐</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsummerCat/AsummerCat.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">emmm读书使我快乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/03/19/基于guava实现的限流/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于guava实现的限流</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-19T08:34:33+08:00">
+                2020-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基于guava实现的限流"><a href="#基于guava实现的限流" class="headerlink" title="基于guava实现的限流"></a>基于guava实现的限流</h1><h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><p><a href="https://github.com/AsummerCat/guava_limit_demo" target="_blank" rel="noopener">demo地址</a></p>
+<h2 id="导入pom"><a href="#导入pom" class="headerlink" title="导入pom"></a>导入pom</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--guava工具包--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;com.google.guava&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;guava&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;28.2-jre&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!-- 切面声明--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;spring-boot-starter-aop&lt;/artifactId&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;1.18.12&lt;/version&gt;</span><br><span class="line">       &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="主要部分"><a href="#主要部分" class="headerlink" title="主要部分"></a>主要部分</h2><p>1.基于guava创建缓存+限流+惰性删除</p>
+<p>2.再添加一个延迟队列 监控 实现 限流过期删除</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.缓存池</span><br><span class="line">private static final <span class="keyword">Cache</span>&lt;<span class="keyword">Object</span>, CurrentLimit&gt; <span class="keyword">cache</span> = CacheBuilder.newBuilder().maximumSize(<span class="number">100000</span>).expireAfterAccess(<span class="number">15</span>L, TimeUnit.DAYS).build();</span><br><span class="line">2.限流</span><br><span class="line">RateLimiter.create(limitInfo.getValue());</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="以下部分使用aop完成"><a href="#以下部分使用aop完成" class="headerlink" title="以下部分使用aop完成"></a>以下部分使用aop完成</h1><h2 id="创建限流注解"><a href="#创建限流注解" class="headerlink" title="创建限流注解"></a>创建限流注解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.linjingc.guava_limit_demo.requestLimitConfig.annotation;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.linjingc.guava_limit_demo.requestLimitConfig.Strategy.ReleaseTimeoutStrategy;</span><br><span class="line"><span class="keyword">import</span> com.linjingc.guava_limit_demo.requestLimitConfig.basicLimitType.LimitType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 限流注解</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 一只写Bug的猫</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020年3月16日17:32:01</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(value = &#123;ElementType.METHOD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RequestLimit &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 限流的速率</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">double</span> <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> 60d</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 限流的名称 如果设置同样的name 表示多个方法共用一个限流池</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 限流类型</span></span><br><span class="line"><span class="comment">	 * 具体类型参考</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> LimitType</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">LimitType <span class="title">limitType</span><span class="params">()</span> <span class="keyword">default</span> LimitType.TokenBucketLimiter</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 自定义业务key</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> keys</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	String[] keys() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取令牌失败的处理策略</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> ReleaseTimeoutStrategy</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">ReleaseTimeoutStrategy <span class="title">ReleaseTimeoutStrategy</span><span class="params">()</span> <span class="keyword">default</span> ReleaseTimeoutStrategy.NO_OPERATION</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 过期时间</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">     <span class="function"><span class="keyword">long</span> <span class="title">delayTime</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 过期时间的类型 默认分钟</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	 <span class="function">TimeUnit <span class="title">unit</span><span class="params">()</span> <span class="keyword">default</span> TimeUnit.MINUTES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建自定义异常"><a href="#创建自定义异常" class="headerlink" title="创建自定义异常"></a>创建自定义异常</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义获取令牌失败 错误</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 一只写Bug的猫</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019年8月8日18:16:08</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AcquireTimeoutException</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AcquireTimeoutException</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AcquireTimeoutException</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(message);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AcquireTimeoutException</span><span class="params">(String message, Throwable cause)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(message, cause);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建限流info的实体"><a href="#创建限流info的实体" class="headerlink" title="创建限流info的实体"></a>创建限流info的实体</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 当前限流属性</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 一只写Bug的猫</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2019年8月8日18:19:18</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LimitInfo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">LimitInfo</span><span class="params">(String name, LimitType type, Double value, Long delayTime)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.type = type;</span><br><span class="line">		<span class="keyword">this</span>.value = value;</span><br><span class="line">		<span class="keyword">this</span>.delayTime = delayTime;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">LimitInfo</span><span class="params">(String name, LimitType type, Double value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.type = type;</span><br><span class="line">		<span class="keyword">this</span>.value = value;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 限流的名称</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 限流的类型</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> LimitType type;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 限流的速率</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> Double value;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 延迟时间 -&gt; 多久过期</span></span><br><span class="line"><span class="comment">	 * 毫秒</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> Long delayTime = <span class="number">0L</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="获取限流的令牌失败处理策略接口"><a href="#获取限流的令牌失败处理策略接口" class="headerlink" title="获取限流的令牌失败处理策略接口"></a>获取限流的令牌失败处理策略接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取限流的令牌失败处理策略接口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 一只写Bug的猫</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2019年8月8日18:19:18</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AcquireTokenFailureHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 处理</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">handle</span><span class="params">(JoinPoint joinPoint)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="限流获取失败的-实现类"><a href="#限流获取失败的-实现类" class="headerlink" title="限流获取失败的 实现类"></a>限流获取失败的 实现类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 限流获取失败的 策略接口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 一只写Bug的猫</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019年8月8日18:21:28</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ReleaseTimeoutStrategy implements AcquireTokenFailureHandler &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 继续执行业务逻辑，不做任何处理</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	NO_OPERATION() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// do nothing</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 快速失败</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	FAIL_FAST() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">			MethodSignature signature = (MethodSignature) joinPoint.getSignature();</span><br><span class="line">			String declaringTypeName = signature.getDeclaringTypeName();</span><br><span class="line">			String controllerName;</span><br><span class="line">			<span class="keyword">int</span> lastIndex = declaringTypeName.lastIndexOf(<span class="string">"."</span>);</span><br><span class="line">			<span class="keyword">if</span> (lastIndex == -<span class="number">1</span>) &#123;</span><br><span class="line">				controllerName = <span class="string">""</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				controllerName = declaringTypeName.substring(lastIndex + <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			String errorMsg = String.format(<span class="string">"获取令牌失败 %s-&gt;%s方法,限流时间:%s,%s "</span>, controllerName, signature.getMethod().getName(), LocalDateTime.now().toLocalDate(), <span class="string">"限流中....."</span>);</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> AcquireTimeoutException(errorMsg);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建获取限流名称前缀的策略接口"><a href="#创建获取限流名称前缀的策略接口" class="headerlink" title="创建获取限流名称前缀的策略接口"></a>创建获取限流名称前缀的策略接口</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet"> * </span>获取限流名称前缀的策略接口</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet"> * </span>@author 一只写Bug的猫</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet"> * </span>@date 2020年3月19日08:47:57</span></span></span><br><span class="line"><span class="comment"><span class="markdown"> **/</span></span></span><br><span class="line">public <span class="class"><span class="keyword">interface</span> <span class="title">LimitNameHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">	 * </span>获取限流名称前缀</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="code">	 *</span></span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">	 * </span>@param joinPoint 切面内容</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="code">	 */</span></span></span></span><br><span class="line">	<span class="built_in">String</span> prefixName(JoinPoint joinPoint);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建令牌桶限流的枚举-实现策略接口"><a href="#创建令牌桶限流的枚举-实现策略接口" class="headerlink" title="创建令牌桶限流的枚举 实现策略接口"></a>创建令牌桶限流的枚举 实现策略接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 令牌桶限流类型</span></span><br><span class="line"><span class="comment"> * 并且获取限流前缀名称</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> LimitType implements LimitNameHandler &#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 令牌桶限流 默认</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	TokenBucketLimiter() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">prefixName</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">			String name = <span class="keyword">this</span>.getClass().getName();</span><br><span class="line">			<span class="keyword">return</span> name;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据ip限流</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	IpLimiter() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">prefixName</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">			<span class="comment">//获取访问的ip</span></span><br><span class="line">			RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();</span><br><span class="line">			ServletRequestAttributes sra = (ServletRequestAttributes) requestAttributes;</span><br><span class="line">			HttpServletRequest request = sra.getRequest();</span><br><span class="line">			String ipAddress = getIpAddress(request);</span><br><span class="line">			String name = <span class="keyword">this</span>.getClass().getName() + <span class="string">":"</span> + ipAddress;</span><br><span class="line">			<span class="keyword">return</span> name;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据IP和method限流</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	IpAndMethodLimiter() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">prefixName</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">			String name = <span class="keyword">this</span>.getClass().getName();</span><br><span class="line">			<span class="keyword">return</span> name;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取用户真实IP地址，不使用request.getRemoteAddr();的原因是有可能用户使用了代理软件方式避免真实IP地址,</span></span><br><span class="line"><span class="comment">	 * &lt;p&gt;</span></span><br><span class="line"><span class="comment">	 * 可是，如果通过了多级反向代理的话，X-Forwarded-For的值并不止一个，而是一串IP值，究竟哪个才是真正的用户端的真实IP呢？</span></span><br><span class="line"><span class="comment">	 * 答案是取X-Forwarded-For中第一个非unknown的有效IP字符串。</span></span><br><span class="line"><span class="comment">	 * &lt;p&gt;</span></span><br><span class="line"><span class="comment">	 * 如：X-Forwarded-For：192.168.1.110, 192.168.1.120, 192.168.1.130,</span></span><br><span class="line"><span class="comment">	 * 192.168.1.100</span></span><br><span class="line"><span class="comment">	 * &lt;p&gt;</span></span><br><span class="line"><span class="comment">	 * 用户真实IP为： 192.168.1.110</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getIpAddress</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">		String ip = request.getHeader(<span class="string">"x-forwarded-for"</span>);</span><br><span class="line">		<span class="keyword">if</span> (ip == <span class="keyword">null</span> || ip.length() == <span class="number">0</span> || <span class="string">"unknown"</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">			ip = request.getHeader(<span class="string">"Proxy-Client-IP"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (ip == <span class="keyword">null</span> || ip.length() == <span class="number">0</span> || <span class="string">"unknown"</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">			ip = request.getHeader(<span class="string">"WL-Proxy-Client-IP"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (ip == <span class="keyword">null</span> || ip.length() == <span class="number">0</span> || <span class="string">"unknown"</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">			ip = request.getHeader(<span class="string">"HTTP_CLIENT_IP"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (ip == <span class="keyword">null</span> || ip.length() == <span class="number">0</span> || <span class="string">"unknown"</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">			ip = request.getHeader(<span class="string">"HTTP_X_FORWARDED_FOR"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (ip == <span class="keyword">null</span> || ip.length() == <span class="number">0</span> || <span class="string">"unknown"</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">			ip = request.getRemoteAddr();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ip;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建限流的工厂类"><a href="#创建限流的工厂类" class="headerlink" title="创建限流的工厂类"></a>创建限流的工厂类</h2><p>这里就是功能是</p>
+<p>1.开启一个监控线程 监控超时</p>
+<p>2.创建限流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建限流器的工厂</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 一只写Bug的猫</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020年3月19日08:55:15</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CurrentLimitFactory</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 缓存池</span></span><br><span class="line"><span class="comment">	 * 用来保存方法的限流策略</span></span><br><span class="line"><span class="comment">	 * 这边使用guava实现资源回收 避免过量增长</span></span><br><span class="line"><span class="comment">	 * 15天未读取就删除</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Cache&lt;Object, CurrentLimit&gt; cache = CacheBuilder.newBuilder().maximumSize(<span class="number">100000</span>).expireAfterAccess(<span class="number">15L</span>, TimeUnit.DAYS).build();</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 手动过期删除策略</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ExecutorService executorService = Executors.newSingleThreadExecutor();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> DelayQueue&lt;DelayedTask&gt; delayQueue = <span class="keyword">new</span> DelayQueue&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> CurrentLimit <span class="title">getLimit</span><span class="params">(LimitInfo limitInfo)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//判断缓存池是否有数据 没有数据就创建limit</span></span><br><span class="line">		CurrentLimit limit = cache.getIfPresent(limitInfo.getName());</span><br><span class="line">		<span class="keyword">if</span> (Objects.isNull(limit)) &#123;</span><br><span class="line">			<span class="comment">//创建limit</span></span><br><span class="line">			<span class="keyword">return</span> createLimit(limitInfo);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> limit;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 创建限流策略</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> limitInfo</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> CurrentLimit <span class="title">createLimit</span><span class="params">(LimitInfo limitInfo)</span> </span>&#123;</span><br><span class="line">		CurrentLimit limit = cache.getIfPresent(limitInfo.getName());</span><br><span class="line">		CurrentLimit currentLimit;</span><br><span class="line">		<span class="comment">//双重检测</span></span><br><span class="line">		<span class="keyword">if</span> (Objects.isNull(limit)) &#123;</span><br><span class="line">			currentLimit = <span class="keyword">new</span> TokenBucketLimiter(limitInfo);</span><br><span class="line">			cache.put(limitInfo.getName(), currentLimit);</span><br><span class="line">				<span class="comment">//添加超时任务</span></span><br><span class="line">				addTimeoutTask(limitInfo);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			currentLimit = limit;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> currentLimit;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 过期手动删除 这里先用类似redis的定时删除 和惰性删除模式</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addTimeoutTask</span><span class="params">(LimitInfo limitInfo)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(limitInfo.getDelayTime()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		DelayedTask element = <span class="keyword">new</span> DelayedTask(limitInfo.getDelayTime(),limitInfo);</span><br><span class="line">		delayQueue.offer(element);</span><br><span class="line">			System.out.println(<span class="string">"添加超时任务到队列:-&gt;"</span>+element.msg.getName());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 开启监控线程 监控超时移除</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		executorService.execute(() -&gt; &#123;</span><br><span class="line">			System.out.println(<span class="string">"启动监控限流超时的队列线程启动中。。。。。。。。。。"</span>);</span><br><span class="line">					<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">						DelayedTask element;</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							element = delayQueue.take();</span><br><span class="line">							<span class="comment">//移除过期key</span></span><br><span class="line">							System.out.println(<span class="string">"开始移除key:-&gt;"</span>+element.msg.getName());</span><br><span class="line">							cache.invalidate(element.msg.getName());</span><br><span class="line">						&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 延时队列的内容对象 过期删除</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DelayedTask</span> <span class="keyword">implements</span> <span class="title">Delayed</span> </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> delay; <span class="comment">//延迟时间</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> expire;  <span class="comment">//到期时间</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> LimitInfo msg;   <span class="comment">//数据</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> now; <span class="comment">//创建时间</span></span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">DelayedTask</span><span class="params">(<span class="keyword">long</span> delay, LimitInfo msg)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.delay = delay;</span><br><span class="line">			<span class="keyword">this</span>.msg = msg;</span><br><span class="line">			expire = System.currentTimeMillis() + delay;    <span class="comment">//到期时间 = 当前时间+延迟时间</span></span><br><span class="line">			now = System.currentTimeMillis();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 需要实现的接口，获得延迟时间   用过期时间-当前时间</span></span><br><span class="line"><span class="comment">		 *</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> unit</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getDelay</span><span class="params">(TimeUnit unit)</span> </span>&#123;</span><br><span class="line">			<span class="comment">//根据过期时间-当前时间</span></span><br><span class="line">			<span class="keyword">return</span> unit.convert(<span class="keyword">this</span>.expire - System.currentTimeMillis(), TimeUnit.MILLISECONDS);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 用于延迟队列内部比较排序   当前时间的延迟时间 - 比较对象的延迟时间</span></span><br><span class="line"><span class="comment">		 *</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> o</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Delayed o)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> (<span class="keyword">int</span>) (<span class="keyword">this</span>.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">final</span> StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"DelayedTask&#123;"</span>);</span><br><span class="line">			sb.append(<span class="string">"delay="</span>).append(delay);</span><br><span class="line">			sb.append(<span class="string">", expire="</span>).append(expire);</span><br><span class="line">			sb.append(<span class="string">", msg='"</span>).append(msg.getName()).append(<span class="string">'\''</span>);</span><br><span class="line">			sb.append(<span class="string">", now="</span>).append(now);</span><br><span class="line">			sb.append(<span class="string">'&#125;'</span>);</span><br><span class="line">			<span class="keyword">return</span> sb.toString();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="限流接口"><a href="#限流接口" class="headerlink" title="限流接口"></a>限流接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 限流实现接口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 一只写Bug的猫</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CurrentLimit</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 限流</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">acquire</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="限流接口实现类"><a href="#限流接口实现类" class="headerlink" title="限流接口实现类"></a>限流接口实现类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用限流</span></span><br><span class="line"><span class="comment"> * 基于令牌桶实现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TokenBucketLimiter</span> <span class="keyword">implements</span> <span class="title">CurrentLimit</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> RateLimiter limiter;</span><br><span class="line">	<span class="keyword">private</span> LimitInfo limitInfo;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TokenBucketLimiter</span><span class="params">(LimitInfo limitInfo)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.limitInfo = limitInfo;</span><br><span class="line">		<span class="keyword">this</span>.limiter = RateLimiter.create(limitInfo.getValue());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">acquire</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> limiter.tryAcquire();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建生成限流器的提供者-生成limitInfo类"><a href="#创建生成限流器的提供者-生成limitInfo类" class="headerlink" title="创建生成限流器的提供者 生成limitInfo类"></a>创建生成限流器的提供者 生成limitInfo类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取用户定义业务key</span></span><br><span class="line"><span class="comment"> * 生成限流info的内容</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 一只写Bug的猫</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020年3月19日08:45:32</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BusinessKeyProvider</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> LimitInfo <span class="title">get</span><span class="params">(JoinPoint joinPoint, RequestLimit requestLimit)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//获取到切面的信息</span></span><br><span class="line">		MethodSignature signature = (MethodSignature) joinPoint.getSignature();</span><br><span class="line">		<span class="comment">//获取到限流类型 ,并且获取到前缀名称</span></span><br><span class="line">		LimitType type = requestLimit.limitType();</span><br><span class="line">		<span class="comment">//根据自定义业务key 获取keyName</span></span><br><span class="line">		String businessKeyName = getKeyName(joinPoint, requestLimit);</span><br><span class="line">		<span class="comment">//根据自定义name配置 如果存在name 则使用name,否则使用方法名当做name</span></span><br><span class="line">		String limitName = type.prefixName(joinPoint) + <span class="string">":"</span> + getName(requestLimit.name(), signature) + businessKeyName;</span><br><span class="line">		<span class="comment">//根据过期时间添加 时间戳</span></span><br><span class="line">		<span class="keyword">if</span>(requestLimit.delayTime()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="comment">//计算毫秒</span></span><br><span class="line">			<span class="keyword">long</span> delayMillis = requestLimit.unit().toMillis(requestLimit.delayTime());</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> LimitInfo(limitName, type, requestLimit.value(),delayMillis);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> LimitInfo(limitName, type, requestLimit.value());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> ParameterNameDiscoverer nameDiscoverer = <span class="keyword">new</span> DefaultParameterNameDiscoverer();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> ExpressionParser parser = <span class="keyword">new</span> SpelExpressionParser();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取限流的名称</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> annotationName</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> signature</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">getName</span><span class="params">(String annotationName, MethodSignature signature)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//如果keyname没有设置 则返回方法名称</span></span><br><span class="line">		<span class="keyword">if</span> (annotationName.isEmpty()) &#123;</span><br><span class="line">			<span class="keyword">return</span> String.format(<span class="string">"%s.%s"</span>, signature.getDeclaringTypeName(), signature.getMethod().getName());</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> annotationName;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getKeyName</span><span class="params">(JoinPoint joinPoint, RequestLimit requestLimit)</span> </span>&#123;</span><br><span class="line">		List&lt;String&gt; keyList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		Method method = getMethod(joinPoint);</span><br><span class="line">		<span class="comment">//获取方法RequestLimit注解上的自定义keys</span></span><br><span class="line">		List&lt;String&gt; definitionKeys = getSpelDefinitionKey(requestLimit.keys(), method, joinPoint.getArgs());</span><br><span class="line">		keyList.addAll(definitionKeys);</span><br><span class="line">		<span class="comment">//进行拼接</span></span><br><span class="line">		<span class="keyword">return</span> StringUtils.collectionToDelimitedString(keyList, <span class="string">""</span>, <span class="string">"-"</span>, <span class="string">""</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取到切到的当前方法</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> Method <span class="title">getMethod</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">		MethodSignature signature = (MethodSignature) joinPoint.getSignature();</span><br><span class="line">		Method method = signature.getMethod();</span><br><span class="line">		<span class="keyword">if</span> (method.getDeclaringClass().isInterface()) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				method = joinPoint.getTarget().getClass().getDeclaredMethod(signature.getName(), method.getParameterTypes());</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> method;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取方法RequestLimit注解上的自定义keys</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> List&lt;String&gt; <span class="title">getSpelDefinitionKey</span><span class="params">(String[] definitionKeys, Method method, Object[] parameterValues)</span> </span>&#123;</span><br><span class="line">		List&lt;String&gt; definitionKeyList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span> (String definitionKey : definitionKeys) &#123;</span><br><span class="line">			<span class="keyword">if</span> (definitionKey != <span class="keyword">null</span> &amp;&amp; !definitionKey.isEmpty()) &#123;</span><br><span class="line">				EvaluationContext context = <span class="keyword">new</span> MethodBasedEvaluationContext(<span class="keyword">null</span>, method, parameterValues, nameDiscoverer);</span><br><span class="line">				String key = parser.parseExpression(definitionKey).getValue(context).toString();</span><br><span class="line">				definitionKeyList.add(key);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> definitionKeyList;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="aop切面-及其异常处理"><a href="#aop切面-及其异常处理" class="headerlink" title="aop切面 及其异常处理"></a>aop切面 及其异常处理</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 限流切面类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 一只写Bug的猫</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020年3月19日08:46:24</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span>  <span class="comment">//声明首先加载入spring</span></span><br><span class="line"><span class="meta">@Order</span>(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CurrentLimitAop</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	BusinessKeyProvider businessKeyProvider;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	CurrentLimitFactory currentLimitFactory;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Around</span>(value = <span class="string">"@annotation(requestLimit)"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">around</span><span class="params">(ProceedingJoinPoint joinPoint, RequestLimit requestLimit)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//获取出限流的基础信息</span></span><br><span class="line">		LimitInfo limitInfo = businessKeyProvider.get(joinPoint, requestLimit);</span><br><span class="line">		<span class="comment">//根据工厂模式 获取到CurrentLimit</span></span><br><span class="line">		CurrentLimit currentLimit = currentLimitFactory.getLimit(limitInfo);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (!currentLimit.acquire()) &#123;</span><br><span class="line">			<span class="comment">//获取令牌失败的处理策略</span></span><br><span class="line">			requestLimit.ReleaseTimeoutStrategy().handle(joinPoint);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> joinPoint.proceed();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 异常处理</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> point</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> requestLimit</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> ex</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@AfterThrowing</span>(value = <span class="string">"@annotation(requestLimit)"</span>, throwing = <span class="string">"ex"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterReturning</span><span class="params">(JoinPoint point, RequestLimit requestLimit, Exception ex)</span> </span>&#123;</span><br><span class="line"><span class="comment">//		String methodName = point.getSignature().getName();</span></span><br><span class="line"><span class="comment">//		List&lt;Object&gt; args = Arrays.asList(point.getArgs());</span></span><br><span class="line"><span class="comment">//		System.out.println("连接点方法为：" + methodName + ",参数为：" + args + ",异常为：" + ex);</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//判断异常是否为限流导致的</span></span><br><span class="line">		<span class="keyword">if</span> (ex <span class="keyword">instanceof</span> AcquireTimeoutException) &#123;</span><br><span class="line">			RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();</span><br><span class="line">			ServletRequestAttributes sra = (ServletRequestAttributes) requestAttributes;</span><br><span class="line">			HttpServletResponse response = sra.getResponse();</span><br><span class="line">			response.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">			response.setContentType(<span class="string">"application/json; charset=utf-8"</span>);</span><br><span class="line">			<span class="keyword">try</span> (ServletOutputStream out = response.getOutputStream()) &#123;</span><br><span class="line">				out.write(ex.getMessage().getBytes(StandardCharsets.UTF_8));</span><br><span class="line">				out.flush();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// do nothing</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" <i class="fa fa-tag"> java</a>
+          
+            <a href="/tags/guava/" <i class="fa fa-tag"> guava</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/01/负载均衡算法在生产的使用/" rel="next" title="负载均衡算法在生产的使用">
+                <i class="fa fa-chevron-left"></i> 负载均衡算法在生产的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/21/分布式事务框架seata概念/" rel="prev" title="分布式事务框架seata概念">
+                分布式事务框架seata概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/WechatIMG230.jpeg" alt="一只写Bug的猫">
+            
+              <p class="site-author-name" itemprop="name">一只写Bug的猫</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">569</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于guava实现的限流"><span class="nav-number">1.</span> <span class="nav-text">基于guava实现的限流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#demo"><span class="nav-number">1.1.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入pom"><span class="nav-number">1.2.</span> <span class="nav-text">导入pom</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要部分"><span class="nav-number">1.3.</span> <span class="nav-text">主要部分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以下部分使用aop完成"><span class="nav-number">2.</span> <span class="nav-text">以下部分使用aop完成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建限流注解"><span class="nav-number">2.1.</span> <span class="nav-text">创建限流注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建自定义异常"><span class="nav-number">2.2.</span> <span class="nav-text">创建自定义异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建限流info的实体"><span class="nav-number">2.3.</span> <span class="nav-text">创建限流info的实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取限流的令牌失败处理策略接口"><span class="nav-number">2.4.</span> <span class="nav-text">获取限流的令牌失败处理策略接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限流获取失败的-实现类"><span class="nav-number">2.5.</span> <span class="nav-text">限流获取失败的 实现类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建获取限流名称前缀的策略接口"><span class="nav-number">2.6.</span> <span class="nav-text">创建获取限流名称前缀的策略接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建令牌桶限流的枚举-实现策略接口"><span class="nav-number">2.7.</span> <span class="nav-text">创建令牌桶限流的枚举 实现策略接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建限流的工厂类"><span class="nav-number">2.8.</span> <span class="nav-text">创建限流的工厂类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限流接口"><span class="nav-number">2.9.</span> <span class="nav-text">限流接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限流接口实现类"><span class="nav-number">2.10.</span> <span class="nav-text">限流接口实现类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建生成限流器的提供者-生成limitInfo类"><span class="nav-number">2.11.</span> <span class="nav-text">创建生成限流器的提供者 生成limitInfo类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aop切面-及其异常处理"><span class="nav-number">2.12.</span> <span class="nav-text">aop切面 及其异常处理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一只写Bug的猫</span>
+
+  
+</div>
+
+<span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共543.8k字</span>
+</div>
+
+<div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</body>
+</html>

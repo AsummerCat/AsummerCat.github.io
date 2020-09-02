@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="官网地址jQuery校验官网地址：http://bassistance.de/jquery-plugins/jquery-plugin-validation">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery.validate前端验证字段">
+<meta property="og:url" content="http://www.linjingc.top/2018/09/20/jquery.validate前端验证字段/index.html">
+<meta property="og:site_name" content="emmm读书使我快乐">
+<meta property="og:description" content="官网地址jQuery校验官网地址：http://bassistance.de/jquery-plugins/jquery-plugin-validation">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-02T02:29:51.107Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery.validate前端验证字段">
+<meta name="twitter:description" content="官网地址jQuery校验官网地址：http://bassistance.de/jquery-plugins/jquery-plugin-validation">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.linjingc.top/2018/09/20/jquery.validate前端验证字段/">
+
+
+
+
+
+  <title>jquery.validate前端验证字段 | emmm读书使我快乐</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsummerCat/AsummerCat.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">emmm读书使我快乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2018/09/20/jquery.validate前端验证字段/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jquery.validate前端验证字段</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-20T22:02:14+08:00">
+                2018-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="官网地址"><a href="#官网地址" class="headerlink" title="官网地址"></a>官网地址</h3><p>jQuery校验官网地址：<a href="http://bassistance.de/jquery-plugins/jquery-plugin-validation" target="_blank" rel="noopener">http://bassistance.de/jquery-plugins/jquery-plugin-validation</a></p>
+<hr>
+<a id="more"></a>
+<h3 id="需要引入JS"><a href="#需要引入JS" class="headerlink" title="需要引入JS"></a>需要引入JS</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&lt;%=request.getContextPath()%&gt;/validate/jquery-1.6.2.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&lt;%=request.getContextPath()%&gt;/validate/jquery.validate.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&lt;%=request.getContextPath()%&gt;/validate/jquery.metadata.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> //使用class验证方式</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$("#signupForm").validate(&#123;</span><br><span class="line">  2.         rules: &#123;</span><br><span class="line">  3.   firstname: "required",</span><br><span class="line">  4.   email: &#123;</span><br><span class="line">  5.     required: true,</span><br><span class="line">  6.     email: true</span><br><span class="line">  7.   &#125;,</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="默认规则"><a href="#默认规则" class="headerlink" title="默认规则"></a>默认规则</h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">(1)、required:true               必输字段</span></span><br><span class="line"><span class="section">(2)、remote:"remote-valid.jsp"   使用ajax方法调用remote-valid.jsp验证输入值</span></span><br><span class="line"><span class="section">(3)、email:true                  必须输入正确格式的电子邮件</span></span><br><span class="line"><span class="section">(4)、url:true                    必须输入正确格式的网址</span></span><br><span class="line"><span class="section">(5)、date:true                   必须输入正确格式的日期，日期校验ie6出错，慎用</span></span><br><span class="line"><span class="section">(6)、dateISO:true                必须输入正确格式的日期(ISO)，例如：2009-06-23，1998/01/22 只验证格式，不验证有效性</span></span><br><span class="line"><span class="section">(7)、number:true                 必须输入合法的数字(负数，小数)</span></span><br><span class="line"><span class="section">(8)、digits:true                 必须输入整数</span></span><br><span class="line"><span class="section">(9)、creditcard:true             必须输入合法的信用卡号</span></span><br><span class="line"><span class="section">(10)、equalTo:"#password"        输入值必须和#password相同</span></span><br><span class="line"><span class="section">(11)、accept:                    输入拥有合法后缀名的字符串（上传文件的后缀）</span></span><br><span class="line"><span class="section">(12)、maxlength:5                输入长度最多是5的字符串(汉字算一个字符)</span></span><br><span class="line"><span class="section">(13)、minlength:10               输入长度最小是10的字符串(汉字算一个字符)</span></span><br><span class="line"><span class="section">(14)、rangelength:[5,10]         输入长度必须介于 5 和 10 之间的字符串")(汉字算一个字符)</span></span><br><span class="line"><span class="section">(15)、range:[5,10]               输入值必须介于 5 和 10 之间</span></span><br><span class="line"><span class="section">(16)、max:5                      输入值不能大于5</span></span><br><span class="line"><span class="section">(17)、min:10                     输入值不能小于10</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="默认的错误提示"><a href="#默认的错误提示" class="headerlink" title="默认的错误提示"></a>默认的错误提示</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">messages: &#123;</span><br><span class="line">required: "This field is required.",</span><br><span class="line">remote: "Please fix this field.",</span><br><span class="line">email: "Please enter a valid email address.",</span><br><span class="line">url: "Please enter a valid URL.",</span><br><span class="line">date: "Please enter a valid date.",</span><br><span class="line">dateISO: "Please enter a valid date (ISO).",</span><br><span class="line">dateDE: "Bitte geben Sie ein g眉ltiges Datum ein.",</span><br><span class="line">number: "Please enter a valid number.",</span><br><span class="line">numberDE: "Bitte geben Sie eine Nummer ein.",</span><br><span class="line">digits: "Please enter only digits",</span><br><span class="line">creditcard: "Please enter a valid credit card number.",</span><br><span class="line">equalTo: "Please enter the same value again.",</span><br><span class="line">accept: "Please enter a value with a valid extension.",</span><br><span class="line">maxlength: $.validator.format("Please enter no more than &#123;0&#125; characters."),</span><br><span class="line">minlength: $.validator.format("Please enter at least &#123;0&#125; characters."),</span><br><span class="line">rangelength: $.validator.format("Please enter a value between &#123;0&#125; and &#123;1&#125; characters long."),</span><br><span class="line">range: $.validator.format("Please enter a value between &#123;0&#125; and &#123;1&#125;."),</span><br><span class="line">max: $.validator.format("Please enter a value less than or equal to &#123;0&#125;."),</span><br><span class="line">min: $.validator.format("Please enter a value greater than or equal to &#123;0&#125;.")</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>如果需要修改,可在js中写入:</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$.extend($.validator.messages, &#123;</span><br><span class="line"><span class="symbol">    required:</span> <span class="string">"必选字段"</span>,</span><br><span class="line"><span class="symbol">    remote:</span> <span class="string">"请修正该字段"</span>,</span><br><span class="line"><span class="symbol">    email:</span> <span class="string">"请输入正确格式的电子邮件"</span>,</span><br><span class="line"><span class="symbol">    url:</span> <span class="string">"请输入合法的网址"</span>,</span><br><span class="line"><span class="symbol">    date:</span> <span class="string">"请输入合法的日期"</span>,</span><br><span class="line"><span class="symbol">    dateISO:</span> <span class="string">"请输入合法的日期 (ISO)."</span>,</span><br><span class="line"><span class="symbol">    number:</span> <span class="string">"请输入合法的数字"</span>,</span><br><span class="line"><span class="symbol">    digits:</span> <span class="string">"只能输入整数"</span>,</span><br><span class="line"><span class="symbol">    creditcard:</span> <span class="string">"请输入合法的信用卡号"</span>,</span><br><span class="line"><span class="symbol">    equalTo:</span> <span class="string">"请再次输入相同的值"</span>,</span><br><span class="line"><span class="symbol">    accept:</span> <span class="string">"请输入拥有合法后缀名的字符串"</span>,</span><br><span class="line"><span class="symbol">    maxlength:</span> $.validator.format(<span class="string">"请输入一个长度最多是 &#123;0&#125; 的字符串"</span>),</span><br><span class="line"><span class="symbol">    minlength:</span> $.validator.format(<span class="string">"请输入一个长度最少是 &#123;0&#125; 的字符串"</span>),</span><br><span class="line"><span class="symbol">    rangelength:</span> $.validator.format(<span class="string">"请输入一个长度介于 &#123;0&#125; 和 &#123;1&#125; 之间的字符串"</span>),</span><br><span class="line"><span class="symbol">    range:</span> $.validator.format(<span class="string">"请输入一个介于 &#123;0&#125; 和 &#123;1&#125; 之间的值"</span>),</span><br><span class="line"><span class="symbol">    max:</span> $.validator.format(<span class="string">"请输入一个最大为 &#123;0&#125; 的值"</span>),</span><br><span class="line"><span class="symbol">    min:</span> $.validator.format(<span class="string">"请输入一个最小为 &#123;0&#125; 的值"</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>推荐做法，将此文件放入messages_cn.js中，在页面中引入</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&lt;%=path %&gt;/validate/messages_cn.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>一般来说是根据name 来确认验证</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">初始化 并且写入js校验 </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> validate = $(<span class="string">"#myform"</span>).validate(&#123;</span></span><br><span class="line"><span class="actionscript">                debug: <span class="literal">true</span>, <span class="comment">//调试模式取消submit的默认提交功能   </span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">//errorClass: "label.error", //默认为错误的样式类为：error   </span></span></span><br><span class="line"><span class="actionscript">                focusInvalid: <span class="literal">false</span>, <span class="comment">//当为false时，验证无效时，没有焦点响应  </span></span></span><br><span class="line"><span class="actionscript">                onkeyup: <span class="literal">false</span>,   </span></span><br><span class="line"><span class="actionscript">                submitHandler: <span class="function"><span class="keyword">function</span><span class="params">(form)</span></span>&#123;   <span class="comment">//表单提交句柄,为一回调函数，带一个参数：form   </span></span></span><br><span class="line"><span class="actionscript">                    alert(<span class="string">"提交表单"</span>);   </span></span><br><span class="line"><span class="actionscript">                    form.submit();   <span class="comment">//提交表单   </span></span></span><br><span class="line">                &#125;,   </span><br><span class="line">                </span><br><span class="line">                rules:&#123;</span><br><span class="line">                    myname:&#123;</span><br><span class="line"><span class="actionscript">                        required:<span class="literal">true</span></span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    email:&#123;</span><br><span class="line"><span class="actionscript">                        required:<span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">                        email:<span class="literal">true</span></span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    password:&#123;</span><br><span class="line"><span class="actionscript">                        required:<span class="literal">true</span>,</span></span><br><span class="line">                        rangelength:[3,10]</span><br><span class="line">                    &#125;,</span><br><span class="line">                    confirm_password:&#123;</span><br><span class="line"><span class="actionscript">                        equalTo:<span class="string">"#password"</span></span></span><br><span class="line">                    &#125;                    </span><br><span class="line">                &#125;,</span><br><span class="line">                messages:&#123;</span><br><span class="line">                    myname:&#123;</span><br><span class="line"><span class="actionscript">                        required:<span class="string">"必填"</span></span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    email:&#123;</span><br><span class="line"><span class="actionscript">                        required:<span class="string">"必填"</span>,</span></span><br><span class="line"><span class="actionscript">                        email:<span class="string">"E-Mail格式不正确"</span></span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    password:&#123;</span><br><span class="line"><span class="actionscript">                        required: <span class="string">"不能为空"</span>,</span></span><br><span class="line"><span class="javascript">                        rangelength: $.format(<span class="string">"密码最小长度:&#123;0&#125;, 最大长度:&#123;1&#125;。"</span>)</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    confirm_password:&#123;</span><br><span class="line"><span class="actionscript">                        equalTo:<span class="string">"两次密码输入不一致"</span></span></span><br><span class="line">                    &#125;                                    </span><br><span class="line">                &#125;</span><br><span class="line">                          </span><br><span class="line">            &#125;);    </span><br><span class="line">    </span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="class方式"><a href="#class方式" class="headerlink" title="class方式"></a>class方式</h4><h4 id="将校验规则写到js代码中"><a href="#将校验规则写到js代码中" class="headerlink" title="将校验规则写到js代码中"></a>将校验规则写到js代码中</h4><hr>
+<h4 id="异步验证"><a href="#异步验证" class="headerlink" title="异步验证"></a>异步验证</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">remote: &#123;</span><br><span class="line">    url: "check-email.php",     //后台处理程序</span><br><span class="line">    type: "post",               //数据发送方式</span><br><span class="line">    dataType: "json",           //接受数据格式   </span><br><span class="line">    data: &#123;                     //要传递的数据</span><br><span class="line">        username: function() &#123;</span><br><span class="line">            return $("#username").val();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">远程地址只能输出 "true" 或 "false"，不能有其他输出。</span><br></pre></td></tr></table></figure>
+<h4 id="例"><a href="#例" class="headerlink" title="例"></a>例</h4><p>前端验证字段   (1)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//$("#name").focus();</span><br><span class="line">            $("#inputForm").validate(&#123;</span><br><span class="line">                rules: &#123;</span><br><span class="line">       title: &#123;remote: "$&#123;ctx&#125;/article/zjkArticle/check?oldtitle=" + encodeURIComponent('$&#123;zjkArticle.title&#125;')&#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                messages: &#123;</span><br><span class="line">                    title: &#123;remote: "标题已存在"&#125;,</span><br><span class="line">                &#125;,</span><br><span class="line">                submitHandler: function(form)&#123;</span><br><span class="line">                    loading('正在提交，请稍等...');</span><br><span class="line">                    form.submit();</span><br><span class="line">                &#125;,</span><br></pre></td></tr></table></figure>
+<p> 前端验证字段   (2)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">idCard:</span><br><span class="line"> &#123;<span class="attr">remote</span>: &#123;</span><br><span class="line">url: <span class="string">"$&#123;ctxapp&#125;/checkIdCard"</span>, </span><br><span class="line">type: <span class="string">"Post"</span>, </span><br><span class="line">data: &#123;<span class="attr">oldidCard</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> <span class="string">"$&#123;user.idCard&#125;"</span>;&#125;,<span class="attr">idCard</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> $(<span class="string">"#idCard"</span>).val();&#125;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="常用方法及注意问题"><a href="#常用方法及注意问题" class="headerlink" title="常用方法及注意问题"></a>常用方法及注意问题</h3><h4 id="用其他方式替代默认的submit"><a href="#用其他方式替代默认的submit" class="headerlink" title="用其他方式替代默认的submit"></a>用其他方式替代默认的submit</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$(function()&#123;</span><br><span class="line">   $("#signupForm").validate(&#123;</span><br><span class="line">        submitHandler:function(form)&#123;</span><br><span class="line">            alert("submit!");   </span><br><span class="line">            form.submit();</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">可以设置validate的默认值，写法如下：</span><br><span class="line">$.validator.setDefaults(&#123;</span><br><span class="line">submitHandler: function(form) &#123; alert("submit!"); form.submit(); &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="ignore：忽略某些元素不验证"><a href="#ignore：忽略某些元素不验证" class="headerlink" title="ignore：忽略某些元素不验证"></a>ignore：忽略某些元素不验证</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ignore: ".ignore"</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Jquery-Validate-自定义验证规则"><a href="#Jquery-Validate-自定义验证规则" class="headerlink" title="Jquery Validate 自定义验证规则"></a>Jquery Validate 自定义验证规则</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">addMethod(name,method,message)方法</span><br><span class="line">参数 name 是添加的方法的名字。</span><br><span class="line">参数 method 是一个函数，接收三个参数 (value,element,param) 。</span><br><span class="line">value 是元素的值，element 是元素本身，param 是参数。</span><br></pre></td></tr></table></figure>
+<h4 id="身份证号码验证"><a href="#身份证号码验证" class="headerlink" title="身份证号码验证"></a>身份证号码验证</h4><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“idcardno”, <span class="function"><span class="keyword">function</span><span class="params">(value, element)</span></span> &#123;</span><br><span class="line">            <span class="keyword">return</span> this.<span class="keyword">optional</span>(element) || isIdCardNo(<span class="keyword">value</span>);</span><br><span class="line">        &#125;, “请正确输入身份证号码”)</span><br></pre></td></tr></table></figure>
+<h4 id="字母数字"><a href="#字母数字" class="headerlink" title="字母数字"></a>字母数字</h4><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“alnum”, <span class="function"><span class="keyword">function</span><span class="params">(value, element)</span></span> &#123;</span><br><span class="line">            <span class="keyword">return</span> this.<span class="keyword">optional</span>(element) || /^[a-zA-Z0-<span class="number">9</span>]+$/.test(<span class="keyword">value</span>);</span><br><span class="line">        &#125;, “只能包括英文字母和数字”);</span><br></pre></td></tr></table></figure>
+<h4 id="邮政编码验证"><a href="#邮政编码验证" class="headerlink" title="邮政编码验证"></a>邮政编码验证</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“zipcode”, <span class="function"><span class="keyword">function</span>(<span class="params">value, element</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> tel = <span class="regexp">/^[0-9]&#123;6&#125;$/</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.optional(element) || (tel.test(value));</span><br><span class="line">        &#125;, “请正确填写邮政编码”);</span><br></pre></td></tr></table></figure>
+<h4 id="汉字"><a href="#汉字" class="headerlink" title="汉字"></a>汉字</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“chcharacter”, <span class="function"><span class="keyword">function</span>(<span class="params">value, element</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> tel = <span class="regexp">/^[u4e00-u9fa5]+$/</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.optional(element) || (tel.test(value));</span><br><span class="line">        &#125;, “请输入汉字”);</span><br></pre></td></tr></table></figure>
+<h4 id="字符最小长度验证（一个中文字符长度为2）"><a href="#字符最小长度验证（一个中文字符长度为2）" class="headerlink" title="字符最小长度验证（一个中文字符长度为2）"></a>字符最小长度验证（一个中文字符长度为2）</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“stringMinLength”, <span class="function"><span class="keyword">function</span><span class="params">(value, element, param)</span> &#123;</span></span><br><span class="line">            var <span class="built_in">length</span> = value.<span class="built_in">length</span>;</span><br><span class="line">            <span class="keyword">for</span>(var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; value.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(value.charCodeAt(<span class="built_in">i</span>) &gt; <span class="number">127</span>) &#123;</span><br><span class="line">                    <span class="built_in">length</span>++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> this.optional(element) || (<span class="built_in">length</span> &gt;= param);</span><br><span class="line">        &#125;, $.validator.format(“长度不能小于 &#123; <span class="number">0</span> &#125;!”));</span><br></pre></td></tr></table></figure>
+<h4 id="字符验证"><a href="#字符验证" class="headerlink" title="字符验证"></a>字符验证</h4><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“<span class="built_in">string</span>”, <span class="function"><span class="keyword">function</span>(<span class="params">value, element</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.optional(element) || <span class="regexp">/^[u0391-uFFE5w]+$/</span>.test(value);</span><br><span class="line">        &#125;, “不允许包含特殊符号!”);</span><br></pre></td></tr></table></figure>
+<h4 id="手机号码验证"><a href="#手机号码验证" class="headerlink" title="手机号码验证"></a>手机号码验证</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“mobile”, function(value, element) &#123;</span><br><span class="line">            var length = value.length;</span><br><span class="line">            return this.optional(element) || (length == <span class="number">11</span> &amp;&amp; /^(((<span class="number">13</span>[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">1</span>&#125;)|(<span class="number">15</span>[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">1</span>&#125;))+d&#123;<span class="number">8</span>&#125;)$/.test(value));</span><br><span class="line">        &#125;, “手机号码格式错误!”);</span><br></pre></td></tr></table></figure>
+<h4 id="电话号码验证"><a href="#电话号码验证" class="headerlink" title="电话号码验证"></a>电话号码验证</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“phone”, <span class="function"><span class="keyword">function</span>(<span class="params">value, element</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> tel = <span class="regexp">/^(d&#123;3,4&#125;-?)?d&#123;7,9&#125;$/g</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.optional(element) || (tel.test(value));</span><br><span class="line">        &#125;, “电话号码格式错误!”);</span><br></pre></td></tr></table></figure>
+<h4 id="必须以特定字符串开头验证"><a href="#必须以特定字符串开头验证" class="headerlink" title="必须以特定字符串开头验证"></a>必须以特定字符串开头验证</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“begin”, <span class="function"><span class="keyword">function</span>(<span class="params">value, element, param</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> begin = <span class="keyword">new</span> <span class="built_in">RegExp</span>(“ ^ ”+param);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.optional(element) || (begin.test(value));</span><br><span class="line">        &#125;, $.validator.format(“必须以 &#123; <span class="number">0</span> &#125; 开头!”));</span><br></pre></td></tr></table></figure>
+<h4 id="验证两次输入值是否不相同"><a href="#验证两次输入值是否不相同" class="headerlink" title="验证两次输入值是否不相同"></a>验证两次输入值是否不相同</h4><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“notEqualTo”, <span class="function"><span class="keyword">function</span><span class="params">(value, element, param)</span></span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">value</span> <span class="comment">!= $(param).val();</span></span><br><span class="line">        &#125;, $.validator.<span class="keyword">format</span>(“两次输入不能相同<span class="comment">!”));</span></span><br></pre></td></tr></table></figure>
+<h4 id="验证值不允许与特定值等于"><a href="#验证值不允许与特定值等于" class="headerlink" title="验证值不允许与特定值等于"></a>验证值不允许与特定值等于</h4><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“notEqual”, <span class="function"><span class="keyword">function</span><span class="params">(value, element, param)</span></span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">value</span> <span class="comment">!= param;</span></span><br><span class="line">        &#125;, $.validator.<span class="keyword">format</span>(“输入值不允许为 &#123; <span class="number">0</span> &#125;<span class="comment">!”));</span></span><br></pre></td></tr></table></figure>
+<h4 id="验证值必须大于特定值-不能等于"><a href="#验证值必须大于特定值-不能等于" class="headerlink" title="验证值必须大于特定值(不能等于)"></a>验证值必须大于特定值(不能等于)</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(“<span class="literal">gt</span>”, <span class="keyword">function</span>(<span class="keyword">value</span>, <span class="keyword">element</span>, param) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">value</span> &gt; param;</span><br><span class="line">        &#125;, $.validator.format(“输入值必须大于 &#123; <span class="number">0</span> &#125;!”));</span><br></pre></td></tr></table></figure>
+<h4 id="小数点前最多9位，小数点后最多6位"><a href="#小数点前最多9位，小数点后最多6位" class="headerlink" title="小数点前最多9位，小数点后最多6位"></a>小数点前最多9位，小数点后最多6位</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(<span class="string">"decimal"</span>, <span class="keyword">function</span> (<span class="keyword">value</span>, <span class="keyword">element</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> this.optional(<span class="keyword">element</span>) || /^([1-9]\d&#123;<span class="number">0</span>,<span class="number">8</span>&#125;|<span class="number">0</span>)(\.\d&#123;<span class="number">1</span>,<span class="number">6</span>&#125;)?$/.test(<span class="keyword">value</span>);</span><br><span class="line">&#125;, <span class="string">"小数点前最多9位，小数点后最多6位^_^"</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="结束时间不能小于开始时间"><a href="#结束时间不能小于开始时间" class="headerlink" title="结束时间不能小于开始时间"></a>结束时间不能小于开始时间</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addMethod(<span class="string">"laterTo"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">value, element, param</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $(param).val().split(<span class="string">"-"</span>).join(<span class="string">""</span>) &lt; $(element).val().split(<span class="string">"-"</span>).join(<span class="string">""</span>);</span><br><span class="line">&#125;, <span class="string">"结束时间不能小于开始时间^_^"</span>);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" <i class="fa fa-tag"> 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/20/上传文件前端图片压缩后上传(base64)/" rel="next" title="上传文件前端图片压缩后上传(base64)">
+                <i class="fa fa-chevron-left"></i> 上传文件前端图片压缩后上传(base64)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/20/java服务器根地址/" rel="prev" title="java服务器根地址">
+                java服务器根地址 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/WechatIMG230.jpeg" alt="一只写Bug的猫">
+            
+              <p class="site-author-name" itemprop="name">一只写Bug的猫</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">569</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#官网地址"><span class="nav-number">1.</span> <span class="nav-text">官网地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要引入JS"><span class="nav-number">2.</span> <span class="nav-text">需要引入JS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础语法"><span class="nav-number">3.</span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认规则"><span class="nav-number">4.</span> <span class="nav-text">默认规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认的错误提示"><span class="nav-number">5.</span> <span class="nav-text">默认的错误提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方式"><span class="nav-number">6.</span> <span class="nav-text">使用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化"><span class="nav-number">6.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#class方式"><span class="nav-number">6.2.</span> <span class="nav-text">class方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将校验规则写到js代码中"><span class="nav-number">6.3.</span> <span class="nav-text">将校验规则写到js代码中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步验证"><span class="nav-number">6.4.</span> <span class="nav-text">异步验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例"><span class="nav-number">6.5.</span> <span class="nav-text">例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法及注意问题"><span class="nav-number">7.</span> <span class="nav-text">常用方法及注意问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用其他方式替代默认的submit"><span class="nav-number">7.1.</span> <span class="nav-text">用其他方式替代默认的submit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ignore：忽略某些元素不验证"><span class="nav-number">7.2.</span> <span class="nav-text">ignore：忽略某些元素不验证</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jquery-Validate-自定义验证规则"><span class="nav-number">8.</span> <span class="nav-text">Jquery Validate 自定义验证规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#身份证号码验证"><span class="nav-number">8.1.</span> <span class="nav-text">身份证号码验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字母数字"><span class="nav-number">8.2.</span> <span class="nav-text">字母数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#邮政编码验证"><span class="nav-number">8.3.</span> <span class="nav-text">邮政编码验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汉字"><span class="nav-number">8.4.</span> <span class="nav-text">汉字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符最小长度验证（一个中文字符长度为2）"><span class="nav-number">8.5.</span> <span class="nav-text">字符最小长度验证（一个中文字符长度为2）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符验证"><span class="nav-number">8.6.</span> <span class="nav-text">字符验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手机号码验证"><span class="nav-number">8.7.</span> <span class="nav-text">手机号码验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电话号码验证"><span class="nav-number">8.8.</span> <span class="nav-text">电话号码验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#必须以特定字符串开头验证"><span class="nav-number">8.9.</span> <span class="nav-text">必须以特定字符串开头验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证两次输入值是否不相同"><span class="nav-number">8.10.</span> <span class="nav-text">验证两次输入值是否不相同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证值不允许与特定值等于"><span class="nav-number">8.11.</span> <span class="nav-text">验证值不允许与特定值等于</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证值必须大于特定值-不能等于"><span class="nav-number">8.12.</span> <span class="nav-text">验证值必须大于特定值(不能等于)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小数点前最多9位，小数点后最多6位"><span class="nav-number">8.13.</span> <span class="nav-text">小数点前最多9位，小数点后最多6位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结束时间不能小于开始时间"><span class="nav-number">8.14.</span> <span class="nav-text">结束时间不能小于开始时间</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一只写Bug的猫</span>
+
+  
+</div>
+
+<span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共543.8k字</span>
+</div>
+
+<div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</body>
+</html>

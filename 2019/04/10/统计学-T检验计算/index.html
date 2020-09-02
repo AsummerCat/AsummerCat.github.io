@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="统计学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="统计学-T检验计算导入pom文件123456&amp;lt;!--科学计算类库--&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.commons&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;commons-math3&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;3.6.1&amp;lt;/versi">
+<meta name="keywords" content="统计学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计学-T检验计算">
+<meta property="og:url" content="http://www.linjingc.top/2019/04/10/统计学-T检验计算/index.html">
+<meta property="og:site_name" content="emmm读书使我快乐">
+<meta property="og:description" content="统计学-T检验计算导入pom文件123456&amp;lt;!--科学计算类库--&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.commons&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;commons-math3&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;3.6.1&amp;lt;/versi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-02T02:29:51.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统计学-T检验计算">
+<meta name="twitter:description" content="统计学-T检验计算导入pom文件123456&amp;lt;!--科学计算类库--&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.commons&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;commons-math3&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;3.6.1&amp;lt;/versi">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.linjingc.top/2019/04/10/统计学-T检验计算/">
+
+
+
+
+
+  <title>统计学-T检验计算 | emmm读书使我快乐</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsummerCat/AsummerCat.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">emmm读书使我快乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/04/10/统计学-T检验计算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">统计学-T检验计算</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-10T21:15:24+08:00">
+                2019-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="统计学-T检验计算"><a href="#统计学-T检验计算" class="headerlink" title="统计学-T检验计算"></a>统计学-T检验计算</h1><h2 id="导入pom文件"><a href="#导入pom文件" class="headerlink" title="导入pom文件"></a>导入pom文件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--科学计算类库--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-math3<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="计算类"><a href="#计算类" class="headerlink" title="计算类"></a>计算类</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.mdt.newdrugreview.utils.tExamination;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.mdt.newdrugreview.utils.Mutil;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.math3.stat.StatUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 独立样本T检验</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> cxc</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndependentSamplesT</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//8, 8, 5, 8, 5, 5, 4, 6, 10, 10, 5, 1, 1, 4, 3, 5, 7, 1, 9, 2, 5, 2, 12, 15</span></span><br><span class="line"><span class="comment">//    , 7, 8, 8, 9, 8, 3, 2, 5, 4, 4, 6, 7, 7, 5, 6, 4, 3, 2, 7, 6, 2, 8, 9, 7, 6</span></span><br><span class="line">    <span class="comment">//test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span>[] x1 = &#123;<span class="number">7</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">        <span class="keyword">double</span>[] y1 = &#123;<span class="number">5</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">7</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"计算[独立样本T检测]:"</span> + independentSamplesT(x1, y1));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  * @描述: 独立样本T检验 ，用于检测群体x和群体y之间是否支持零假设&lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * @方法名: independentSamplesT &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * <span class="doctag">@param</span> x &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * <span class="doctag">@param</span> y &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * <span class="doctag">@return</span> &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * @返回类型 double 分双重检测与单侧检测，结合自由度查询"临界值"对照表，如果实际值大于临界值</span></span><br><span class="line"><span class="comment">     * 表示不能接受零假设，否则零假设是最有力的假设 &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * @创建人 micheal &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * @创建时间 2019年1月5日下午8:57:00 &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * @修改人 micheal &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * @修改时间 2019年1月5日下午8:57:00 &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * @修改备注 &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * <span class="doctag">@since</span> &lt;br/&gt;</span></span><br><span class="line"><span class="comment">     *  * <span class="doctag">@throws</span>  </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">independentSamplesT</span><span class="params">(<span class="keyword">double</span>[] x, <span class="keyword">double</span>[] y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> xMean = StatUtils.mean(x);</span><br><span class="line">        <span class="keyword">double</span> yMean = StatUtils.mean(y);</span><br><span class="line">        <span class="keyword">int</span> n1 = x.length;</span><br><span class="line">        <span class="keyword">int</span> n2 = y.length;</span><br><span class="line">        <span class="keyword">double</span> xVariance = StatUtils.variance(x);</span><br><span class="line">        <span class="keyword">double</span> yVariance = StatUtils.variance(y);</span><br><span class="line">        System.out.println(<span class="string">"自由度:"</span> + (n1 + n2 - <span class="number">2</span>));</span><br><span class="line">        <span class="comment">//自由度</span></span><br><span class="line">        <span class="keyword">int</span> dof = getDOF(n1 + n2 - <span class="number">2</span>);</span><br><span class="line">        <span class="comment">//T值</span></span><br><span class="line">        <span class="keyword">double</span> tValue = Mutil.divide(Mutil.subtract(xMean, yMean), Math.sqrt(Mutil.multiply(Mutil.divide(Mutil.add(Mutil.multiply((n1 - <span class="number">1</span>), xVariance), Mutil.multiply((n2 - <span class="number">1</span>), yVariance)), (n1 + n2 - <span class="number">2</span>), <span class="number">2</span>), Mutil.divide((n1 + n2), Mutil.multiply(n1, n2), <span class="number">5</span>))), <span class="number">3</span>);</span><br><span class="line">        System.out.println(<span class="string">"t值:"</span> + tValue);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">double</span> pValue = resultPvalue(dof, tValue);</span><br><span class="line">        System.out.println(<span class="string">"p值:"</span> + pValue);</span><br><span class="line">        <span class="keyword">return</span> pValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 双侧</span></span><br><span class="line"><span class="comment">     * 获取T分布临界值获取 取近似自由度</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dof 自由度</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getDOF</span><span class="params">(<span class="keyword">int</span> dof)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//T分布临界值获取 取近似自由度</span></span><br><span class="line">        <span class="keyword">if</span> (dof &gt; <span class="number">40</span> &amp;&amp; dof &lt;= <span class="number">45</span>) &#123;</span><br><span class="line">            dof = <span class="number">40</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dof &gt; <span class="number">45</span> &amp;&amp; dof &lt;= <span class="number">55</span>) &#123;</span><br><span class="line">            dof = <span class="number">50</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dof &gt; <span class="number">55</span> &amp;&amp; dof &lt;= <span class="number">65</span>) &#123;</span><br><span class="line">            dof = <span class="number">60</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dof &gt; <span class="number">65</span> &amp;&amp; dof &lt;= <span class="number">75</span>) &#123;</span><br><span class="line">            dof = <span class="number">70</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dof &gt; <span class="number">75</span> &amp;&amp; dof &lt;= <span class="number">85</span>) &#123;</span><br><span class="line">            dof = <span class="number">80</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dof &gt; <span class="number">85</span> &amp;&amp; dof &lt; <span class="number">95</span>) &#123;</span><br><span class="line">            dof = <span class="number">90</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dof &gt; <span class="number">95</span> &amp;&amp; dof &lt;= <span class="number">150</span>) &#123;</span><br><span class="line">            dof = <span class="number">100</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dof &gt; <span class="number">150</span> &amp;&amp; dof &lt;= <span class="number">350</span>) &#123;</span><br><span class="line">            dof = <span class="number">200</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dof &gt; <span class="number">350</span> &amp;&amp; dof &lt;= <span class="number">750</span>) &#123;</span><br><span class="line">            dof = <span class="number">500</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dof &gt; <span class="number">750</span> &amp;&amp; dof &lt;= <span class="number">1000</span>) &#123;</span><br><span class="line">            dof = <span class="number">1000</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dof &gt; <span class="number">1000</span>) &#123;</span><br><span class="line">            <span class="comment">//超出最大</span></span><br><span class="line">            dof = <span class="number">10000</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> dof;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dof;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据T值临界表获取出 对比结果</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">resultPvalue</span><span class="params">(<span class="keyword">int</span> dof, <span class="keyword">double</span> tValue)</span> </span>&#123;</span><br><span class="line">        TDistributionEnum tDistribution = TDistributionEnum.getValue(dof);</span><br><span class="line">        <span class="keyword">if</span> (tDistribution == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0.00</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        BigDecimal tValueBigDecimal = <span class="keyword">new</span> BigDecimal(Math.abs(tValue));</span><br><span class="line">        <span class="comment">//p值0.5判断</span></span><br><span class="line">        <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotFive())) &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0.5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//p值0.001判断</span></span><br><span class="line">        <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroZeroOne())) &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0.001</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//p值0.5-0.2判断</span></span><br><span class="line">        <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotFive())) &gt; <span class="number">0</span> &amp;&amp; tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotTwo())) &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotTwo())) == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.2</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.35</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//p值0.2-0.1判断</span></span><br><span class="line">        <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotTwo())) &gt; <span class="number">0</span> &amp;&amp; tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotOne())) &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotOne())) == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.15</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//p值0.1-0.05判断</span></span><br><span class="line">        <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotOne())) &gt; <span class="number">0</span> &amp;&amp; tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroFive())) &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroFive())) == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.05</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.075</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//p值0.05-0.02判断</span></span><br><span class="line">        <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroFive())) &gt; <span class="number">0</span> &amp;&amp; tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroTwo())) &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroTwo())) == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.02</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.035</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//p值0.02-0.01判断</span></span><br><span class="line">        <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroTwo())) &gt; <span class="number">0</span> &amp;&amp; tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroOne())) &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroOne())) == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.01</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.015</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//p值0.01-0.005判断</span></span><br><span class="line">        <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroOne())) &gt; <span class="number">0</span> &amp;&amp; tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroZeroFive())) &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroZeroFive())) == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.005</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.0075</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//p值0.005-0.002判断</span></span><br><span class="line">        <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroZeroFive())) &gt; <span class="number">0</span> &amp;&amp; tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroZeroTwo())) &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroZeroTwo())) == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.002</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.0035</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//p值0.002-0.001判断</span></span><br><span class="line">        <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroZeroTwo())) &gt; <span class="number">0</span> &amp;&amp; tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroZeroOne())) &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tValueBigDecimal.compareTo(<span class="keyword">new</span> BigDecimal(tDistribution.getZeroDotZeroZeroOne())) == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.001</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.0015</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0.00</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="枚举类-维护-T值临界表-双侧"><a href="#枚举类-维护-T值临界表-双侧" class="headerlink" title="枚举类 维护 T值临界表 双侧"></a>枚举类 维护 T值临界表 双侧</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.mdt.newdrugreview.utils.tExamination;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * T值临界表 双侧</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> cxc</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019年7月2日10:23:22</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> TDistributionEnum &#123;</span><br><span class="line"></span><br><span class="line">    ONE(<span class="number">1</span>, <span class="number">1</span>, <span class="number">3.078</span>, <span class="number">6.314</span>, <span class="number">12.706</span>, <span class="number">31.821</span>, <span class="number">63.657</span>, <span class="number">127.321</span>, <span class="number">318.309</span>, <span class="number">636.619</span>),</span><br><span class="line">    TWO(<span class="number">2</span>, <span class="number">0.816</span>, <span class="number">1.886</span>, <span class="number">2.92</span>, <span class="number">4.303</span>, <span class="number">6.965</span>, <span class="number">9.925</span>, <span class="number">14.089</span>, <span class="number">22.327</span>, <span class="number">31.599</span>),</span><br><span class="line">    THREE(<span class="number">3</span>, <span class="number">0.765</span>, <span class="number">1.638</span>, <span class="number">2.353</span>, <span class="number">3.182</span>, <span class="number">4.541</span>, <span class="number">5.841</span>, <span class="number">7.453</span>, <span class="number">10.215</span>, <span class="number">12.924</span>),</span><br><span class="line">    FOUR(<span class="number">4</span>, <span class="number">0.741</span>, <span class="number">1.533</span>, <span class="number">2.132</span>, <span class="number">2.776</span>, <span class="number">3.747</span>, <span class="number">4.604</span>, <span class="number">5.598</span>, <span class="number">7.173</span>, <span class="number">8.61</span>),</span><br><span class="line">    FIVE(<span class="number">5</span>, <span class="number">0.727</span>, <span class="number">1.476</span>, <span class="number">2.015</span>, <span class="number">2.571</span>, <span class="number">3.365</span>, <span class="number">4.032</span>, <span class="number">4.773</span>, <span class="number">5.893</span>, <span class="number">6.869</span>),</span><br><span class="line">    SIX(<span class="number">6</span>, <span class="number">0.718</span>, <span class="number">1.44</span>, <span class="number">1.943</span>, <span class="number">2.447</span>, <span class="number">3.143</span>, <span class="number">3.707</span>, <span class="number">4.317</span>, <span class="number">5.208</span>, <span class="number">5.959</span>),</span><br><span class="line">    SEVEN(<span class="number">7</span>, <span class="number">0.711</span>, <span class="number">1.415</span>, <span class="number">1.895</span>, <span class="number">2.365</span>, <span class="number">2.998</span>, <span class="number">3.499</span>, <span class="number">4.029</span>, <span class="number">4.785</span>, <span class="number">5.408</span>),</span><br><span class="line">    EIGHT(<span class="number">8</span>, <span class="number">0.706</span>, <span class="number">1.397</span>, <span class="number">1.86</span>, <span class="number">2.306</span>, <span class="number">2.896</span>, <span class="number">3.355</span>, <span class="number">3.833</span>, <span class="number">4.501</span>, <span class="number">5.041</span>),</span><br><span class="line">    NINE(<span class="number">9</span>, <span class="number">0.703</span>, <span class="number">1.383</span>, <span class="number">1.833</span>, <span class="number">2.262</span>, <span class="number">2.821</span>, <span class="number">3.25</span>, <span class="number">3.69</span>, <span class="number">4.297</span>, <span class="number">4.781</span>),</span><br><span class="line">    TEN(<span class="number">10</span>, <span class="number">0.7</span>, <span class="number">1.372</span>, <span class="number">1.812</span>, <span class="number">2.228</span>, <span class="number">2.764</span>, <span class="number">3.169</span>, <span class="number">3.581</span>, <span class="number">4.144</span>, <span class="number">4.587</span>),</span><br><span class="line">    ELEVEN(<span class="number">11</span>, <span class="number">0.697</span>, <span class="number">1.363</span>, <span class="number">1.796</span>, <span class="number">2.201</span>, <span class="number">2.718</span>, <span class="number">3.106</span>, <span class="number">3.497</span>, <span class="number">4.025</span>, <span class="number">4.437</span>),</span><br><span class="line">    TWELVE(<span class="number">12</span>, <span class="number">0.695</span>, <span class="number">1.356</span>, <span class="number">1.782</span>, <span class="number">2.179</span>, <span class="number">2.681</span>, <span class="number">3.055</span>, <span class="number">3.428</span>, <span class="number">3.93</span>, <span class="number">4.318</span>),</span><br><span class="line">    THIRTEEN(<span class="number">13</span>, <span class="number">0.694</span>, <span class="number">1.35</span>, <span class="number">1.771</span>, <span class="number">2.16</span>, <span class="number">2.65</span>, <span class="number">3.012</span>, <span class="number">3.372</span>, <span class="number">3.852</span>, <span class="number">4.221</span>),</span><br><span class="line">    FOURTEEN(<span class="number">14</span>, <span class="number">0.692</span>, <span class="number">1.345</span>, <span class="number">1.761</span>, <span class="number">2.145</span>, <span class="number">2.624</span>, <span class="number">2.977</span>, <span class="number">3.326</span>, <span class="number">3.787</span>, <span class="number">4.14</span>),</span><br><span class="line">    FIFTEEN(<span class="number">15</span>, <span class="number">0.691</span>, <span class="number">1.341</span>, <span class="number">1.753</span>, <span class="number">2.131</span>, <span class="number">2.602</span>, <span class="number">2.947</span>, <span class="number">3.286</span>, <span class="number">3.733</span>, <span class="number">4.073</span>),</span><br><span class="line">    SIXTEEN(<span class="number">16</span>, <span class="number">0.69</span>, <span class="number">1.337</span>, <span class="number">1.746</span>, <span class="number">2.12</span>, <span class="number">2.583</span>, <span class="number">2.921</span>, <span class="number">3.252</span>, <span class="number">3.686</span>, <span class="number">4.015</span>),</span><br><span class="line">    SEVENTEEN(<span class="number">17</span>, <span class="number">0.689</span>, <span class="number">1.333</span>, <span class="number">1.74</span>, <span class="number">2.11</span>, <span class="number">2.567</span>, <span class="number">2.898</span>, <span class="number">3.222</span>, <span class="number">3.646</span>, <span class="number">3.965</span>),</span><br><span class="line">    EIGHTEEN(<span class="number">18</span>, <span class="number">0.688</span>, <span class="number">1.33</span>, <span class="number">1.734</span>, <span class="number">2.101</span>, <span class="number">2.552</span>, <span class="number">2.878</span>, <span class="number">3.197</span>, <span class="number">3.61</span>, <span class="number">3.922</span>),</span><br><span class="line">    NINETEEN(<span class="number">19</span>, <span class="number">0.688</span>, <span class="number">1.328</span>, <span class="number">1.729</span>, <span class="number">2.093</span>, <span class="number">2.539</span>, <span class="number">2.861</span>, <span class="number">3.174</span>, <span class="number">3.579</span>, <span class="number">3.883</span>),</span><br><span class="line">    TWENTY(<span class="number">20</span>, <span class="number">0.687</span>, <span class="number">1.325</span>, <span class="number">1.725</span>, <span class="number">2.086</span>, <span class="number">2.528</span>, <span class="number">2.845</span>, <span class="number">3.153</span>, <span class="number">3.552</span>, <span class="number">3.85</span>),</span><br><span class="line">    TWENTY_ONE(<span class="number">21</span>, <span class="number">0.686</span>, <span class="number">1.323</span>, <span class="number">1.721</span>, <span class="number">2.08</span>, <span class="number">2.518</span>, <span class="number">2.831</span>, <span class="number">3.135</span>, <span class="number">3.527</span>, <span class="number">3.819</span>),</span><br><span class="line">    TWENTY_TWO(<span class="number">22</span>, <span class="number">0.686</span>, <span class="number">1.321</span>, <span class="number">1.717</span>, <span class="number">2.074</span>, <span class="number">2.508</span>, <span class="number">2.819</span>, <span class="number">3.119</span>, <span class="number">3.505</span>, <span class="number">3.792</span>),</span><br><span class="line">    TWENTY_THREE(<span class="number">23</span>, <span class="number">0.685</span>, <span class="number">1.319</span>, <span class="number">1.714</span>, <span class="number">2.069</span>, <span class="number">2.5</span>, <span class="number">2.807</span>, <span class="number">3.104</span>, <span class="number">3.485</span>, <span class="number">3.768</span>),</span><br><span class="line">    TWENTY_FOUR(<span class="number">24</span>, <span class="number">0.685</span>, <span class="number">1.318</span>, <span class="number">1.711</span>, <span class="number">2.064</span>, <span class="number">2.492</span>, <span class="number">2.797</span>, <span class="number">3.091</span>, <span class="number">3.467</span>, <span class="number">3.745</span>),</span><br><span class="line">    TWENTY_FIVE(<span class="number">25</span>, <span class="number">0.684</span>, <span class="number">1.316</span>, <span class="number">1.708</span>, <span class="number">2.06</span>, <span class="number">2.485</span>, <span class="number">2.787</span>, <span class="number">3.078</span>, <span class="number">3.45</span>, <span class="number">3.725</span>),</span><br><span class="line">    TWENTY_SIX(<span class="number">26</span>, <span class="number">0.684</span>, <span class="number">1.315</span>, <span class="number">1.706</span>, <span class="number">2.056</span>, <span class="number">2.479</span>, <span class="number">2.779</span>, <span class="number">3.067</span>, <span class="number">3.435</span>, <span class="number">3.707</span>),</span><br><span class="line">    TWENTY_SEVEN(<span class="number">27</span>, <span class="number">0.684</span>, <span class="number">1.314</span>, <span class="number">1.703</span>, <span class="number">2.052</span>, <span class="number">2.473</span>, <span class="number">2.771</span>, <span class="number">3.057</span>, <span class="number">3.421</span>, <span class="number">3.69</span>),</span><br><span class="line">    TWENTY_EIGHT(<span class="number">28</span>, <span class="number">0.683</span>, <span class="number">1.313</span>, <span class="number">1.701</span>, <span class="number">2.048</span>, <span class="number">2.467</span>, <span class="number">2.763</span>, <span class="number">3.047</span>, <span class="number">3.408</span>, <span class="number">3.674</span>),</span><br><span class="line">    TWENTY_NINE(<span class="number">29</span>, <span class="number">0.683</span>, <span class="number">1.311</span>, <span class="number">1.699</span>, <span class="number">2.045</span>, <span class="number">2.462</span>, <span class="number">2.756</span>, <span class="number">3.038</span>, <span class="number">3.396</span>, <span class="number">3.659</span>),</span><br><span class="line">    THIRTY(<span class="number">30</span>, <span class="number">0.683</span>, <span class="number">1.31</span>, <span class="number">1.697</span>, <span class="number">2.042</span>, <span class="number">2.457</span>, <span class="number">2.75</span>, <span class="number">3.03</span>, <span class="number">3.385</span>, <span class="number">3.646</span>),</span><br><span class="line">    THIRTY_ONE(<span class="number">31</span>, <span class="number">0.682</span>, <span class="number">1.309</span>, <span class="number">1.696</span>, <span class="number">2.04</span>, <span class="number">2.453</span>, <span class="number">2.744</span>, <span class="number">3.022</span>, <span class="number">3.375</span>, <span class="number">3.633</span>),</span><br><span class="line">    THIRTY_TWO(<span class="number">32</span>, <span class="number">0.682</span>, <span class="number">1.309</span>, <span class="number">1.694</span>, <span class="number">2.037</span>, <span class="number">2.449</span>, <span class="number">2.738</span>, <span class="number">3.015</span>, <span class="number">3.365</span>, <span class="number">3.622</span>),</span><br><span class="line">    THIRTY_THREE(<span class="number">33</span>, <span class="number">0.682</span>, <span class="number">1.308</span>, <span class="number">1.692</span>, <span class="number">2.035</span>, <span class="number">2.445</span>, <span class="number">2.733</span>, <span class="number">3.008</span>, <span class="number">3.356</span>, <span class="number">3.611</span>),</span><br><span class="line">    THIRTY_FOUR(<span class="number">34</span>, <span class="number">0.682</span>, <span class="number">1.307</span>, <span class="number">1.091</span>, <span class="number">2.032</span>, <span class="number">2.441</span>, <span class="number">2.728</span>, <span class="number">3.002</span>, <span class="number">3.348</span>, <span class="number">3.601</span>),</span><br><span class="line">    THIRTY_FIVE(<span class="number">35</span>, <span class="number">0.682</span>, <span class="number">1.306</span>, <span class="number">1.69</span>, <span class="number">2.03</span>, <span class="number">2.438</span>, <span class="number">2.724</span>, <span class="number">2.996</span>, <span class="number">3.34</span>, <span class="number">3.591</span>),</span><br><span class="line">    THIRTY_SIX(<span class="number">36</span>, <span class="number">0.681</span>, <span class="number">1.306</span>, <span class="number">1.688</span>, <span class="number">2.028</span>, <span class="number">2.434</span>, <span class="number">2.719</span>, <span class="number">2.99</span>, <span class="number">3.333</span>, <span class="number">3.582</span>),</span><br><span class="line">    THIRTY_SEVEN(<span class="number">37</span>, <span class="number">0.681</span>, <span class="number">1.305</span>, <span class="number">1.687</span>, <span class="number">2.026</span>, <span class="number">2.431</span>, <span class="number">2.715</span>, <span class="number">2.985</span>, <span class="number">3.326</span>, <span class="number">3.574</span>),</span><br><span class="line">    THIRTY_EIGHT(<span class="number">38</span>, <span class="number">0.681</span>, <span class="number">1.304</span>, <span class="number">1.686</span>, <span class="number">2.024</span>, <span class="number">2.429</span>, <span class="number">2.712</span>, <span class="number">2.98</span>, <span class="number">3.319</span>, <span class="number">3.566</span>),</span><br><span class="line">    THIRTY_NINE(<span class="number">39</span>, <span class="number">0.681</span>, <span class="number">1.304</span>, <span class="number">1.685</span>, <span class="number">2.023</span>, <span class="number">2.426</span>, <span class="number">2.708</span>, <span class="number">2.976</span>, <span class="number">3.313</span>, <span class="number">3.558</span>),</span><br><span class="line">    FORTY(<span class="number">40</span>, <span class="number">0.681</span>, <span class="number">1.303</span>, <span class="number">1.684</span>, <span class="number">2.021</span>, <span class="number">2.423</span>, <span class="number">2.704</span>, <span class="number">2.971</span>, <span class="number">3.307</span>, <span class="number">3.551</span>),</span><br><span class="line">    FIFTY(<span class="number">50</span>, <span class="number">0.679</span>, <span class="number">1.299</span>, <span class="number">1.676</span>, <span class="number">2.009</span>, <span class="number">2.403</span>, <span class="number">2.678</span>, <span class="number">2.937</span>, <span class="number">3.261</span>, <span class="number">3.496</span>),</span><br><span class="line">    SIXTY(<span class="number">60</span>, <span class="number">0.679</span>, <span class="number">1.296</span>, <span class="number">1.671</span>, <span class="number">2</span>, <span class="number">2.39</span>, <span class="number">2.66</span>, <span class="number">2.915</span>, <span class="number">3.232</span>, <span class="number">3.46</span>),</span><br><span class="line">    SEVENTY(<span class="number">70</span>, <span class="number">0.678</span>, <span class="number">1.294</span>, <span class="number">1.667</span>, <span class="number">1.994</span>, <span class="number">2.381</span>, <span class="number">2.648</span>, <span class="number">2.899</span>, <span class="number">3.211</span>, <span class="number">3.436</span>),</span><br><span class="line">    EIGHTY(<span class="number">80</span>, <span class="number">0.678</span>, <span class="number">1.292</span>, <span class="number">1.664</span>, <span class="number">1.99</span>, <span class="number">2.374</span>, <span class="number">2.639</span>, <span class="number">2.887</span>, <span class="number">3.195</span>, <span class="number">3.416</span>),</span><br><span class="line">    NINETY(<span class="number">90</span>, <span class="number">0.677</span>, <span class="number">1.291</span>, <span class="number">1.662</span>, <span class="number">1.987</span>, <span class="number">2.368</span>, <span class="number">2.632</span>, <span class="number">2.878</span>, <span class="number">3.183</span>, <span class="number">3.402</span>),</span><br><span class="line">    ONE_HUNDRED(<span class="number">100</span>, <span class="number">0.677</span>, <span class="number">1.29</span>, <span class="number">1.66</span>, <span class="number">1.984</span>, <span class="number">2.364</span>, <span class="number">2.626</span>, <span class="number">2.871</span>, <span class="number">3.174</span>, <span class="number">3.39</span>),</span><br><span class="line">    TWO_HUNDRED(<span class="number">200</span>, <span class="number">0.676</span>, <span class="number">1.286</span>, <span class="number">1.653</span>, <span class="number">1.972</span>, <span class="number">2.345</span>, <span class="number">2.601</span>, <span class="number">2.839</span>, <span class="number">3.131</span>, <span class="number">3.34</span>),</span><br><span class="line">    FIVE_HUNDRED(<span class="number">500</span>, <span class="number">0.675</span>, <span class="number">1.283</span>, <span class="number">1.648</span>, <span class="number">1.965</span>, <span class="number">2.334</span>, <span class="number">2.586</span>, <span class="number">2.82</span>, <span class="number">3.107</span>, <span class="number">3.31</span>),</span><br><span class="line">    ONE_THOUSAND(<span class="number">1000</span>, <span class="number">0.675</span>, <span class="number">1.282</span>, <span class="number">1.646</span>, <span class="number">1.962</span>, <span class="number">2.33</span>, <span class="number">2.581</span>, <span class="number">2.813</span>, <span class="number">3.098</span>, <span class="number">3.3</span>),</span><br><span class="line">    MAX(<span class="number">10000</span>, <span class="number">0.6745</span>, <span class="number">1.2816</span>, <span class="number">1.6449</span>, <span class="number">1.96</span>, <span class="number">2.3263</span>, <span class="number">2.5758</span>, <span class="number">2.807</span>, <span class="number">3.0902</span>, <span class="number">3.2905</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 自由度</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> rof;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * p0.5</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> zeroDotFive;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * p.0.2</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> zeroDotTwo;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * p.0.1</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> zeroDotOne;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * p.0.05</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> zeroDotZeroFive;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * p.0.02</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> zeroDotZeroTwo;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 0.01</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> zeroDotZeroOne;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 0.005</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> zeroDotZeroZeroFive;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 0.002</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> zeroDotZeroZeroTwo;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 0.001</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> zeroDotZeroZeroOne;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造方法</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> rof 显示内容</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    TDistributionEnum(<span class="keyword">int</span> rof, <span class="keyword">double</span> zeroDotFive, <span class="keyword">double</span> zeroDotTwo, <span class="keyword">double</span> zeroDotOne, <span class="keyword">double</span> zeroDotZeroFive, <span class="keyword">double</span> zeroDotZeroTwo, <span class="keyword">double</span> zeroDotZeroOne, <span class="keyword">double</span> zeroDotZeroZeroFive, <span class="keyword">double</span> zeroDotZeroZeroTwo, <span class="keyword">double</span> zeroDotZeroZeroOne) &#123;</span><br><span class="line">        <span class="keyword">this</span>.rof = rof;</span><br><span class="line">        <span class="keyword">this</span>.zeroDotFive = zeroDotFive;</span><br><span class="line">        <span class="keyword">this</span>.zeroDotTwo = zeroDotTwo;</span><br><span class="line">        <span class="keyword">this</span>.zeroDotOne = zeroDotOne;</span><br><span class="line">        <span class="keyword">this</span>.zeroDotZeroFive = zeroDotZeroFive;</span><br><span class="line">        <span class="keyword">this</span>.zeroDotZeroTwo = zeroDotZeroTwo;</span><br><span class="line">        <span class="keyword">this</span>.zeroDotZeroOne = zeroDotZeroOne;</span><br><span class="line">        <span class="keyword">this</span>.zeroDotZeroZeroFive = zeroDotZeroZeroFive;</span><br><span class="line">        <span class="keyword">this</span>.zeroDotZeroZeroTwo = zeroDotZeroZeroTwo;</span><br><span class="line">        <span class="keyword">this</span>.zeroDotZeroZeroOne = zeroDotZeroZeroOne;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取p值对应的T值</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> rof 自由度</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TDistributionEnum <span class="title">getValue</span><span class="params">(<span class="keyword">int</span> rof)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (TDistributionEnum c : TDistributionEnum.values()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c.getRof() == rof) &#123;</span><br><span class="line">                <span class="keyword">return</span> c;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRof</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> rof;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getZeroDotFive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> zeroDotFive;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getZeroDotTwo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> zeroDotTwo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getZeroDotOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> zeroDotOne;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getZeroDotZeroFive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> zeroDotZeroFive;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getZeroDotZeroTwo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> zeroDotZeroTwo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getZeroDotZeroOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> zeroDotZeroOne;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getZeroDotZeroZeroFive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> zeroDotZeroZeroFive;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getZeroDotZeroZeroTwo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> zeroDotZeroZeroTwo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getZeroDotZeroZeroOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> zeroDotZeroZeroOne;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/统计学/" <i class="fa fa-tag"> 统计学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/10/统计学-相关系数/" rel="next" title="统计学-相关系数">
+                <i class="fa fa-chevron-left"></i> 统计学-相关系数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/16/负载均衡方案及其session共享方案/" rel="prev" title="负载均衡方案及其session共享方案">
+                负载均衡方案及其session共享方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/WechatIMG230.jpeg" alt="一只写Bug的猫">
+            
+              <p class="site-author-name" itemprop="name">一只写Bug的猫</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">569</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#统计学-T检验计算"><span class="nav-number">1.</span> <span class="nav-text">统计学-T检验计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#导入pom文件"><span class="nav-number">1.1.</span> <span class="nav-text">导入pom文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算类"><span class="nav-number">2.</span> <span class="nav-text">计算类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#枚举类-维护-T值临界表-双侧"><span class="nav-number">3.</span> <span class="nav-text">枚举类 维护 T值临界表 双侧</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一只写Bug的猫</span>
+
+  
+</div>
+
+<span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共543.8k字</span>
+</div>
+
+<div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</body>
+</html>

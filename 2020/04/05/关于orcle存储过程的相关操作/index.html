@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据库,orcle,存储过程,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于orcle存储过程的相关操作创建包12345create or replace package sp_test as  procedure sp_test1(v_str varchar2);  procedure sp_test2;  procedure sp_test3;end sp_test; 创建包体">
+<meta name="keywords" content="数据库,orcle,存储过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于orcle存储过程的相关操作">
+<meta property="og:url" content="http://www.linjingc.top/2020/04/05/关于orcle存储过程的相关操作/index.html">
+<meta property="og:site_name" content="emmm读书使我快乐">
+<meta property="og:description" content="关于orcle存储过程的相关操作创建包12345create or replace package sp_test as  procedure sp_test1(v_str varchar2);  procedure sp_test2;  procedure sp_test3;end sp_test; 创建包体">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-02T02:29:51.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于orcle存储过程的相关操作">
+<meta name="twitter:description" content="关于orcle存储过程的相关操作创建包12345create or replace package sp_test as  procedure sp_test1(v_str varchar2);  procedure sp_test2;  procedure sp_test3;end sp_test; 创建包体">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.linjingc.top/2020/04/05/关于orcle存储过程的相关操作/">
+
+
+
+
+
+  <title>关于orcle存储过程的相关操作 | emmm读书使我快乐</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsummerCat/AsummerCat.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">emmm读书使我快乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/04/05/关于orcle存储过程的相关操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于orcle存储过程的相关操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-05T19:55:25+08:00">
+                2020-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="关于orcle存储过程的相关操作"><a href="#关于orcle存储过程的相关操作" class="headerlink" title="关于orcle存储过程的相关操作"></a>关于orcle存储过程的相关操作</h1><h2 id="创建包"><a href="#创建包" class="headerlink" title="创建包"></a>创建包</h2><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace package sp_test <span class="keyword">as</span></span><br><span class="line">  <span class="function"><span class="keyword">procedure</span> <span class="title">sp_test1</span><span class="params">(v_str varchar2)</span>;</span></span><br><span class="line">  <span class="function"><span class="keyword">procedure</span> <span class="title">sp_test2</span>;</span></span><br><span class="line">  <span class="function"><span class="keyword">procedure</span> <span class="title">sp_test3</span>;</span></span><br><span class="line"><span class="keyword">end</span> sp_test;</span><br></pre></td></tr></table></figure>
+<h2 id="创建包体"><a href="#创建包体" class="headerlink" title="创建包体"></a>创建包体</h2><a id="more"></a>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace package body sp_test <span class="keyword">as</span></span><br><span class="line">  <span class="function"><span class="keyword">procedure</span> <span class="title">sp_test1</span><span class="params">(v_str varchar2)</span> <span class="title">is</span> </span></span><br><span class="line"><span class="function">  <span class="title">begin</span> </span></span><br><span class="line"><span class="function">  <span class="title">dbms_output</span>.<span class="title">put_lint</span><span class="params">(v_str)</span>;</span></span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">sp_test2</span><span class="params">()</span> <span class="title">is</span> </span></span><br><span class="line"><span class="function">  <span class="title">begin</span> </span></span><br><span class="line"><span class="function">  <span class="title">null</span>;</span></span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line">.....</span><br><span class="line"><span class="keyword">end</span> sp_test;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 抛出异常</span><br><span class="line">rasie ....</span><br></pre></td></tr></table></figure>
+<h2 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--这个是在头部定义的捕获参数</span></span><br><span class="line">e_pool_null     <span class="keyword">exception</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> paramList.count() = <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">      ls_msg := '医嘱申请记录为空';</span><br><span class="line">      <span class="comment">--抛出异常</span></span><br><span class="line">      <span class="keyword">raise</span> e_parm_notvalid;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">--捕获异常处理</span></span><br><span class="line"> <span class="keyword">exception</span></span><br><span class="line">    <span class="keyword">when</span> e_parm_notvalid <span class="keyword">then</span></span><br><span class="line">      dbms_output.put_line('异常抛出-<span class="number">1</span>');</span><br><span class="line">      <span class="keyword">return</span> - <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<p>系统自带异常</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">exception</span>  --异常捕捉，不要把有需要的代码放在异常捕捉后面，有异常才会执行异常代码下所有代码，没有异常不会执行  </span><br><span class="line">            when <span class="literal">error</span>Exception then  </span><br><span class="line">                 <span class="literal">error</span>Code := SQLCODE;  </span><br><span class="line">                 <span class="attribute">errorMsg</span> := SUBSTR(SQLERRM, <span class="number">1</span>, <span class="number">200</span>);   </span><br><span class="line">                 <span class="attribute">flag</span> := <span class="string">'false'</span>;  </span><br><span class="line">                 <span class="attribute">out_return</span> := <span class="string">'flag='</span> || flag || <span class="string">',errorCode='</span> || <span class="literal">error</span>Code || <span class="string">',errorMsg='</span> || <span class="literal">error</span>Msg;  </span><br><span class="line">            <span class="attribute">when</span> others then  </span><br><span class="line">                  <span class="literal">error</span>Code := SQLCODE;      </span><br><span class="line">                  <span class="attribute">errorMsg</span> := SUBSTR(SQLERRM, <span class="number">1</span>, <span class="number">200</span>);   </span><br><span class="line">                  <span class="attribute">flag</span> := <span class="string">'false'</span>;  </span><br><span class="line">                  <span class="attribute">out_return</span> := <span class="string">'flag='</span> || flag || <span class="string">',errorCode='</span> || <span class="literal">error</span>Code || <span class="string">',errorMsg='</span> || <span class="literal">error</span>Msg;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义对象类型"><a href="#自定义对象类型" class="headerlink" title="自定义对象类型"></a>自定义对象类型</h2><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> type_pres_apply_records is record(</span><br><span class="line">    data_rowid             rowid,</span><br><span class="line">    pres_apply_no          <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.<span class="type">PRES_APPLY_NO</span>%type,</span><br><span class="line">    pres_no                <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.pres_no%type,</span><br><span class="line">    pres_sub_no            <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.pres_sub_no%type,</span><br><span class="line">    exec_time              <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.exec_time%type,</span><br><span class="line">    freq_name              <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.freq_name%type,</span><br><span class="line">    untuck_freq_flag       <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.untuck_freq_flag%type,</span><br><span class="line">    times                  <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.times%type,</span><br><span class="line">    pres_apply_status      <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.pres_apply_status%type,</span><br><span class="line">    freq_sub_no            <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.freq_sub_no%type,</span><br><span class="line">    event_no               <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.event_no%type,</span><br><span class="line">    patient_id             <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.patient_id%type,</span><br><span class="line">    lay_drug_flag          <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.lay_drug_flag%type,</span><br><span class="line">    usage_drug_code        <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.usage_drug_code%type,</span><br><span class="line">    sub_no                 <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.sub_no%type,</span><br><span class="line">    actual_duty_group_code <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.actual_duty_group_code%type,</span><br><span class="line">    lay_apply_no           <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.lay_apply_no%type,</span><br><span class="line">    lay_sub_no             <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.lay_sub_no%type,</span><br><span class="line">    oneself_drug_flag      <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.oneself_drug_flag%type,</span><br><span class="line">    apply_operator_code    <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.apply_operator_code%type,</span><br><span class="line">    apply_time             <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.apply_time%type,</span><br><span class="line">    created_time           <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.created_time%type,</span><br><span class="line">    memo                   <span class="type">ZOEPRES</span>.<span class="type">PRES_APPLY_RECORDS</span>.memo%type);</span><br></pre></td></tr></table></figure>
+<h2 id="自定义数组"><a href="#自定义数组" class="headerlink" title="自定义数组"></a>自定义数组</h2><h3 id="基础类型数组"><a href="#基础类型数组" class="headerlink" title="基础类型数组"></a>基础类型数组</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">定长数组</span><br><span class="line">type String_list IS VARRAY (99) of varchar2(50);</span><br><span class="line"> <span class="built_in"> type </span>int_list IS VARRAY (99) OF NUMBER; </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">可变数组</span><br><span class="line">type arr is table of NUMBER index by binary_integer; --可变数组</span><br></pre></td></tr></table></figure>
+<h3 id="自定义数组-1"><a href="#自定义数组-1" class="headerlink" title="自定义数组"></a>自定义数组</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--标记自定义可变集合</span><br><span class="line"> <span class="built_in"> type </span>pres_apply_records_pipeline is table of type_pres_apply_records index by binary_integer;</span><br></pre></td></tr></table></figure>
+<h2 id="存储过程和函数的差别"><a href="#存储过程和函数的差别" class="headerlink" title="存储过程和函数的差别"></a>存储过程和函数的差别</h2><p>存储过程有out 没有返回值<br>函数有out,也有return;</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--存储过程</span><br><span class="line"> <span class="function"><span class="keyword">procedure</span> <span class="title">execApplys</span><span class="params">(paramList <span class="keyword">in</span> pres_apply_records_pipeline,</span></span></span><br><span class="line"><span class="function"><span class="params">                      rs_msg    <span class="keyword">out</span> varchar2,</span></span></span><br><span class="line"><span class="function"><span class="params">                      rs_code   <span class="keyword">out</span> varchar2)</span>;</span></span><br><span class="line"></span><br><span class="line"> --函数</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(paramList <span class="keyword">in</span> pres_apply_records_pipeline,</span></span></span><br><span class="line"><span class="function"><span class="params">               rs_msg    <span class="keyword">out</span> varchar2)</span> <span class="title">return</span> <span class="title">integer</span>;</span></span><br></pre></td></tr></table></figure>
+<h2 id="打印输出"><a href="#打印输出" class="headerlink" title="打印输出"></a>打印输出</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">dbms_output</span><span class="selector-class">.put_line</span>(<span class="string">'sp_test2'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="if判断"><a href="#if判断" class="headerlink" title="if判断"></a>if判断</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">一、单个<span class="keyword">IF</span></span><br><span class="line">1、</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="attribute">a</span>=...  then</span><br><span class="line"><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span>.</span><br><span class="line">end <span class="keyword">if</span>;</span><br><span class="line"></span><br><span class="line">2、</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="attribute">a</span>=... then</span><br><span class="line"><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="built_in">..</span><span class="built_in">..</span></span><br><span class="line">end <span class="keyword">if</span>;</span><br><span class="line"></span><br><span class="line">二、多个<span class="keyword">IF</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="attribute">a</span>=..  then</span><br><span class="line"><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span></span><br><span class="line">elsif <span class="attribute">a</span>=..  then</span><br><span class="line"><span class="built_in">..</span><span class="built_in">..</span></span><br><span class="line">end <span class="keyword">if</span>;     </span><br><span class="line">这里中间是“ELSIF”，而不是<span class="keyword">ELSE</span> <span class="keyword">IF</span> 。这里需要特别注意</span><br></pre></td></tr></table></figure>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">for</span></span> i in <span class="number">1</span> .. paramList.count <span class="keyword">loop</span></span><br><span class="line">    </span><br><span class="line">      dbms_output.put_line(paramList(i).pres_apply_no);</span><br><span class="line">    </span><br><span class="line">    end <span class="keyword">loop</span>;</span><br></pre></td></tr></table></figure>
+<p>还有一种游标的方式</p>
+<h2 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h2><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--创建游标 并且输入语句</span></span><br><span class="line"><span class="comment">--数据类型 可以是数组</span></span><br><span class="line">now_pool_info type_pres_apply_records;</span><br><span class="line">     <span class="keyword">type</span> c_type <span class="keyword">is</span> ref cursor;</span><br><span class="line">     c1 c_type;</span><br><span class="line"><span class="keyword">open</span> c1 <span class="keyword">for</span> V_SQL;</span><br><span class="line"> <span class="keyword">loop</span>   </span><br><span class="line">   <span class="comment">--将结果赋值给now_pool_info对象</span></span><br><span class="line">    fetch c1 into now_pool_info;</span><br><span class="line">    <span class="keyword">EXIT</span> <span class="keyword">WHEN</span> c1%NOTFOUND <span class="keyword">OR</span> c1%NOTFOUND <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br><span class="line">    dbms_output.put_line(now_pool_info.pres_apply_no);</span><br><span class="line"> <span class="keyword">end</span> <span class="keyword">loop</span>;</span><br><span class="line"> close c1;</span><br></pre></td></tr></table></figure>
+<h2 id="执行动态sql语句"><a href="#执行动态sql语句" class="headerlink" title="执行动态sql语句"></a>执行动态sql语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*** DDL ***/</span>  </span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> <span class="keyword">replace</span> <span class="keyword">procedure</span> CREATE_TABLE(CREATE_SQL <span class="built_in">VARCHAR2</span>) <span class="keyword">is</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">EXECUTE</span> <span class="keyword">IMMEDIATE</span> CREATE_SQL; <span class="comment">-- 'create table temp_table(table_name varchar2(50))'</span></span><br><span class="line"><span class="keyword">end</span> CREATE_TABLE;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*** DML ***/</span>  </span><br><span class="line"><span class="keyword">declare</span>   </span><br><span class="line">   v_1 <span class="built_in">varchar2</span>(<span class="number">8</span>);   </span><br><span class="line">   v_2 varchar2(10);   </span><br><span class="line">   str varchar2(50);   </span><br><span class="line"><span class="keyword">begin</span>   </span><br><span class="line">   v_1:=<span class="string">'测试'</span>;   <span class="comment">--这里的v_1,v_2可以是直接存储过程中传过来的参数</span></span><br><span class="line">   v_2:='北京';   </span><br><span class="line">   str := '<span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">test</span> (<span class="keyword">name</span> ,address) <span class="keyword">VALUES</span> (:<span class="number">1</span>, :<span class="number">2</span>)<span class="string">';   </span></span><br><span class="line"><span class="string">   EXECUTE IMMEDIATE str USING v_1, v_2;   </span></span><br><span class="line"><span class="string">   commit;   </span></span><br><span class="line"><span class="string">end;</span></span><br></pre></td></tr></table></figure>
+<h2 id="执行动态sql-推荐"><a href="#执行动态sql-推荐" class="headerlink" title="执行动态sql (推荐)"></a>执行动态sql (推荐)</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> xxxx <span class="keyword">into</span> 映射你要的数据结构 <span class="keyword">from</span> 表</span><br></pre></td></tr></table></figure>
+<h2 id="开启独立事务"><a href="#开启独立事务" class="headerlink" title="开启独立事务"></a>开启独立事务</h2><p>比如嵌套事务</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title">test3</span>(operator in varchar2) <span class="keyword">return</span> <span class="type">number</span></span><br><span class="line">   <span class="keyword">is</span></span><br><span class="line">   <span class="comment">--开启独立事务</span></span><br><span class="line">   <span class="keyword">PRAGMA</span> AUTONOMOUS_TRANSACTION;</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">     INSERT INTO zoecomm.COM_I18N_DICT_INFO (I18N_ITEM_CODE) VALUES (<span class="string">'B'</span>);</span><br><span class="line">        </span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="在存储过程传入String-切割成数组"><a href="#在存储过程传入String-切割成数组" class="headerlink" title="在存储过程传入String 切割成数组"></a>在存储过程传入String 切割成数组</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> mytype is <span class="built_in">table</span> of VARCHAR2(<span class="number">4000</span>) index by binary_integer;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">my_split</span><span class="params">(piv_str in varchar2, piv_delimiter in varchar2)</span></span></span><br><span class="line">  --piv_str 为字符串，piv_delimiter 为分隔符</span><br><span class="line">  <span class="keyword">return</span> mytype is</span><br><span class="line">  <span class="built_in">j</span>        int := <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">i</span>        int := <span class="number">1</span>;</span><br><span class="line">  len      int := <span class="number">0</span>;</span><br><span class="line">  len1     int := <span class="number">0</span>;</span><br><span class="line">  str      varchar2(<span class="number">4000</span>);</span><br><span class="line">  tt mytype;</span><br><span class="line">begin</span><br><span class="line">  len  := <span class="built_in">length</span>(piv_str);</span><br><span class="line">  len1 := <span class="built_in">length</span>(piv_delimiter);</span><br><span class="line">  <span class="keyword">while</span> <span class="built_in">j</span> &lt; len loop</span><br><span class="line">    <span class="built_in">j</span> := instr(piv_str, piv_delimiter, <span class="built_in">i</span>);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">j</span> = <span class="number">0</span> then</span><br><span class="line">      <span class="built_in">j</span>   := len;</span><br><span class="line">      str := substr(piv_str, <span class="built_in">i</span>);</span><br><span class="line">      </span><br><span class="line">      tt(tt.count+<span class="number">1</span>) := str;</span><br><span class="line">      <span class="keyword">if</span> <span class="built_in">i</span> &gt;= len then</span><br><span class="line">        exit;</span><br><span class="line">      <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      str := substr(piv_str, <span class="built_in">i</span>, <span class="built_in">j</span> - <span class="built_in">i</span>);</span><br><span class="line">      <span class="built_in">i</span>   := <span class="built_in">j</span> + len1;</span><br><span class="line">      tt(tt.count+<span class="number">1</span>) := str;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">  <span class="keyword">end</span> loop;</span><br><span class="line">  <span class="keyword">return</span> tt;</span><br><span class="line"><span class="keyword">end</span> my_split;</span><br></pre></td></tr></table></figure>
+<h2 id="查询并且判空"><a href="#查询并且判空" class="headerlink" title="查询并且判空"></a>查询并且判空</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">trim</span>(param_value)</span><br><span class="line">      <span class="keyword">into</span> rs_parm_value</span><br><span class="line">      <span class="keyword">from</span> zoedict.dic_sys_param</span><br><span class="line">     <span class="keyword">where</span> param_english_name = as_parm_name;</span><br><span class="line">exception</span><br><span class="line">    when NO_DATA_FOUND then</span><br><span class="line">      raise e_sys_parm_notfound;</span><br><span class="line">  <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="游标查询防止空游标运行下一步流程"><a href="#游标查询防止空游标运行下一步流程" class="headerlink" title="游标查询防止空游标运行下一步流程"></a>游标查询防止空游标运行下一步流程</h2><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXIT WHEN <span class="keyword">c</span><span class="number">1</span><span class="symbol">%NOTFOUND</span> OR <span class="keyword">c</span><span class="number">1</span><span class="symbol">%NOTFOUND</span> IS NULL<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h2 id="判断字符串出现次数-gt-以目标字符开头"><a href="#判断字符串出现次数-gt-以目标字符开头" class="headerlink" title="判断字符串出现次数-&gt;以目标字符开头"></a>判断字符串出现次数-&gt;以目标字符开头</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">instr</span><span class="params">(<span class="string">'源字符串'</span> , <span class="string">'目标字符串'</span> ,<span class="string">'开始位置'</span>,<span class="string">'第几次出现'</span>)</span></span></span><br><span class="line"></span><br><span class="line">返回的是 目标字符的下标</span><br></pre></td></tr></table></figure>
+<h2 id="查询语句直接赋值到数组"><a href="#查询语句直接赋值到数组" class="headerlink" title="查询语句直接赋值到数组"></a>查询语句直接赋值到数组</h2><p>bulk collect into 数组</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">       <span class="keyword">select</span> *</span><br><span class="line">         <span class="keyword">bulk</span> <span class="keyword">collect</span> <span class="keyword">into</span> SHARE_RECORD_INFO</span><br><span class="line">         <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+<h2 id="手动抛出异常-外层捕获"><a href="#手动抛出异常-外层捕获" class="headerlink" title="手动抛出异常 外层捕获"></a>手动抛出异常 外层捕获</h2><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">code取值访问 错误号的范围是<span class="string">-20</span>,000到<span class="string">-20</span>,999</span><br><span class="line">raise_application_error(<span class="string">-20001</span>,error_msg);</span><br><span class="line"></span><br><span class="line">接收异常</span><br><span class="line">rs_msg  := SUBSTR(SQLERRM, 1, 512);</span><br></pre></td></tr></table></figure>
+<h2 id="orcle的包中常量定义"><a href="#orcle的包中常量定义" class="headerlink" title="orcle的包中常量定义"></a>orcle的包中常量定义</h2><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls_brbs CONSTANT varchar2(<span class="number">6</span>):='<span class="number">3094</span>9';</span><br></pre></td></tr></table></figure>
+<h2 id="orcle使用表结构的定义当做对象"><a href="#orcle使用表结构的定义当做对象" class="headerlink" title="orcle使用表结构的定义当做对象"></a>orcle使用表结构的定义当做对象</h2><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">inpLayDrugPool</span> <span class="type">ZOEAPPLY</span>.<span class="type">APP_INP_LAY_DRUG_POOL</span>%row<span class="keyword">type</span>;</span><br><span class="line"></span><br><span class="line">参数名 表名%row<span class="keyword">type</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="orcle使用表结构定义的对象插入数据"><a href="#orcle使用表结构定义的对象插入数据" class="headerlink" title="orcle使用表结构定义的对象插入数据"></a>orcle使用表结构定义的对象插入数据</h2><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> ZOEAPPLY.APP_INP_LAY_DRUG_POOL <span class="keyword">values</span> 定义的对象;</span><br></pre></td></tr></table></figure>
+<h2 id="计算数值-取整这类操作"><a href="#计算数值-取整这类操作" class="headerlink" title="计算数值 取整这类操作"></a>计算数值 取整这类操作</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select trunc(<span class="number">4.136</span>,<span class="number">2</span>) as 直接丢弃尾巴,</span><br><span class="line"><span class="function"><span class="title">round</span><span class="params">(<span class="number">4.136</span>,<span class="number">2</span>)</span></span> as 四舍五入,</span><br><span class="line"><span class="function"><span class="title">ceil</span><span class="params">(<span class="number">4.136</span>)</span></span> as 向上取整,</span><br><span class="line"><span class="function"><span class="title">floor</span><span class="params">(<span class="number">4.136</span>)</span></span> as   向下整位,</span><br><span class="line"><span class="function"><span class="title">to_char</span><span class="params">(<span class="number">11.0010</span>,<span class="string">'fm9999990.09999'</span>)</span></span> as test</span><br><span class="line">from dual</span><br></pre></td></tr></table></figure>
+<h2 id="sql执行获取被修改数量"><a href="#sql执行获取被修改数量" class="headerlink" title="sql执行获取被修改数量"></a>sql执行获取被修改数量</h2><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line">        <span class="keyword">into</span> ide_data</span><br><span class="line">        <span class="keyword">from</span> ZOEPRES.PRES_APPLY_RECORDS_POOL a</span><br><span class="line">       <span class="keyword">where</span> a.PRES_APPLY_NO = nowPools(i).pres_apply_no</span><br><span class="line">         <span class="keyword">and</span> a.PRES_APPLY_STATUS = <span class="number">0</span></span><br><span class="line">         <span class="keyword">for</span> <span class="keyword">update</span>;</span><br><span class="line">      P_ROWS := SQL%ROWCOUNT;</span><br></pre></td></tr></table></figure>
+<h2 id="orcle将数组存入到游标中"><a href="#orcle将数组存入到游标中" class="headerlink" title="orcle将数组存入到游标中"></a>orcle将数组存入到游标中</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">定义游标</span><br><span class="line"><span class="built_in"> type </span>type_cursor_records is ref cursor;</span><br><span class="line"> </span><br><span class="line"> 存入数组:</span><br><span class="line"> open paramLis <span class="keyword">for</span> select * <span class="keyword">from</span> table (paramList1);</span><br></pre></td></tr></table></figure>
+<h2 id="发送http请求"><a href="#发送http请求" class="headerlink" title="发送http请求"></a>发送http请求</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> url := <span class="symbol">'http</span>://localhost/test.jsp';  </span><br><span class="line"> req := utl_http.begin_request(url);</span><br><span class="line">resp := utl_http.get_response(req);</span><br><span class="line"><span class="keyword">LOOP</span></span><br><span class="line">utl_http.read_line(resp, value, <span class="literal">TRUE</span>);</span><br><span class="line">dbms_output.put_line('网站回复' || value);</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">LOOP</span>;</span><br><span class="line">utl_http.end_response(resp);</span><br><span class="line"><span class="keyword">EXCEPTION</span></span><br><span class="line"><span class="keyword">WHEN</span> utl_http.end_of_body <span class="keyword">THEN</span></span><br><span class="line">utl_http.end_response(resp);</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" <i class="fa fa-tag"> 数据库</a>
+          
+            <a href="/tags/orcle/" <i class="fa fa-tag"> orcle</a>
+          
+            <a href="/tags/存储过程/" <i class="fa fa-tag"> 存储过程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/21/SpringBoot添加自定义配置的属性-value/" rel="next" title="SpringBoot添加自定义配置的属性@value">
+                <i class="fa fa-chevron-left"></i> SpringBoot添加自定义配置的属性@value
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/08/docker部署/" rel="prev" title="docker部署">
+                docker部署 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/WechatIMG230.jpeg" alt="一只写Bug的猫">
+            
+              <p class="site-author-name" itemprop="name">一只写Bug的猫</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">569</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于orcle存储过程的相关操作"><span class="nav-number">1.</span> <span class="nav-text">关于orcle存储过程的相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建包"><span class="nav-number">1.1.</span> <span class="nav-text">创建包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建包体"><span class="nav-number">1.2.</span> <span class="nav-text">创建包体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常捕获"><span class="nav-number">1.3.</span> <span class="nav-text">异常捕获</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义对象类型"><span class="nav-number">1.4.</span> <span class="nav-text">自定义对象类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义数组"><span class="nav-number">1.5.</span> <span class="nav-text">自定义数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础类型数组"><span class="nav-number">1.5.1.</span> <span class="nav-text">基础类型数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义数组-1"><span class="nav-number">1.5.2.</span> <span class="nav-text">自定义数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储过程和函数的差别"><span class="nav-number">1.6.</span> <span class="nav-text">存储过程和函数的差别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打印输出"><span class="nav-number">1.7.</span> <span class="nav-text">打印输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if判断"><span class="nav-number">1.8.</span> <span class="nav-text">if判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for循环"><span class="nav-number">1.9.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#游标"><span class="nav-number">1.10.</span> <span class="nav-text">游标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行动态sql语句"><span class="nav-number">1.11.</span> <span class="nav-text">执行动态sql语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行动态sql-推荐"><span class="nav-number">1.12.</span> <span class="nav-text">执行动态sql (推荐)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启独立事务"><span class="nav-number">1.13.</span> <span class="nav-text">开启独立事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在存储过程传入String-切割成数组"><span class="nav-number">1.14.</span> <span class="nav-text">在存储过程传入String 切割成数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询并且判空"><span class="nav-number">1.15.</span> <span class="nav-text">查询并且判空</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#游标查询防止空游标运行下一步流程"><span class="nav-number">1.16.</span> <span class="nav-text">游标查询防止空游标运行下一步流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断字符串出现次数-gt-以目标字符开头"><span class="nav-number">1.17.</span> <span class="nav-text">判断字符串出现次数-&gt;以目标字符开头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询语句直接赋值到数组"><span class="nav-number">1.18.</span> <span class="nav-text">查询语句直接赋值到数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手动抛出异常-外层捕获"><span class="nav-number">1.19.</span> <span class="nav-text">手动抛出异常 外层捕获</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orcle的包中常量定义"><span class="nav-number">1.20.</span> <span class="nav-text">orcle的包中常量定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orcle使用表结构的定义当做对象"><span class="nav-number">1.21.</span> <span class="nav-text">orcle使用表结构的定义当做对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orcle使用表结构定义的对象插入数据"><span class="nav-number">1.22.</span> <span class="nav-text">orcle使用表结构定义的对象插入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算数值-取整这类操作"><span class="nav-number">1.23.</span> <span class="nav-text">计算数值 取整这类操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql执行获取被修改数量"><span class="nav-number">1.24.</span> <span class="nav-text">sql执行获取被修改数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orcle将数组存入到游标中"><span class="nav-number">1.25.</span> <span class="nav-text">orcle将数组存入到游标中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送http请求"><span class="nav-number">1.26.</span> <span class="nav-text">发送http请求</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一只写Bug的猫</span>
+
+  
+</div>
+
+<span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共543.8k字</span>
+</div>
+
+<div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</body>
+</html>

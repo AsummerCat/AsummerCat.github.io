@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="对称性加解密and非对称性加解密例子Main.java">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="非对称性加解密">
+<meta property="og:url" content="http://www.linjingc.top/2018/09/17/非对称性加解密/index.html">
+<meta property="og:site_name" content="emmm读书使我快乐">
+<meta property="og:description" content="对称性加解密and非对称性加解密例子Main.java">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-02T02:29:51.472Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="非对称性加解密">
+<meta name="twitter:description" content="对称性加解密and非对称性加解密例子Main.java">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.linjingc.top/2018/09/17/非对称性加解密/">
+
+
+
+
+
+  <title>非对称性加解密 | emmm读书使我快乐</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsummerCat/AsummerCat.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">emmm读书使我快乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2018/09/17/非对称性加解密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">非对称性加解密</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-17T20:16:08+08:00">
+                2018-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="对称性加解密and非对称性加解密"><a href="#对称性加解密and非对称性加解密" class="headerlink" title="对称性加解密and非对称性加解密"></a>对称性加解密and非对称性加解密</h1><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="Main-java"><a href="#Main-java" class="headerlink" title="Main.java"></a>Main.java</h3><a id="more"></a>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.security.*;</span><br><span class="line"><span class="keyword">import</span> java.security.interfaces.RSAPrivateKey;</span><br><span class="line"><span class="keyword">import</span> java.security.interfaces.RSAPublicKey;</span><br><span class="line"><span class="keyword">import</span> java.security.spec.InvalidKeySpecException;</span><br><span class="line"><span class="keyword">import</span> java.security.spec.PKCS8EncodedKeySpec;</span><br><span class="line"><span class="keyword">import</span> java.security.spec.X509EncodedKeySpec;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> throws Exception</span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"Hello World!"</span>);</span><br><span class="line">        asymment();<span class="comment">//非对称</span></span><br><span class="line">        symmetry();<span class="comment">//对称</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字符串生成公钥</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RSAPublicKey <span class="title">loadPublicKeyByStr</span><span class="params">(<span class="keyword">String</span> publicKeyStr)</span></span></span><br><span class="line"><span class="function">            throws Exception </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">byte</span>[] <span class="built_in">buffer</span> = Base64.decode(publicKeyStr);</span><br><span class="line">            KeyFactory keyFactory = KeyFactory.getInstance(<span class="string">"RSA"</span>);</span><br><span class="line">            X509EncodedKeySpec keySpec = <span class="keyword">new</span> X509EncodedKeySpec(<span class="built_in">buffer</span>);</span><br><span class="line">            <span class="keyword">return</span> (RSAPublicKey) keyFactory.generatePublic(keySpec);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"无此算法"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvalidKeySpecException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"公钥非法"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NullPointerException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"公钥数据为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字符串生成私钥</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RSAPrivateKey <span class="title">loadPrivateKeyByStr</span><span class="params">(<span class="keyword">String</span> privateKeyStr)</span></span></span><br><span class="line"><span class="function">            throws Exception </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">byte</span>[] <span class="built_in">buffer</span> = Base64.decode(privateKeyStr);</span><br><span class="line">            PKCS8EncodedKeySpec keySpec = <span class="keyword">new</span> PKCS8EncodedKeySpec(<span class="built_in">buffer</span>);</span><br><span class="line">            KeyFactory keyFactory = KeyFactory.getInstance(<span class="string">"RSA"</span>);</span><br><span class="line">            <span class="keyword">return</span> (RSAPrivateKey) keyFactory.generatePrivate(keySpec);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"无此算法"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvalidKeySpecException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"私钥非法"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NullPointerException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"私钥数据为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 非对称加解密</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">asymment</span><span class="params">()</span>throws Exception</span>&#123;</span><br><span class="line">        <span class="keyword">String</span> pwd = <span class="string">"非对称公钥加密的字段"</span>;</span><br><span class="line">        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(<span class="string">"RSA"</span>);</span><br><span class="line">        <span class="comment">// 密钥位数</span></span><br><span class="line">        keyPairGen.initialize(<span class="number">512</span>);</span><br><span class="line">        <span class="comment">//密钥对</span></span><br><span class="line">        KeyPair keyPair = keyPairGen.generateKeyPair();  <span class="comment">//随机生成公钥私钥</span></span><br><span class="line">        <span class="comment">// 随机公钥</span></span><br><span class="line">        PublicKey publicKey = (RSAPublicKey) keyPair.getPublic();</span><br><span class="line">        <span class="comment">// 随机私钥</span></span><br><span class="line">        PrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();</span><br><span class="line"></span><br><span class="line">        <span class="comment">////// 自定义非对称公钥</span></span><br><span class="line">        <span class="comment">//PublicKey publicKey = loadPublicKeyByStr("MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAppqfv16PMKDrbrPUd2/WDcB27fgMfriFKKJ81O8kVZwmss0ZH/vYNRI9fbc+MehU4rQkrpehrMBNhpcLphMld3BqYQXOcOmi7vlJOgUPaSXvmwCodBRrFErvtEbFP/R11+cffJwpbOwyDJ+QowO58DfkcvsdOpP+oXLmTkT+i803sX5cU62eQ8KgED55MvQr37qNQiA5i9NLKN9aZoSHJgJn0KW0zH3iFgdUB3cmpCGfEdTRffO86NvDhsqfBjw+zJ5JG4O7lq0CKZczpvhSxsE4BMBEKdrAC62CZa1uw/dPet3nwIR+O4e1qH9EauqdrkVQ5KHWVi8Mx7FTgsAH XLxyDGVbErBHzdrjJwRMXaQHuhzxmLFDIVKB/DerYPLjPJdJbup9PmhmFBjApYuR BEMDaeiIKe+/P0SbAm389hgc8MAAccP/qDj4OmLp/tB7C/N4PwL8EGlIZ02khjXRuMzjOuFNTVRmpLHLezFy42nR3WoGWJrjZfA6X1e9T00R21c5nfULqxrgBPaD7amGF7pnJiINF+ZCdHac63AaOmlzImv3NNqrxaONFCWvrtOo46qP7p9fk0ypAwjr9F3d 55ha5SK89uenUzrd5qzlOh9iGo+vgixGCgcVLE9dXcNPldOVMZp5757w+/B1Q2d4hvoEgw1uaLxYtny5ZG5X468CAwEAAQ==");</span></span><br><span class="line">        <span class="comment">////// 自定义非对称私钥</span></span><br><span class="line">        <span class="comment">//PrivateKey privateKey = loadPrivateKeyByStr("MIIJQgIBADANBgkqhkiG9w0BAQEFAASCCSwwggkoAgEAAoICAQCmmp+/Xo8woOtus9R3b9YNwHbt+Ax+uIUoonzU7yRVnCayzRkf+9g1Ej19tz4x6FTitCSul6GswE2GlwumEyV3cGphBc5w6aLu+Uk6BQ9pJe+bAKh0FGsUSu+0RsU/9HXX5x98nCls7DIMn5CjA7nwN+Ry+x06k/6hcuZORP6LzTexflxTrZ5DwqAQPnky9Cvfuo1CIDmL00so31pmhIcmAmfQpbTMfeIWB1QHdyakIZ8R1NF987zo28OGyp8GPD7Mnkkbg7uWrQIplzOm+FLGwTgEwEQp2sALrYJlrW7D90963efAhH47h7Wof0Rq6p2uRVDkodZWLwzHsVOCwAdcvHIMZVsSsEfN2uMnBExdpAe6HPGYsUMhUoH8N6tg8uM8l0lu6n0+aGYUGMCli5EEQwNp6Igp778/RJsCbfz2GBzwwABxw/+oOPg6Yun+0HsL83g/AvwQaUhnTaSGNdG4zOM64U1NVGaksct7MXLjadHdagZYmuNl8DpfV71PTRHbVzmd9QurGuAE9oPtqYYXumcmIg0X5kJ0dpzrcBo6aXMia/c02qvFo40UJa+u06jjqo/un1+TTKkDCOv0Xd3nmFrlIrz256dTOt3mrOU6H2Iaj6+CLEYKBxUsT11dw0+V05UxmnnvnvD78HVDZ3iG+gSDDW5ovFi2fLlkblfjrwIDAQABAoICAARtq71ceBXk0R06LnWWRWxMJ10f8MUVhoST/Rlz2dVktyqdhQNyoEaY24WR71dIQ6la/HaflS6QVf8z2J1reN154Xn+u4QI0cnkWmvuYoB6/6lxFQkw2b/KViDGmMugZdl9TTr0s60vgg0P2LpciP63nZzoy9gYwvXrpe+CqflxVP+kyjN3M/O9IqAL6RDPqLLjtImDbcQns6G8fhynfSgnfDbxkKK23eGUBEnGgwJt2lqQ+5iLeAQAg2v7yspRo6Gwu2S91ailpJ8SY88WXqzlyeVmbull5SDqVcL6Hy2aT0SGzXgyjWBrtQprh5gH8HUHZqUNIDNeQMq2DfA1xnxHkzhTvFyFu9gNC8oKgPlE1zjTONadDu71GYJj9JFNnusJsb+uNekqH+JfJnNWUJxDkCdKB76rDRQ9y/IcCW4QX48b9lt95spoxdbypS90Hi8469oQjgRzuNbco2pS3OquACj7vUH9Bg5BOM+N4uYJf3khBFuoKohXUbFDKcJr48a5yiucBu6BYe1KPA+zlkrLKX+Xs2ejjhGYJliQyUX6sIeg55POKAMrqFTNQeDk1iMpH4IREtbjstOg+TPS+UONjJvzjBcJeEJ+Q/7pY8Wu8J4krqCog2myP1FulXetfAZWAIj4Ovd8M73MCNPh+b3h2kbtvsboEtuTPHlt4XwRAoIBAQDRAbCXccMTPJyWHVhFgLb9lxlHvdS9pDUuZn2twRDsHJicsB418MK+BsGpgmSp4Xu9lNvmAiYQAk/d0d6qWjEewh3nmOq/T3mPVisUtuYsDfjWcK73bjjZGePGTiNHhhncX0MCiJ7hE1rjmxPZ2gbCIFGXv/nrCUyOTzxVy/T9g0WDwnn1QS2Qrg7jdo7imC+uvQcn0Pv3z62Anxi7QJMoxWpwxD2bBZQr9XxAIf2xopYmLXK2kpvlLmqxozrGTfV9yfmbz88OL1X2CD0qB8vyeCkrQXHMdjl83HDdOfnSIpnZUptJQnGZKFT/o44boLvjQcydPH7IAhqp1RA6OIstAoIBAQDMEENE2IUXjW2vMYPA/2nWRqXDneSXZeaNQqjw8EzEBlLEsmPQ0x1QR7xixyVvXEUwbdd2LI/0WWblb4JoS8F52d73WAe3DZoBeiDefgeyllHZRW8RIFuRwWKv22N6T4JLgXjp5tDMFMpaOt7c987IY9xINc/EZe2cZxVcnMQr9tWrXHuOjd2al0NZr+ok+6ocFLOFsqdmaJ18nQUX7Fn1XI0nG++lXt7s7/6Ik4xJ2HPVs24CiDIbsMY4mEI8lSinCJ3pFoMHIP70hiHQEGn0u1hdjn3WP8PzlonJ4vwM2PNzOaB95rUbWm8hOS2u8o972A26TgiwxcKbVa6tYAPLAoIBACqmy6C8KHD+h33i0yar06wAb7pCNO3WWrvzUmZo5ckpNMOU9TVQwo0A1/h9kYlRaG0RuaZAff/6WM4NjAD7ktaSCoQ+onkUANyNWxFJGcOXvlYUfMAlkBhNvjuzqmNoLFLaZdRYiQOpbXzRIsXsRkDLU5tCJAAgz6yi4s8nZgFuDnuK7lRsTp4dxxAIG7SGFgT0skcf0KuLh/6dePCNhvpk/wmwIlpGUyx9VjPIO/tKEJYN5ED5vjKQvFkv1EivlA9tbjCrwbdFVad1mvW+zZHXj58yJcTxw12FpsqekCqfwQGmZ+YVVxVIM8BPYiqlLHJ99QGJXN33//T0c/FNpKkCggEBAMjUEIAG3yUIyTOr9VDRjWWWbbkRAVGGtdm8CuvkcohQ+NAgCGASBT1m/B3yhAMOugEpeO0SejIucjfHAH6IX8b+BpNCjYU326MsgIC3Y/f8PF0qGl6ui6/stKUBsutCqKaKq2b3A/J1W5hla8PoFhfdP4PJgcp1zd0pDjrxBZeG+04EXI01TSzBRUVU/YicLRQpw2wHIPyGZMeo+MRMlVQGW9xrf/QuZBKnNsdO/rgGUCm2xsOzKi1aUhqMrlNVMIcC0fX9c8JmVMRt5YURQlXasuKQQ4PBiaWHN9/6hbhXI3D4+9wsW3yqCciWr0EH8vIc9ZWvCpp+ZkHdl2WFovUCggEAYC7bgkjSMRgir5cv+iKvGE1Mte+Js02x4JD19tXf8AR250RH8Tj+fIiCB0C2vKNHBsy9vkOv+P6P4TAm9JDX7AFk3RiBf9f80/z4dBaOmnJs+TJm/9whtZKmola4m8EKQ97lFfVAIsobK4AMFPiFm0jSG7XNmJgMURNoMVXl5qHpf0niwX9FoVdQBjK6WZD/rlb46QRSa/yMxgB2OU1XED1b7QAIlHpilu48To7QW1G/Aux/7FJVg3OMjPhkvRZ1eI4KEpUa7VO62tfqpdfm/ulNxPDOo414PUCmgmo4mnLUGzOhgUJ9tYmPYzmzOT4WU6nSnWs11fagSZ7BWqDCBg==");</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        RSAEncrypt rsaEncrypt = <span class="keyword">new</span> RSAEncrypt(publicKey, privateKey);</span><br><span class="line">        <span class="keyword">String</span> afterRSAEncrypt = rsaEncrypt.encrypt(pwd);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"rsa加密后\t"</span> + afterRSAEncrypt);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"rsa解密后:\t"</span> + rsaEncrypt.decrypt(afterRSAEncrypt));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 对称加解密</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">symmetry</span><span class="params">()</span>throws Exception</span>&#123;</span><br><span class="line">    <span class="keyword">String</span> pwd = <span class="string">"对称加密的字段"</span>;     <span class="comment">//加密字段</span></span><br><span class="line">    <span class="keyword">String</span> ascKey = <span class="string">"lianghuilonglong"</span>;   <span class="comment">//加密key</span></span><br><span class="line">    <span class="keyword">String</span> iv=<span class="string">"aabbccddeeffgghh"</span>;  <span class="comment">//初始化向量参数，AES 为16bytes. DES 为8bytes</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">String</span> afterASCEncrypt=AES.encrypt(pwd,ascKey,iv);</span><br><span class="line"></span><br><span class="line">    System.out.<span class="built_in">println</span>(<span class="string">"asc加密后:\t"</span> + afterASCEncrypt);</span><br><span class="line"></span><br><span class="line">    System.out.<span class="built_in">println</span>(<span class="string">"asc解密后:\t"</span> + AES.deCiphering(afterASCEncrypt,ascKey,iv));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="AES-java"><a href="#AES-java" class="headerlink" title="AES.java"></a>AES.java</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.crypto.Cipher;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.IvParameterSpec;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.SecretKeySpec;</span><br><span class="line"><span class="keyword">import</span> java.security.Key;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class AES &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> encrypt(<span class="keyword">String</span> <span class="built_in">text</span>,<span class="keyword">String</span> <span class="built_in">key</span>,<span class="keyword">String</span> iv) <span class="keyword">throws</span> Exception&#123;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//String text = "abcdefg";   //要加密的字符串</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//String key = "lianghuilonglong";//私钥： AES固定格式为128/192/256 bits.即：16/24/32bytes。DES固定格式为128bits，即8bytes。</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//String iv   = "aabbccddeeffgghh";//初始化向量参数，AES 为16bytes. DES 为8bytes.</span></span><br><span class="line"></span><br><span class="line">  Key keySpec = <span class="keyword">new</span> SecretKeySpec(<span class="built_in">key</span>.getBytes(), <span class="string">"AES"</span>);    <span class="comment">//两个参数，第一个为私钥字节数组， 第二个为加密方式 AES或者DES</span></span><br><span class="line"></span><br><span class="line">  IvParameterSpec ivSpec = <span class="keyword">new</span> IvParameterSpec(iv.getBytes());  <span class="comment">// 初始化向量</span></span><br><span class="line"></span><br><span class="line">  Cipher cipher = Cipher.getInstance(<span class="string">"AES/CBC/PKCS5Padding"</span>); <span class="comment">// 实例化加密类，参数为加密方式，要写全</span></span><br><span class="line"></span><br><span class="line">cipher.init(Cipher.ENCRYPT_MODE,  keySpec, ivSpec);      <span class="comment">// 初始化，此方法可以采用三种方式，按服务器要求来添加。</span></span><br><span class="line">        <span class="comment">//（1）无第三个参数</span></span><br><span class="line">        <span class="comment">//（2）第三个参数为SecureRandom random = new SecureRandom();中random对象，随机数。(AES不可采用这种方法)</span></span><br><span class="line">        <span class="comment">//（3）采用此代码中的IVParameterSpec</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//cipher.init(Cipher.ENCRYPT_MODE, keySpec);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//SecureRandom random = new SecureRandom();</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//cipher.init(Cipher.ENCRYPT_MODE, keySpec, random);</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">byte</span> [] b = cipher.doFinal(<span class="built_in">text</span>.getBytes());<span class="comment">//加密操作,返回加密后的字节数组，然后需要编码。主要编解码方式有Base64, HEX, UUE,7bit等等。</span></span><br><span class="line">   <span class="keyword">String</span> ret = Base64.encode(b);   <span class="comment">//Base64、HEX等编解码</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> deCiphering(<span class="keyword">String</span> textDeCipher, <span class="keyword">String</span> keySpec,<span class="keyword">String</span> iv)<span class="keyword">throws</span> Exception&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//String keySpec = "lianghuilonglong";</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//String textDeCipher = "UstyI8JoQOty8egSMFQfig==";   //从服务器返回的加密字符串，需要解密的字符串</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//String iv   = "aabbccddeeffgghh";//初始化向量参数，AES 为16bytes. DES 为8bytes</span></span><br><span class="line">    <span class="built_in">byte</span> [] info = Base64.decode(textDeCipher);     <span class="comment">//先用Base64解码</span></span><br><span class="line"></span><br><span class="line">       IvParameterSpec ivSpec = <span class="keyword">new</span> IvParameterSpec(iv.getBytes());</span><br><span class="line"></span><br><span class="line">    Key <span class="built_in">key</span> = <span class="keyword">new</span> SecretKeySpec(keySpec.getBytes(), <span class="string">"AES"</span>);</span><br><span class="line"></span><br><span class="line">    Cipher cipher = Cipher.getInstance(<span class="string">"AES/CBC/PKCS5Padding"</span>);</span><br><span class="line"></span><br><span class="line">    cipher.init(Cipher.DECRYPT_MODE, <span class="built_in">key</span>, ivSpec);    <span class="comment">//与加密时不同MODE:Cipher.DECRYPT_MODE</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">byte</span> [] ret = cipher.doFinal(info);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">String</span>(ret, <span class="string">"utf-8"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="base64-java"><a href="#base64-java" class="headerlink" title="base64.java"></a>base64.java</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Base64</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span>     BASELENGTH           = <span class="number">128</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span>     LOOKUPLENGTH         = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span>     TWENTYFOURBITGROUP   = <span class="number">24</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span>     EIGHTBIT             = <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span>     SIXTEENBIT           = <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span>     FOURBYTE             = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span>     SIGN                 = <span class="number">-128</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span>    PAD                  = <span class="string">'='</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> fDebug               = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">private</span> <span class="keyword">byte</span>[]  base64Alphabet       = <span class="keyword">new</span> <span class="keyword">byte</span>[BASELENGTH];</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">private</span> <span class="keyword">char</span>[]  lookUpBase64Alphabet = <span class="keyword">new</span> <span class="keyword">char</span>[LOOKUPLENGTH];</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; BASELENGTH; ++i) &#123;</span><br><span class="line">            base64Alphabet[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="string">'Z'</span>; i &gt;= <span class="string">'A'</span>; i--) &#123;</span><br><span class="line">            base64Alphabet[i] = (<span class="keyword">byte</span>) (i - <span class="string">'A'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="string">'z'</span>; i &gt;= <span class="string">'a'</span>; i--) &#123;</span><br><span class="line">            base64Alphabet[i] = (<span class="keyword">byte</span>) (i - <span class="string">'a'</span> + <span class="number">26</span>);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="string">'9'</span>; i &gt;= <span class="string">'0'</span>; i--) &#123;</span><br><span class="line">            base64Alphabet[i] = (<span class="keyword">byte</span>) (i - <span class="string">'0'</span> + <span class="number">52</span>);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        base64Alphabet[<span class="string">'+'</span>] = <span class="number">62</span>;</span><br><span class="line">        base64Alphabet[<span class="string">'/'</span>] = <span class="number">63</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">25</span>; i++) &#123;</span><br><span class="line">            lookUpBase64Alphabet[i] = (<span class="keyword">char</span>) (<span class="string">'A'</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">26</span>, j = <span class="number">0</span>; i &lt;= <span class="number">51</span>; i++, j++) &#123;</span><br><span class="line">            lookUpBase64Alphabet[i] = (<span class="keyword">char</span>) (<span class="string">'a'</span> + j);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">52</span>, j = <span class="number">0</span>; i &lt;= <span class="number">61</span>; i++, j++) &#123;</span><br><span class="line">            lookUpBase64Alphabet[i] = (<span class="keyword">char</span>) (<span class="string">'0'</span> + j);</span><br><span class="line">        &#125;</span><br><span class="line">        lookUpBase64Alphabet[<span class="number">62</span>] = (<span class="keyword">char</span>) <span class="string">'+'</span>;</span><br><span class="line">        lookUpBase64Alphabet[<span class="number">63</span>] = (<span class="keyword">char</span>) <span class="string">'/'</span>;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isWhiteSpace</span><span class="params">(<span class="keyword">char</span> octect)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (octect == <span class="number">0x20</span> || octect == <span class="number">0xd</span> || octect == <span class="number">0xa</span> || octect == <span class="number">0x9</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isPad</span><span class="params">(<span class="keyword">char</span> octect)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (octect == PAD);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isData</span><span class="params">(<span class="keyword">char</span> octect)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (octect &lt; BASELENGTH &amp;&amp; base64Alphabet[octect] != <span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Encodes hex octects into Base64</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> binaryData Array containing binaryData</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Encoded Base64 array</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function">String <span class="title">encode</span><span class="params">(<span class="keyword">byte</span>[] binaryData)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (binaryData == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">int</span> lengthDataBits = binaryData.length * EIGHTBIT;</span><br><span class="line">        <span class="keyword">if</span> (lengthDataBits == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">int</span> fewerThan24bits = lengthDataBits % TWENTYFOURBITGROUP;</span><br><span class="line">        <span class="keyword">int</span> numberTriplets = lengthDataBits / TWENTYFOURBITGROUP;</span><br><span class="line">        <span class="keyword">int</span> numberQuartet = fewerThan24bits != <span class="number">0</span> ? numberTriplets + <span class="number">1</span> : numberTriplets;</span><br><span class="line">        <span class="keyword">char</span> encodedData[] = <span class="keyword">null</span>;</span><br><span class="line"> </span><br><span class="line">        encodedData = <span class="keyword">new</span> <span class="keyword">char</span>[numberQuartet * <span class="number">4</span>];</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">byte</span> k = <span class="number">0</span>, l = <span class="number">0</span>, b1 = <span class="number">0</span>, b2 = <span class="number">0</span>, b3 = <span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">int</span> encodedIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> dataIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (fDebug) &#123;</span><br><span class="line">            System.out.println(<span class="string">"number of triplets = "</span> + numberTriplets);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numberTriplets; i++) &#123;</span><br><span class="line">            b1 = binaryData[dataIndex++];</span><br><span class="line">            b2 = binaryData[dataIndex++];</span><br><span class="line">            b3 = binaryData[dataIndex++];</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">if</span> (fDebug) &#123;</span><br><span class="line">                System.out.println(<span class="string">"b1= "</span> + b1 + <span class="string">", b2= "</span> + b2 + <span class="string">", b3= "</span> + b3);</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            l = (<span class="keyword">byte</span>) (b2 &amp; <span class="number">0x0f</span>);</span><br><span class="line">            k = (<span class="keyword">byte</span>) (b1 &amp; <span class="number">0x03</span>);</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">byte</span> val1 = ((b1 &amp; SIGN) == <span class="number">0</span>) ? (<span class="keyword">byte</span>) (b1 &gt;&gt; <span class="number">2</span>) : (<span class="keyword">byte</span>) ((b1) &gt;&gt; 2 ^ 0xc0);</span><br><span class="line">            <span class="keyword">byte</span> val2 = ((b2 &amp; SIGN) == <span class="number">0</span>) ? (<span class="keyword">byte</span>) (b2 &gt;&gt; <span class="number">4</span>) : (<span class="keyword">byte</span>) ((b2) &gt;&gt; 4 ^ 0xf0);</span><br><span class="line">            <span class="keyword">byte</span> val3 = ((b3 &amp; SIGN) == <span class="number">0</span>) ? (<span class="keyword">byte</span>) (b3 &gt;&gt; <span class="number">6</span>) : (<span class="keyword">byte</span>) ((b3) &gt;&gt; 6 ^ 0xfc);</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">if</span> (fDebug) &#123;</span><br><span class="line">                System.out.println(<span class="string">"val2 = "</span> + val2);</span><br><span class="line">                System.out.println(<span class="string">"k4   = "</span> + (k &lt;&lt; <span class="number">4</span>));</span><br><span class="line">                System.out.println(<span class="string">"vak  = "</span> + (val2 | (k &lt;&lt; <span class="number">4</span>)));</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            encodedData[encodedIndex++] = lookUpBase64Alphabet[val1];</span><br><span class="line">            encodedData[encodedIndex++] = lookUpBase64Alphabet[val2 | (k &lt;&lt; <span class="number">4</span>)];</span><br><span class="line">            encodedData[encodedIndex++] = lookUpBase64Alphabet[(l &lt;&lt; <span class="number">2</span>) | val3];</span><br><span class="line">            encodedData[encodedIndex++] = lookUpBase64Alphabet[b3 &amp; <span class="number">0x3f</span>];</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// form integral number of 6-bit groups</span></span><br><span class="line">        <span class="keyword">if</span> (fewerThan24bits == EIGHTBIT) &#123;</span><br><span class="line">            b1 = binaryData[dataIndex];</span><br><span class="line">            k = (<span class="keyword">byte</span>) (b1 &amp; <span class="number">0x03</span>);</span><br><span class="line">            <span class="keyword">if</span> (fDebug) &#123;</span><br><span class="line">                System.out.println(<span class="string">"b1="</span> + b1);</span><br><span class="line">                System.out.println(<span class="string">"b1&lt;&lt;2 = "</span> + (b1 &gt;&gt; <span class="number">2</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">byte</span> val1 = ((b1 &amp; SIGN) == <span class="number">0</span>) ? (<span class="keyword">byte</span>) (b1 &gt;&gt; <span class="number">2</span>) : (<span class="keyword">byte</span>) ((b1) &gt;&gt; 2 ^ 0xc0);</span><br><span class="line">            encodedData[encodedIndex++] = lookUpBase64Alphabet[val1];</span><br><span class="line">            encodedData[encodedIndex++] = lookUpBase64Alphabet[k &lt;&lt; <span class="number">4</span>];</span><br><span class="line">            encodedData[encodedIndex++] = PAD;</span><br><span class="line">            encodedData[encodedIndex++] = PAD;</span><br><span class="line">        &#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(fewerThan24bits == SIXTEENBIT)</span> </span>&#123;</span><br><span class="line">            b1 = binaryData[dataIndex];</span><br><span class="line">            b2 = binaryData[dataIndex + <span class="number">1</span>];</span><br><span class="line">            l = (<span class="keyword">byte</span>) (b2 &amp; <span class="number">0x0f</span>);</span><br><span class="line">            k = (<span class="keyword">byte</span>) (b1 &amp; <span class="number">0x03</span>);</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">byte</span> val1 = ((b1 &amp; SIGN) == <span class="number">0</span>) ? (<span class="keyword">byte</span>) (b1 &gt;&gt; <span class="number">2</span>) : (<span class="keyword">byte</span>) ((b1) &gt;&gt; 2 ^ 0xc0);</span><br><span class="line">            <span class="keyword">byte</span> val2 = ((b2 &amp; SIGN) == <span class="number">0</span>) ? (<span class="keyword">byte</span>) (b2 &gt;&gt; <span class="number">4</span>) : (<span class="keyword">byte</span>) ((b2) &gt;&gt; 4 ^ 0xf0);</span><br><span class="line"> </span><br><span class="line">            encodedData[encodedIndex++] = lookUpBase64Alphabet[val1];</span><br><span class="line">            encodedData[encodedIndex++] = lookUpBase64Alphabet[val2 | (k &lt;&lt; <span class="number">4</span>)];</span><br><span class="line">            encodedData[encodedIndex++] = lookUpBase64Alphabet[l &lt;&lt; <span class="number">2</span>];</span><br><span class="line">            encodedData[encodedIndex++] = PAD;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(encodedData);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Decodes Base64 data into octects</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> encoded string containing Base64 data</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Array containind decoded data.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] decode(String encoded) &#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (encoded == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">char</span>[] base64Data = encoded.toCharArray();</span><br><span class="line">        <span class="comment">// remove white spaces</span></span><br><span class="line">        <span class="keyword">int</span> len = removeWhiteSpace(base64Data);</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (len % FOURBYTE != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;<span class="comment">//should be divisible by four</span></span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">int</span> numberQuadruple = (len / FOURBYTE);</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (numberQuadruple == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">byte</span> decodedData[] = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">byte</span> b1 = <span class="number">0</span>, b2 = <span class="number">0</span>, b3 = <span class="number">0</span>, b4 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span> d1 = <span class="number">0</span>, d2 = <span class="number">0</span>, d3 = <span class="number">0</span>, d4 = <span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> encodedIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> dataIndex = <span class="number">0</span>;</span><br><span class="line">        decodedData = <span class="keyword">new</span> <span class="keyword">byte</span>[(numberQuadruple) * <span class="number">3</span>];</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> (; i &lt; numberQuadruple - <span class="number">1</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">if</span> (!isData((d1 = base64Data[dataIndex++])) || !isData((d2 = base64Data[dataIndex++]))</span><br><span class="line">                || !isData((d3 = base64Data[dataIndex++]))</span><br><span class="line">                || !isData((d4 = base64Data[dataIndex++]))) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;<span class="comment">//if found "no data" just return null</span></span><br><span class="line"> </span><br><span class="line">            b1 = base64Alphabet[d1];</span><br><span class="line">            b2 = base64Alphabet[d2];</span><br><span class="line">            b3 = base64Alphabet[d3];</span><br><span class="line">            b4 = base64Alphabet[d4];</span><br><span class="line"> </span><br><span class="line">            decodedData[encodedIndex++] = (<span class="keyword">byte</span>) (b1 &lt;&lt; <span class="number">2</span> | b2 &gt;&gt; <span class="number">4</span>);</span><br><span class="line">            decodedData[encodedIndex++] = (<span class="keyword">byte</span>) (((b2 &amp; <span class="number">0xf</span>) &lt;&lt; <span class="number">4</span>) | ((b3 &gt;&gt; <span class="number">2</span>) &amp; <span class="number">0xf</span>));</span><br><span class="line">            decodedData[encodedIndex++] = (<span class="keyword">byte</span>) (b3 &lt;&lt; <span class="number">6</span> | b4);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (!isData((d1 = base64Data[dataIndex++])) || !isData((d2 = base64Data[dataIndex++]))) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;<span class="comment">//if found "no data" just return null</span></span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        b1 = base64Alphabet[d1];</span><br><span class="line">        b2 = base64Alphabet[d2];</span><br><span class="line"> </span><br><span class="line">        d3 = base64Data[dataIndex++];</span><br><span class="line">        d4 = base64Data[dataIndex++];</span><br><span class="line">        <span class="keyword">if</span> (!isData((d3)) || !isData((d4))) &#123;<span class="comment">//Check if they are PAD characters</span></span><br><span class="line">            <span class="keyword">if</span> (isPad(d3) &amp;&amp; isPad(d4)) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((b2 &amp; <span class="number">0xf</span>) != <span class="number">0</span>)<span class="comment">//last 4 bits should be zero</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">byte</span>[] tmp = <span class="keyword">new</span> <span class="keyword">byte</span>[i * <span class="number">3</span> + <span class="number">1</span>];</span><br><span class="line">                System.arraycopy(decodedData, <span class="number">0</span>, tmp, <span class="number">0</span>, i * <span class="number">3</span>);</span><br><span class="line">                tmp[encodedIndex] = (<span class="keyword">byte</span>) (b1 &lt;&lt; <span class="number">2</span> | b2 &gt;&gt; <span class="number">4</span>);</span><br><span class="line">                <span class="keyword">return</span> tmp;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!isPad(d3) &amp;&amp; isPad(d4)) &#123;</span><br><span class="line">                b3 = base64Alphabet[d3];</span><br><span class="line">                <span class="keyword">if</span> ((b3 &amp; <span class="number">0x3</span>) != <span class="number">0</span>)<span class="comment">//last 2 bits should be zero</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">byte</span>[] tmp = <span class="keyword">new</span> <span class="keyword">byte</span>[i * <span class="number">3</span> + <span class="number">2</span>];</span><br><span class="line">                System.arraycopy(decodedData, <span class="number">0</span>, tmp, <span class="number">0</span>, i * <span class="number">3</span>);</span><br><span class="line">                tmp[encodedIndex++] = (<span class="keyword">byte</span>) (b1 &lt;&lt; <span class="number">2</span> | b2 &gt;&gt; <span class="number">4</span>);</span><br><span class="line">                tmp[encodedIndex] = (<span class="keyword">byte</span>) (((b2 &amp; <span class="number">0xf</span>) &lt;&lt; <span class="number">4</span>) | ((b3 &gt;&gt; <span class="number">2</span>) &amp; <span class="number">0xf</span>));</span><br><span class="line">                <span class="keyword">return</span> tmp;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">//No PAD e.g 3cQl</span></span><br><span class="line">            b3 = base64Alphabet[d3];</span><br><span class="line">            b4 = base64Alphabet[d4];</span><br><span class="line">            decodedData[encodedIndex++] = (<span class="keyword">byte</span>) (b1 &lt;&lt; <span class="number">2</span> | b2 &gt;&gt; <span class="number">4</span>);</span><br><span class="line">            decodedData[encodedIndex++] = (<span class="keyword">byte</span>) (((b2 &amp; <span class="number">0xf</span>) &lt;&lt; <span class="number">4</span>) | ((b3 &gt;&gt; <span class="number">2</span>) &amp; <span class="number">0xf</span>));</span><br><span class="line">            decodedData[encodedIndex++] = (<span class="keyword">byte</span>) (b3 &lt;&lt; <span class="number">6</span> | b4);</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> decodedData;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * remove WhiteSpace from MIME containing encoded Base64 data.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data  the byte array of base64 data (with WS)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>      the new length</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="function"><span class="keyword">int</span> <span class="title">removeWhiteSpace</span><span class="params">(<span class="keyword">char</span>[] data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (data == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// count characters that's not whitespace</span></span><br><span class="line">        <span class="keyword">int</span> newSize = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len = data.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!isWhiteSpace(data[i])) &#123;</span><br><span class="line">                data[newSize++] = data[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newSize;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="HexUtil-java"><a href="#HexUtil-java" class="headerlink" title="HexUtil.java"></a>HexUtil.java</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HexUtil</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">char</span>[] DIGITS_LOWER = &#123; <span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>,</span><br><span class="line">            <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span> &#125;;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">char</span>[] DIGITS_UPPER = &#123; <span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>,</span><br><span class="line">            <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>, <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span> &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将byte数组转为16进制</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function">String <span class="title">bytes2Hex</span><span class="params">(<span class="keyword">byte</span>[] src)</span></span>&#123;         </span><br><span class="line">        <span class="keyword">char</span>[] res = <span class="keyword">new</span> <span class="keyword">char</span>[src.length*<span class="number">2</span>];    </span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">char</span> hexDigits[]=&#123;<span class="string">'0'</span>,<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>,<span class="string">'4'</span>,<span class="string">'5'</span>,<span class="string">'6'</span>,<span class="string">'7'</span>,<span class="string">'8'</span>,<span class="string">'9'</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'F'</span>&#125;;    </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>; i&lt;src.length; i++)&#123;    </span><br><span class="line">            res[j++] = hexDigits[src[i] &gt;&gt;&gt;<span class="number">4</span> &amp; <span class="number">0x0f</span>];    </span><br><span class="line">            res[j++] = hexDigits[src[i] &amp; <span class="number">0x0f</span>];    </span><br><span class="line">        &#125;    </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(res);    </span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将16进制转为byte数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] hex2Bytes(String src)&#123;  </span><br><span class="line">        <span class="keyword">byte</span>[] res = <span class="keyword">new</span> <span class="keyword">byte</span>[src.length()/<span class="number">2</span>];  </span><br><span class="line">        <span class="keyword">char</span>[] chs = src.toCharArray();  </span><br><span class="line">        <span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];  </span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,c=<span class="number">0</span>; i&lt;chs.length; i+=<span class="number">2</span>,c++)&#123;              </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">2</span>; j++)&#123;  </span><br><span class="line">                <span class="keyword">if</span>(chs[i+j]&gt;=<span class="string">'0'</span> &amp;&amp; chs[i+j]&lt;=<span class="string">'9'</span>)&#123;  </span><br><span class="line">                    b[j] = (chs[i+j]-<span class="string">'0'</span>);  </span><br><span class="line">                &#125;<span class="function"><span class="keyword">else</span> <span class="title">if</span><span class="params">(chs[i+j]&gt;=<span class="string">'A'</span> &amp;&amp; chs[i+j]&lt;=<span class="string">'F'</span>)</span></span>&#123;  </span><br><span class="line">                    b[j] = (chs[i+j]-<span class="string">'A'</span>+<span class="number">10</span>);  </span><br><span class="line">                &#125;<span class="function"><span class="keyword">else</span> <span class="title">if</span><span class="params">(chs[i+j]&gt;=<span class="string">'a'</span> &amp;&amp; chs[i+j]&lt;=<span class="string">'f'</span>)</span></span>&#123;  </span><br><span class="line">                    b[j] = (chs[i+j]-<span class="string">'a'</span>+<span class="number">10</span>);  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;   </span><br><span class="line"></span><br><span class="line">            b[<span class="number">0</span>] = (b[<span class="number">0</span>]&amp;<span class="number">0x0f</span>)&lt;&lt;<span class="number">4</span>;  </span><br><span class="line">            b[<span class="number">1</span>] = (b[<span class="number">1</span>]&amp;<span class="number">0x0f</span>);  </span><br><span class="line">            res[c] = (<span class="keyword">byte</span>) (b[<span class="number">0</span>] | b[<span class="number">1</span>]);  </span><br><span class="line">        &#125;  </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] decodeHex(<span class="keyword">final</span> <span class="keyword">char</span>[] data) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> len = data.length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ((len &amp; <span class="number">0x01</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Odd number of characters."</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">byte</span>[] out = <span class="keyword">new</span> <span class="keyword">byte</span>[len &gt;&gt; <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// two characters form the hex value.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; j &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> f = toDigit(data[j], j) &lt;&lt; <span class="number">4</span>;</span><br><span class="line">            j++;</span><br><span class="line">            f = f | toDigit(data[j], j);</span><br><span class="line">            j++;</span><br><span class="line">            out[i] = (<span class="keyword">byte</span>) (f &amp; <span class="number">0xFF</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">int</span> toDigit(<span class="keyword">final</span> <span class="keyword">char</span> ch, <span class="keyword">final</span> <span class="keyword">int</span> index)</span><br><span class="line">            <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> digit = Character.digit(ch, <span class="number">16</span>);</span><br><span class="line">        <span class="keyword">if</span> (digit == <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Illegal hexadecimal character "</span> + ch</span><br><span class="line">                    + <span class="string">" at index "</span> + index);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> digit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span>[] encodeHex(<span class="keyword">final</span> <span class="keyword">byte</span>[] data) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">return</span> <span class="title">encodeHex</span><span class="params">(data, <span class="keyword">true</span>)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span>[] encodeHex(<span class="keyword">final</span> <span class="keyword">byte</span>[] data, <span class="keyword">final</span> <span class="keyword">boolean</span> toLowerCase) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">return</span> <span class="title">encodeHex</span><span class="params">(data, toLowerCase ? DIGITS_LOWER : DIGITS_UPPER)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">char</span>[] encodeHex(<span class="keyword">final</span> <span class="keyword">byte</span>[] data, <span class="keyword">final</span> <span class="keyword">char</span>[] toDigits) &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> l = data.length;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">char</span>[] out = <span class="keyword">new</span> <span class="keyword">char</span>[l &lt;&lt; <span class="number">1</span>];</span><br><span class="line">        <span class="comment">// two characters form the hex value.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; l; i++) &#123;</span><br><span class="line">            out[j++] = toDigits[(<span class="number">0xF0</span> &amp; data[i]) &gt;&gt;&gt; <span class="number">4</span>];</span><br><span class="line">            out[j++] = toDigits[<span class="number">0x0F</span> &amp; data[i]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="RSAEncrypt-java"><a href="#RSAEncrypt-java" class="headerlink" title="RSAEncrypt.java"></a>RSAEncrypt.java</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">import sun.misc.BASE64Encoder;</span><br><span class="line">import javax.crypto.Cipher;</span><br><span class="line">import java.security.Key;</span><br><span class="line">import java.security.PrivateKey;</span><br><span class="line">import java.security.PublicKey;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 非对称加密采用RSA加密算法</span><br><span class="line"> */</span><br><span class="line">public class RSAEncrypt&#123;</span><br><span class="line">    private PublicKey publicKey;</span><br><span class="line">    private PrivateKey privateKey;</span><br><span class="line">    private String publicKeyString;</span><br><span class="line">    private String privateKeyString;</span><br><span class="line">    // 加解密类</span><br><span class="line">    private Cipher cipher;</span><br><span class="line"></span><br><span class="line">    public RSAEncrypt(PublicKey publicKey, PrivateKey privateKey) &#123;</span><br><span class="line">        this.publicKey = publicKey;</span><br><span class="line">        this.privateKey = privateKey;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 加密</span><br><span class="line">     */</span><br><span class="line">    public String encrypt(String string) &#123;</span><br><span class="line">        String afterEncrypt = null;</span><br><span class="line">        try &#123;</span><br><span class="line"></span><br><span class="line">            // 加解密类</span><br><span class="line">            cipher = Cipher.getInstance("RSA");// Cipher.getInstance("RSA/ECB/PKCS1Padding");</span><br><span class="line">            // 明文</span><br><span class="line">            byte[] plainText = string.getBytes();</span><br><span class="line">            // 公钥加密</span><br><span class="line">            cipher.init(Cipher.ENCRYPT_MODE, publicKey);</span><br><span class="line">            byte[] enBytes = cipher.doFinal(plainText); </span><br><span class="line">            afterEncrypt = HexUtil.bytes2Hex(enBytes);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            // TODO Auto-generated catch block</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return afterEncrypt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 解密</span><br><span class="line">     */</span><br><span class="line">    public String decrypt(String string) &#123;</span><br><span class="line">        byte[] bytes = HexUtil.hex2Bytes(string);</span><br><span class="line">        String afterDecrypt = null;</span><br><span class="line">        // 加解密类</span><br><span class="line">        try &#123;</span><br><span class="line">            cipher = Cipher.getInstance("RSA");// Cipher.getInstance("RSA/ECB/PKCS1Padding");</span><br><span class="line">            cipher.init(Cipher.DECRYPT_MODE, privateKey);</span><br><span class="line">            byte[] deBytes = cipher.doFinal(bytes);</span><br><span class="line">            publicKeyString = getKeyString(publicKey);</span><br><span class="line">            privateKeyString = getKeyString(privateKey);</span><br><span class="line">            afterDecrypt = new String(deBytes);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            // TODO Auto-generated catch block</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return afterDecrypt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 得到密钥字符串（经过base64编码）</span><br><span class="line">     * </span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    public static String getKeyString(Key key) throws Exception &#123;</span><br><span class="line">        byte[] keyBytes = key.getEncoded();</span><br><span class="line">        return (new BASE64Encoder()).encode(keyBytes);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" <i class="fa fa-tag"> java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/12/MarkDown语法初识/" rel="next" title="MarkDown语法初识">
+                <i class="fa fa-chevron-left"></i> MarkDown语法初识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/17/值传递问题与引用传递/" rel="prev" title="值传递问题与引用传递">
+                值传递问题与引用传递 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/WechatIMG230.jpeg" alt="一只写Bug的猫">
+            
+              <p class="site-author-name" itemprop="name">一只写Bug的猫</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">569</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对称性加解密and非对称性加解密"><span class="nav-number">1.</span> <span class="nav-text">对称性加解密and非对称性加解密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.1.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Main-java"><span class="nav-number">1.1.1.</span> <span class="nav-text">Main.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AES-java"><span class="nav-number">1.1.2.</span> <span class="nav-text">AES.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#base64-java"><span class="nav-number">1.1.3.</span> <span class="nav-text">base64.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HexUtil-java"><span class="nav-number">1.1.4.</span> <span class="nav-text">HexUtil.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RSAEncrypt-java"><span class="nav-number">1.1.5.</span> <span class="nav-text">RSAEncrypt.java</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一只写Bug的猫</span>
+
+  
+</div>
+
+<span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共543.8k字</span>
+</div>
+
+<div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</body>
+</html>

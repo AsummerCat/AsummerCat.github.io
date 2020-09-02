@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,数据结构与算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="A星寻路算法它的英文名字叫作A*search algorithm，是一种用于寻找有效路径的算法。">
+<meta name="keywords" content="java,数据结构与算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A路寻星算法寻找有效路径的算法">
+<meta property="og:url" content="http://www.linjingc.top/2019/11/28/A路寻星算法寻找有效路径的算法/index.html">
+<meta property="og:site_name" content="emmm读书使我快乐">
+<meta property="og:description" content="A星寻路算法它的英文名字叫作A*search algorithm，是一种用于寻找有效路径的算法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-28/1.png">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-28/2.png">
+<meta property="og:image" content="http://www.linjingc.top/2019/11/28/A路寻星算法寻找有效路径的算法/E/img/2019-11-28/3.png">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-28/4.png">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-28/5.png">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-28/6.png">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-28/7.png">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-28/8.png">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-28/9.png">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-28/10.png">
+<meta property="og:image" content="http://www.linjingc.top/img/2019-11-28/11.png">
+<meta property="og:updated_time" content="2020-09-02T02:29:50.405Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A路寻星算法寻找有效路径的算法">
+<meta name="twitter:description" content="A星寻路算法它的英文名字叫作A*search algorithm，是一种用于寻找有效路径的算法。">
+<meta name="twitter:image" content="http://www.linjingc.top/img/2019-11-28/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.linjingc.top/2019/11/28/A路寻星算法寻找有效路径的算法/">
+
+
+
+
+
+  <title>A路寻星算法寻找有效路径的算法 | emmm读书使我快乐</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsummerCat/AsummerCat.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">emmm读书使我快乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/11/28/A路寻星算法寻找有效路径的算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">A路寻星算法寻找有效路径的算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-28T14:05:11+08:00">
+                2019-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="A星寻路算法"><a href="#A星寻路算法" class="headerlink" title="A星寻路算法"></a>A星寻路算法</h1><p>它的英文名字叫作A*search algorithm，是一种用于寻找有效路径的算法。</p>
+<a id="more"></a>
+<p>在解决这个问题之前，我们先引入2个集合和1个公式。<br>两个集合如下。<br>OpenList：可到达的格子<br>CloseList：已到达的格子<br>一个公式如下。<br>F = G + H<br>每一个格子都具有F、G、H这3个属性，就像下图这样。</p>
+<p><img src="/img/2019-11-28/1.png" alt="1574921728904"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">G：从起点走到当前格子的成本，也就是已经花费了多少步。</span><br><span class="line">H：在不考虑障碍的情况下，从当前格子走到目标格子的距离，也就是离目标还</span><br><span class="line">有多远。</span><br><span class="line"><span class="literal">F</span>：G和H的综合评估，也就是从起点到达当前格子，再从当前格子到达目标格子</span><br><span class="line">的总步数</span><br></pre></td></tr></table></figure>
+<h3 id="第1步"><a href="#第1步" class="headerlink" title="第1步"></a>第1步</h3><p>把起点放入OpenList，也就是刚才所说的可到达格子的集合</p>
+<p><img src="/img/2019-11-28/2.png" alt="1574921830883"></p>
+<h3 id="第2步"><a href="#第2步" class="headerlink" title="第2步"></a>第2步</h3><p>找出OpenList中F值最小的方格作为当前方格。虽然我们没有直接计算起点方格的F值，但此时OpenList中只有唯一的方格Grid(1,2)，把当前格子移出OpenList，放入CloseList。代表这个格子已到达并检查过了。</p>
+<p><img src="E/img/2019-11-28/3.png" alt="1574921928859"></p>
+<h3 id="第3步"><a href="#第3步" class="headerlink" title="第3步"></a>第3步</h3><p>找出当前方格（刚刚检查过的格子）上、下、左、右所有可到达的格子，看它们是否在OpenList或CloseList当中。如果不在，则将它们加入OpenList，计算出相应的G、H、F值，并把当前格子作为它们的“父节点”。</p>
+<p><img src="/img/2019-11-28/4.png" alt="1574921969940"></p>
+<p>在上图中，每个格子的左下方数字是G，右下方是H，左上方是F。</p>
+<p>一个格子的“父节点”代表它的来路，在输出最终路线时会用到。</p>
+<p>刚才经历的几个步骤是一次局部寻路的步骤。我们需要一次又一次重复刚才的第2步和第3步，直到找到终点为止。</p>
+<h2 id="第二轮操作"><a href="#第二轮操作" class="headerlink" title="第二轮操作"></a>第二轮操作</h2><p>下面进入A星寻路的第2轮操作</p>
+<h3 id="第1步-1"><a href="#第1步-1" class="headerlink" title="第1步"></a>第1步</h3><p>找出OpenList中F值最小的方格，即方格Grid(2,2)，将它作为当前方格，并把当前方格移出OpenList，放入CloseList。代表这个格子已到达并检查过了。</p>
+<p><img src="/img/2019-11-28/5.png" alt="1574922055303"></p>
+<h3 id="第2步-1"><a href="#第2步-1" class="headerlink" title="第2步"></a>第2步</h3><p>找出当前方格上、下、左、右所有可到达的格子，看它们是否在OpenList或CloseList当中。如果不在，则将它们加入OpenList，计算出相应的G、H、F值，并把当前格子作为它们的“父节点”。</p>
+<p><img src="/img/2019-11-28/6.png" alt="1574922226288"></p>
+<p>为什么这一次OpenList只增加了2个新格子呢？因为Grid(3,2)是墙壁，自然不用考虑，而Grid(1,2)在CloseList中，说明已经检查过了，也不用考虑。</p>
+<h2 id="第3轮寻路历程"><a href="#第3轮寻路历程" class="headerlink" title="第3轮寻路历程"></a>第3轮寻路历程</h2><h3 id="第1步-2"><a href="#第1步-2" class="headerlink" title="第1步"></a>第1步</h3><p>找出OpenList中F值最小的方格。由于此时有多个方格的F值相等，任意选择一个即可，如将Grid(2,3)作为当前方格，并把当前方格移出OpenList，放入CloseList。代表这个格子已到达并检查过了。</p>
+<p><img src="/img/2019-11-28/7.png" alt="1574922291979"></p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>找出当前方格上、下、左、右所有可到达的格子，看它们是否在OpenList当中。如果不在，则将它们加入OpenList，计算出相应的G、H、F值，并把当前格子作为它们的“父节点”。</p>
+<p><img src="/img/2019-11-28/8.png" alt="1574922355225"></p>
+<p>剩下的就是以前面的方式继续迭代，直到OpenList中出现终点方格为止。<br>这里我们仅仅使用图片简单描述一下，方格中的数字表示F值。</p>
+<p><img src="/img/2019-11-28/9.png" alt="1574922386667"></p>
+<p><img src="/img/2019-11-28/10.png" alt="1574922393932"></p>
+<p>像这样一步一步来，当终点出现在OpenList中时，我们的寻路之旅就结束了。</p>
+<p>我们只要顺着终点方格找到它的父亲，再找到父亲的父亲……如此依次回溯，就能找到一条最佳路径了。</p>
+<p><img src="/img/2019-11-28/11.png" alt="1574922427035"></p>
+<p>这就是A星寻路算法的基本思想。像这样以估值高低来决定搜索优先次序的方法，被称为启发式搜索。</p>
+<h1 id="java代码实现"><a href="#java代码实现" class="headerlink" title="java代码实现"></a>java代码实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. <span class="comment">// 迷宫地图</span></span><br><span class="line"><span class="number">2</span>. <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span>[][] MAZE = &#123;</span><br><span class="line"><span class="number">3</span>. &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,</span><br><span class="line"><span class="number">4</span>. &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,</span><br><span class="line"><span class="number">5</span>. &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,</span><br><span class="line"><span class="number">6</span>. &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,</span><br><span class="line"><span class="number">7</span>. &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;</span><br><span class="line"><span class="number">8</span>. &#125;;</span><br><span class="line"><span class="number">9</span>.</span><br><span class="line"><span class="number">10</span>. <span class="comment">/**</span></span><br><span class="line"><span class="comment">11. * A*寻路主逻辑</span></span><br><span class="line"><span class="comment">12. * <span class="doctag">@param</span> start 迷宫起点</span></span><br><span class="line"><span class="comment">13. * <span class="doctag">@param</span> end 迷宫终点</span></span><br><span class="line"><span class="comment">14. */</span></span><br><span class="line"><span class="number">15</span>. <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Grid <span class="title">aStarSearch</span><span class="params">(Grid start, Grid end)</span> </span>&#123;</span><br><span class="line"><span class="number">16</span>. ArrayList&lt;Grid&gt; openList = <span class="keyword">new</span> ArrayList&lt;Grid&gt;();</span><br><span class="line"><span class="number">17</span>. ArrayList&lt;Grid&gt; closeList = <span class="keyword">new</span> ArrayList&lt;Grid&gt;();</span><br><span class="line"><span class="number">18</span>. <span class="comment">//把起点加入 openList</span></span><br><span class="line"><span class="number">19</span>. openList.add(start);</span><br><span class="line"><span class="number">20</span>. <span class="comment">//主循环，每一轮检查1个当前方格节点</span></span><br><span class="line"><span class="number">21</span>. <span class="keyword">while</span> (openList.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="number">22</span>. <span class="comment">// 在openList中查找 F值最小的节点，将其作为当前方格节点</span></span><br><span class="line"><span class="number">23</span>. Grid currentGrid = findMinGird(openList);</span><br><span class="line"><span class="number">24</span>. <span class="comment">// 将当前方格节点从openList中移除</span></span><br><span class="line"><span class="number">25</span>. openList.remove(currentGrid);</span><br><span class="line"><span class="number">26</span>. <span class="comment">// 当前方格节点进入 closeList</span></span><br><span class="line"><span class="number">27</span>. closeList.add(currentGrid);</span><br><span class="line"><span class="number">28</span>. <span class="comment">// 找到所有邻近节点</span></span><br><span class="line"><span class="number">29</span>. List&lt;Grid&gt; neighbors = findNeighbors(currentGrid,</span><br><span class="line">openList, closeList);</span><br><span class="line"><span class="number">30</span>. <span class="keyword">for</span> (Grid grid : neighbors) &#123;</span><br><span class="line"><span class="number">31</span>. <span class="keyword">if</span> (!openList.contains(grid)) &#123;</span><br><span class="line"><span class="number">32</span>. <span class="comment">//邻近节点不在openList 中，标记“父节点”、G、H、F，并放入openList</span></span><br><span class="line"><span class="number">33</span>. grid.initGrid(currentGrid, end);</span><br><span class="line"><span class="number">34</span>. openList.add(grid);</span><br><span class="line"><span class="number">35</span>. &#125;</span><br><span class="line"><span class="number">36</span>. &#125;</span><br><span class="line"><span class="number">37</span>. <span class="comment">//如果终点在openList中，直接返回终点格子</span></span><br><span class="line"><span class="number">38</span>. <span class="keyword">for</span> (Grid grid : openList)&#123;</span><br><span class="line"><span class="number">39</span>. <span class="keyword">if</span> ((grid.x == end.x) &amp;&amp; (grid.y == end.y)) &#123;</span><br><span class="line"><span class="number">40</span>. <span class="keyword">return</span> grid;</span><br><span class="line"><span class="number">41</span>. &#125;</span><br><span class="line"><span class="number">42</span>. &#125;</span><br><span class="line"><span class="number">43</span>. &#125;</span><br><span class="line"><span class="number">44</span>. <span class="comment">//openList用尽，仍然找不到终点，说明终点不可到达，返回空</span></span><br><span class="line"><span class="number">45</span>. <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"><span class="number">46</span>. &#125;</span><br><span class="line"><span class="number">47</span>.</span><br><span class="line"><span class="number">48</span>. <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Grid <span class="title">findMinGird</span><span class="params">(ArrayList&lt;Grid&gt; openList)</span> </span>&#123;</span><br><span class="line"><span class="number">49</span>. Grid tempGrid = openList.get(<span class="number">0</span>);</span><br><span class="line"><span class="number">50</span>. <span class="keyword">for</span> (Grid grid : openList) &#123;</span><br><span class="line"><span class="number">51</span>. <span class="keyword">if</span> (grid.f &lt; tempGrid.f) &#123;</span><br><span class="line"><span class="number">52</span>. tempGrid = grid;</span><br><span class="line"><span class="number">53</span>. &#125;</span><br><span class="line"><span class="number">54</span>. &#125;</span><br><span class="line"><span class="number">55</span>. <span class="keyword">return</span> tempGrid;</span><br><span class="line"><span class="number">56</span>. &#125;</span><br><span class="line"><span class="number">57</span>.</span><br><span class="line"><span class="number">58</span>. <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> ArrayList&lt;Grid&gt; <span class="title">findNeighbors</span><span class="params">(Grid grid,</span></span></span><br><span class="line"><span class="function"><span class="params">List&lt;Grid&gt; openList, List&lt;Grid&gt; closeList)</span> </span>&#123;</span><br><span class="line"><span class="number">59</span>. ArrayList&lt;Grid&gt; gridList = <span class="keyword">new</span> ArrayList&lt;Grid&gt;();</span><br><span class="line"><span class="number">60</span>. <span class="keyword">if</span> (isValidGrid(grid.x, grid.y-<span class="number">1</span>, openList, closeList)) &#123;</span><br><span class="line"><span class="number">61</span>. gridList.add(<span class="keyword">new</span> Grid(grid.x, grid.y - <span class="number">1</span>));</span><br><span class="line"><span class="number">62</span>. &#125;</span><br><span class="line"><span class="number">63</span>. <span class="keyword">if</span> (isValidGrid(grid.x, grid.y+<span class="number">1</span>, openList, closeList)) &#123;</span><br><span class="line"><span class="number">64</span>. gridList.add(<span class="keyword">new</span> Grid(grid.x, grid.y + <span class="number">1</span>));</span><br><span class="line"><span class="number">65</span>. &#125;</span><br><span class="line"><span class="number">66</span>. <span class="keyword">if</span> (isValidGrid(grid.x-<span class="number">1</span>, grid.y, openList, closeList)) &#123;</span><br><span class="line"><span class="number">67</span>. gridList.add(<span class="keyword">new</span> Grid(grid.x - <span class="number">1</span>, grid.y));</span><br><span class="line"><span class="number">68</span>. &#125;</span><br><span class="line"><span class="number">69</span>. <span class="keyword">if</span> (isValidGrid(grid.x+<span class="number">1</span>, grid.y, openList, closeList)) &#123;</span><br><span class="line"><span class="number">70</span>. gridList.add(<span class="keyword">new</span> Grid(grid.x + <span class="number">1</span>, grid.y));</span><br><span class="line"><span class="number">71</span>. &#125;</span><br><span class="line"><span class="number">72</span>. <span class="keyword">return</span> gridList;</span><br><span class="line"><span class="number">73</span>. &#125;</span><br><span class="line"><span class="number">74</span>.</span><br><span class="line"><span class="number">75</span>. <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isValidGrid</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, List&lt;Grid&gt;</span></span></span><br><span class="line"><span class="function"><span class="params">openList, List&lt;Grid&gt; closeList)</span> </span>&#123;</span><br><span class="line"><span class="number">76</span>. <span class="comment">//是否超过边界</span></span><br><span class="line"><span class="number">77</span>. <span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &lt;= MAZE.length || y &lt; <span class="number">0</span> || y &gt;= MAZE[<span class="number">0</span>].</span><br><span class="line">length) &#123;</span><br><span class="line"><span class="number">78</span>. <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">79</span>. &#125;</span><br><span class="line"><span class="number">80</span>. <span class="comment">//是否有障碍物</span></span><br><span class="line"><span class="number">81</span>. <span class="keyword">if</span>(MAZE[x][y] == <span class="number">1</span>)&#123;</span><br><span class="line"><span class="number">82</span>. <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">83</span>. &#125;</span><br><span class="line"><span class="number">84</span>. <span class="comment">//是否已经在openList中</span></span><br><span class="line"><span class="number">85</span>. <span class="keyword">if</span>(containGrid(openList, x, y))&#123;</span><br><span class="line"><span class="number">86</span>. <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">87</span>. &#125;</span><br><span class="line"><span class="number">88</span>. <span class="comment">//是否已经在closeList 中</span></span><br><span class="line"><span class="number">89</span>. <span class="keyword">if</span>(containGrid(closeList, x, y))&#123;</span><br><span class="line"><span class="number">90</span>. <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">91</span>. &#125;</span><br><span class="line"><span class="number">92</span>. <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"><span class="number">93</span>. &#125;</span><br><span class="line"><span class="number">94</span>.</span><br><span class="line"><span class="number">95</span>. <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">containGrid</span><span class="params">(List&lt;Grid&gt; grids, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line"><span class="number">96</span>. <span class="keyword">for</span> (Grid n : grids) &#123;</span><br><span class="line"><span class="number">97</span>. <span class="keyword">if</span> ((n.x == x) &amp;&amp; (n.y == y)) &#123;</span><br><span class="line"><span class="number">98</span>. <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"><span class="number">99</span>. &#125;</span><br><span class="line"><span class="number">100</span>. &#125;</span><br><span class="line"><span class="number">101</span>. <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">102</span>. &#125;</span><br><span class="line"><span class="number">103</span>.</span><br><span class="line"><span class="number">104</span>. <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Grid</span> </span>&#123;</span><br><span class="line"><span class="number">105</span>. <span class="keyword">public</span> <span class="keyword">int</span> x;</span><br><span class="line"><span class="number">106</span>. <span class="keyword">public</span> <span class="keyword">int</span> y;</span><br><span class="line"><span class="number">107</span>. <span class="keyword">public</span> <span class="keyword">int</span> f;</span><br><span class="line"><span class="number">108</span>. <span class="keyword">public</span> <span class="keyword">int</span> g;</span><br><span class="line"><span class="number">109</span>. <span class="keyword">public</span> <span class="keyword">int</span> h;</span><br><span class="line"><span class="number">110</span>. <span class="keyword">public</span> Grid parent;</span><br><span class="line"><span class="number">111</span>.</span><br><span class="line"><span class="number">112</span>. <span class="function"><span class="keyword">public</span> <span class="title">Grid</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line"><span class="number">113</span>. <span class="keyword">this</span>.x = x;</span><br><span class="line"><span class="number">114</span>. <span class="keyword">this</span>.y = y;</span><br><span class="line"><span class="number">115</span>. &#125;</span><br><span class="line"><span class="number">116</span>.</span><br><span class="line"><span class="number">117</span>. <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initGrid</span><span class="params">(Grid parent, Grid end)</span></span>&#123;</span><br><span class="line"><span class="number">118</span>. <span class="keyword">this</span>.parent = parent;</span><br><span class="line"><span class="number">119</span>. <span class="keyword">if</span>(parent != <span class="keyword">null</span>)&#123;</span><br><span class="line"><span class="number">120</span>. <span class="keyword">this</span>.g = parent.g + <span class="number">1</span>;</span><br><span class="line"><span class="number">121</span>. &#125;<span class="keyword">else</span> &#123;</span><br><span class="line"><span class="number">122</span>. <span class="keyword">this</span>.g = <span class="number">1</span>;</span><br><span class="line"><span class="number">123</span>. &#125;</span><br><span class="line"><span class="number">124</span>. <span class="keyword">this</span>.h = Math.abs(<span class="keyword">this</span>.x - end.x) + Math.</span><br><span class="line">abs(<span class="keyword">this</span>.y - end.y);</span><br><span class="line"><span class="number">125</span>. <span class="keyword">this</span>.f = <span class="keyword">this</span>.g + <span class="keyword">this</span>.h;</span><br><span class="line"><span class="number">126</span>. &#125;</span><br><span class="line"><span class="number">127</span>. &#125;</span><br><span class="line"><span class="number">128</span>.</span><br><span class="line"><span class="number">129</span>. <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">130</span>. <span class="comment">// 设置起点和终点</span></span><br><span class="line"><span class="number">131</span>. Grid startGrid = <span class="keyword">new</span> Grid(<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line"><span class="number">132</span>. Grid endGrid = <span class="keyword">new</span> Grid(<span class="number">2</span>, <span class="number">5</span>);</span><br><span class="line"><span class="number">133</span>. <span class="comment">// 搜索迷宫终点</span></span><br><span class="line"><span class="number">134</span>. Grid resultGrid = aStarSearch(startGrid, endGrid);</span><br><span class="line"><span class="number">135</span>. <span class="comment">// 回溯迷宫路径</span></span><br><span class="line"><span class="number">136</span>. ArrayList&lt;Grid&gt; path = <span class="keyword">new</span> ArrayList&lt;Grid&gt;();</span><br><span class="line"><span class="number">137</span>. <span class="keyword">while</span> (resultGrid != <span class="keyword">null</span>) &#123;</span><br><span class="line"><span class="number">138</span>. path.add(<span class="keyword">new</span> Grid(resultGrid.x, resultGrid.y));</span><br><span class="line"><span class="number">139</span>. resultGrid = resultGrid.parent;</span><br><span class="line"><span class="number">140</span>. &#125;</span><br><span class="line"><span class="number">141</span>. <span class="comment">// 输出迷宫和路径，路径用*表示</span></span><br><span class="line"><span class="number">142</span>. <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAZE.length; i++) &#123;</span><br><span class="line"><span class="number">143</span>. <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; MAZE[<span class="number">0</span>].length; j++) &#123;</span><br><span class="line"><span class="number">144</span>. <span class="keyword">if</span> (containGrid(path, i, j)) &#123;</span><br><span class="line"><span class="number">145</span>. System.out.print(<span class="string">"*, "</span>);</span><br><span class="line"><span class="number">146</span>. &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="number">147</span>. System.out.print(MAZE[i][j] + <span class="string">", "</span>);</span><br><span class="line"><span class="number">148</span>. &#125;</span><br><span class="line"><span class="number">149</span>. &#125;</span><br><span class="line"><span class="number">150</span>. System.out.println();</span><br><span class="line"><span class="number">151</span>. &#125;</span><br><span class="line"><span class="number">152</span>. &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" <i class="fa fa-tag"> java</a>
+          
+            <a href="/tags/数据结构与算法/" <i class="fa fa-tag"> 数据结构与算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/28/bitmap的巧用/" rel="next" title="bitmap的巧用">
+                <i class="fa fa-chevron-left"></i> bitmap的巧用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/13/python安装Anaconda/" rel="prev" title="python安装Anaconda">
+                python安装Anaconda <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/WechatIMG230.jpeg" alt="一只写Bug的猫">
+            
+              <p class="site-author-name" itemprop="name">一只写Bug的猫</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">569</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A星寻路算法"><span class="nav-number">1.</span> <span class="nav-text">A星寻路算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步"><span class="nav-number">1.0.1.</span> <span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步"><span class="nav-number">1.0.2.</span> <span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步"><span class="nav-number">1.0.3.</span> <span class="nav-text">第3步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二轮操作"><span class="nav-number">1.1.</span> <span class="nav-text">第二轮操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">第2步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第3轮寻路历程"><span class="nav-number">1.2.</span> <span class="nav-text">第3轮寻路历程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步-2"><span class="nav-number">1.2.1.</span> <span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步"><span class="nav-number">1.2.2.</span> <span class="nav-text">第二步</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#java代码实现"><span class="nav-number">2.</span> <span class="nav-text">java代码实现</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一只写Bug的猫</span>
+
+  
+</div>
+
+<span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共543.8k字</span>
+</div>
+
+<div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</body>
+</html>

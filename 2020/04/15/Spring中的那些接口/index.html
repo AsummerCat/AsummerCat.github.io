@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,源码解析,spring,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spring中的那些接口Spring中提供了很多的接口来实现Bean的扩展 和注册 Bean的初始化及销毁方法初始化实现方法 @PostConstruct123451、通过java提供的@PostConstruct注解；2、通过实现spring提供的InitializingBean接口，并重写其afterPropertiesSet方法；3、通过spring的xml bean配置或bean注解指定初">
+<meta name="keywords" content="java,源码解析,spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring中的那些接口">
+<meta property="og:url" content="http://www.linjingc.top/2020/04/15/Spring中的那些接口/index.html">
+<meta property="og:site_name" content="emmm读书使我快乐">
+<meta property="og:description" content="Spring中的那些接口Spring中提供了很多的接口来实现Bean的扩展 和注册 Bean的初始化及销毁方法初始化实现方法 @PostConstruct123451、通过java提供的@PostConstruct注解；2、通过实现spring提供的InitializingBean接口，并重写其afterPropertiesSet方法；3、通过spring的xml bean配置或bean注解指定初">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-02T02:29:50.991Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring中的那些接口">
+<meta name="twitter:description" content="Spring中的那些接口Spring中提供了很多的接口来实现Bean的扩展 和注册 Bean的初始化及销毁方法初始化实现方法 @PostConstruct123451、通过java提供的@PostConstruct注解；2、通过实现spring提供的InitializingBean接口，并重写其afterPropertiesSet方法；3、通过spring的xml bean配置或bean注解指定初">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.linjingc.top/2020/04/15/Spring中的那些接口/">
+
+
+
+
+
+  <title>Spring中的那些接口 | emmm读书使我快乐</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsummerCat/AsummerCat.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">emmm读书使我快乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/04/15/Spring中的那些接口/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring中的那些接口</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-15T13:40:28+08:00">
+                2020-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Spring中的那些接口"><a href="#Spring中的那些接口" class="headerlink" title="Spring中的那些接口"></a>Spring中的那些接口</h1><p>Spring中提供了很多的接口来实现Bean的扩展 和注册</p>
+<h2 id="Bean的初始化及销毁方法"><a href="#Bean的初始化及销毁方法" class="headerlink" title="Bean的初始化及销毁方法"></a>Bean的初始化及销毁方法</h2><h3 id="初始化实现方法-PostConstruct"><a href="#初始化实现方法-PostConstruct" class="headerlink" title="初始化实现方法 @PostConstruct"></a>初始化实现方法 @PostConstruct</h3><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、通过java提供的@PostConstruct注解；</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、通过实现<span class="keyword">spring</span>提供的InitializingBean接口，并重写其afterPropertiesSet方法；</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、通过<span class="keyword">spring</span>的xml bean配置或bean注解指定初始化方法，如下面实例的initMethod方法通过@bean注解指定。</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="销毁时实现方法-PreDestroy"><a href="#销毁时实现方法-PreDestroy" class="headerlink" title="销毁时实现方法  @PreDestroy"></a>销毁时实现方法  @PreDestroy</h3><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、通过java提供的@PreDestroy注释；</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、通过实现<span class="keyword">spring</span>提供的DisposableBean接口，并重写其destroy方法；</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、通过<span class="keyword">spring</span>的xml bean配置或bean注解指定销毁方法，如下面实例的destroyMethod方法通过@bean注解指定。</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">()</span></span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"User 被实例化"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义的初始化的方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postConstruct</span><span class="params">()</span></span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"...postConstruct..."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 销毁前回调方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PreDestroy</span></span><br><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">preDestory</span><span class="params">()</span></span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"--preDestory---"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 销毁前的回调方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">end</span><span class="params">()</span></span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"--end--"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">User 被实例化</span><br><span class="line">...postConstruct...</span><br><span class="line">--自定义的初始化的方法--</span><br><span class="line">--preDestory---</span><br><span class="line">--end--</span><br></pre></td></tr></table></figure>
+<h3 id="InitializingBean接口-初始化使用"><a href="#InitializingBean接口-初始化使用" class="headerlink" title="InitializingBean接口 初始化使用"></a>InitializingBean接口 初始化使用</h3><p>该接口的作用是：允许一个bean在它的所有必须属性被BeanFactory设置后，来执行初始化的工作，该接口中只有一个方法，afterPropertiesSet</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">InitializingBean</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="DisposableBean接口-销毁时候使用"><a href="#DisposableBean接口-销毁时候使用" class="headerlink" title="DisposableBean接口 销毁时候使用"></a>DisposableBean接口 销毁时候使用</h3><p>该接口的作用是：允许在容器销毁该bean的时候获得一次回调。DisposableBean接口也只规定了一个方法：destroy</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果bean实现了InitializingBean接口，会自动调用afterPropertiesSet方法，在bean被销毁的时候如果实现了DisposableBean接口会自动回调destroy方法后然后再销毁</p>
+<h2 id="Aware接口"><a href="#Aware接口" class="headerlink" title="Aware接口"></a>Aware接口</h2><p>Aware接口从字面上翻译过来是感知捕获的含义。单纯的bean（未实现Aware系列接口）是没有知觉的；实现了Aware系列接口的bean可以访问Spring容器。这些Aware系列接口增强了Spring bean的功能，但是也会造成对Spring框架的绑定，增大了与Spring框架的耦合度。（Aware是“意识到的，察觉到的”的意思，实现了Aware系列接口表明：可以意识到、可以察觉到）</p>
+<h3 id="ApplicationContextAware"><a href="#ApplicationContextAware" class="headerlink" title="ApplicationContextAware"></a>ApplicationContextAware</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext applicationContext)</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="BeanClassLoaderAware"><a href="#BeanClassLoaderAware" class="headerlink" title="BeanClassLoaderAware"></a>BeanClassLoaderAware</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setBeanClassLoader</span><span class="params">(ClassLoader classLoader)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="BeanFactoryAware"><a href="#BeanFactoryAware" class="headerlink" title="BeanFactoryAware"></a>BeanFactoryAware</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setBeanFactory</span><span class="params">(BeanFactory beanFactory)</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="BeanNameAware"><a href="#BeanNameAware" class="headerlink" title="BeanNameAware"></a>BeanNameAware</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setBeanName</span><span class="params">(String name)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="BeanPostProcessor接口"><a href="#BeanPostProcessor接口" class="headerlink" title="BeanPostProcessor接口"></a>BeanPostProcessor接口</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>初始化之前 如果bean实现了BeanPostProcessor接口，它的postProcessBeforeInitialization方法将被调用；</span><br><span class="line"><span class="number">2.</span>初始化之后 它的postProcessAfterInitialization接口方法将被调用；</span><br></pre></td></tr></table></figure>
+<p>Aware系列接口，主要用于辅助Spring bean访问Spring容器</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestAware</span> <span class="keyword">implements</span> <span class="title">ApplicationContextAware</span>, <span class="title">BeanClassLoaderAware</span>, <span class="title">BeanFactoryAware</span>, <span class="title">BeanNameAware</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> ApplicationContext ac;</span><br><span class="line">	<span class="keyword">private</span> ClassLoader cl;</span><br><span class="line">	<span class="keyword">private</span> BeanFactory bf;</span><br><span class="line">	<span class="keyword">private</span> String beanName;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext applicationContext)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">		ac = applicationContext;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanClassLoader</span><span class="params">(ClassLoader classLoader)</span> </span>&#123;</span><br><span class="line">		cl = classLoader;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanFactory</span><span class="params">(BeanFactory beanFactory)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">		bf = beanFactory;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		beanName = name;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainStart</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		AnnotationConfigApplicationContext applicationContext = <span class="keyword">new</span> AnnotationConfigApplicationContext(AppConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">		TestAware testAware = applicationContext.getBean(TestAware<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">		System.out.println(<span class="string">"输出Application:"</span> + testAware.getAc());</span><br><span class="line">		System.out.println(<span class="string">"输出beanFactory:"</span> + testAware.getBf());</span><br><span class="line">		System.out.println(<span class="string">"输出beanName:"</span> + testAware.getBeanName());</span><br><span class="line">		System.out.println(<span class="string">"输出classLoader:"</span> + testAware.getCl());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输出<span class="symbol">Application:</span> org.springframework.context.<span class="keyword">annotation</span>.<span class="title">AnnotationConfigApplicationContext</span>@5<span class="title">a07e868</span></span><br><span class="line">输出<span class="symbol">beanFactory:</span>org.springframework.beans.factory.support.DefaultListableBeanFactory@<span class="number">531</span>d72c</span><br><span class="line">输出<span class="symbol">beanName:</span>testAware</span><br><span class="line">输出<span class="symbol">classLoader:</span>sun.misc.Launcher$AppClassLoader@<span class="number">18</span>b4aac2</span><br></pre></td></tr></table></figure>
+<h2 id="BeanPostProcessor后置处理器"><a href="#BeanPostProcessor后置处理器" class="headerlink" title="BeanPostProcessor后置处理器"></a>BeanPostProcessor后置处理器</h2><p>后置处理器是全局的 也就是每个Bean初始化的时候都会调用这个</p>
+<h3 id="postProcessBeforeInitialization-调用前调用"><a href="#postProcessBeforeInitialization-调用前调用" class="headerlink" title="postProcessBeforeInitialization()调用前调用"></a>postProcessBeforeInitialization()调用前调用</h3><p>对于每个bean后置处理器来说，它的postProcessBeforeInitialization方法会在每个bean的初始化之前被调用一次；</p>
+<h3 id="postProcessAfterInitialization初始化后调用"><a href="#postProcessAfterInitialization初始化后调用" class="headerlink" title="postProcessAfterInitialization初始化后调用"></a>postProcessAfterInitialization初始化后调用</h3><p>对于每个bean后置处理器来说，它的postProcessAfterInitialization方法会在每个bean的初始化之后被调用一次；</p>
+<h3 id="多个BeanPostProcessor执行执行顺序"><a href="#多个BeanPostProcessor执行执行顺序" class="headerlink" title="多个BeanPostProcessor执行执行顺序"></a>多个BeanPostProcessor执行执行顺序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">implements  Ordered</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOrder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span>, <span class="title">InitializingBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"初始化之前"</span>);</span><br><span class="line">		System.out.println(bean);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"初始化之后"</span>);</span><br><span class="line">           <span class="comment">//这里需要注意如果一个返回为null 后续的所有后置处理器就不执行了</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">实例化</span><br><span class="line">初始化之前</span><br><span class="line">com.linjingc.config.AppConfig$$EnhancerBySpringCGLIB$$<span class="number">7861</span>b138@<span class="number">22</span>a71081</span><br><span class="line">初始化之后</span><br></pre></td></tr></table></figure>
+<h2 id="InstantiationAwareBeanPostProcessor接口"><a href="#InstantiationAwareBeanPostProcessor接口" class="headerlink" title="InstantiationAwareBeanPostProcessor接口"></a>InstantiationAwareBeanPostProcessor接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.springframework.beans.factory.config;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">InstantiationAwareBeanPostProcessor</span> <span class="keyword">extends</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function">Object <span class="title">postProcessBeforeInstantiation</span><span class="params">(Class&lt;?&gt; beanClass, String beanName)</span> <span class="keyword">throws</span> BeansException</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">postProcessAfterInstantiation</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function">PropertyValues <span class="title">postProcessPropertyValues</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">			PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>InstantiationAwareBeanPostProcessor继承于BeanPostProcessor 除了父类的两个初始化方法 还添加了3个自己的方法</p>
+<h3 id="postProcessBeforeInstantiation-最先执行的方法-实例化之前调用"><a href="#postProcessBeforeInstantiation-最先执行的方法-实例化之前调用" class="headerlink" title="postProcessBeforeInstantiation 最先执行的方法 实例化之前调用"></a>postProcessBeforeInstantiation 最先执行的方法 实例化之前调用</h3><h3 id="postProcessAfterInstantiation-实例化之后调用-gt-还未设置属性"><a href="#postProcessAfterInstantiation-实例化之后调用-gt-还未设置属性" class="headerlink" title="postProcessAfterInstantiation 实例化之后调用 -&gt;还未设置属性"></a>postProcessAfterInstantiation 实例化之后调用 -&gt;还未设置属性</h3><h3 id="postProcessPropertyValues-对属性值进行修改"><a href="#postProcessPropertyValues-对属性值进行修改" class="headerlink" title="postProcessPropertyValues 对属性值进行修改"></a>postProcessPropertyValues 对属性值进行修改</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestInstantiationAwareBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title">InstantiationAwareBeanPostProcessor</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInstantiation</span><span class="params">(Class&lt;?&gt; beanClass, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">		System.out.println(beanName+<span class="string">"实例化之前"</span>);</span><br><span class="line">        <span class="comment">//这里需要注意如果一个返回不为null 后续的所有后置处理器就不执行了</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">postProcessAfterInstantiation</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">		System.out.println(beanName+<span class="string">"实例化之后"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> PropertyValues <span class="title">postProcessPropertyValues</span><span class="params">(PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">person</span>实例化之前    postProcessBeforeInstantiation</span><br><span class="line"><span class="keyword">person</span>实例化之后    postProcessAfterInstantiation</span><br><span class="line"><span class="keyword">person</span>初始化之前    postProcessBeforeInitialization  初始化这两个是父类调用的方法</span><br><span class="line"><span class="keyword">person</span>初始化之后    postProcessAfterInitialization</span><br></pre></td></tr></table></figure>
+<h3 id="InstantiationAwareBeanPostProcessor和BeanPostProcessor差别"><a href="#InstantiationAwareBeanPostProcessor和BeanPostProcessor差别" class="headerlink" title="InstantiationAwareBeanPostProcessor和BeanPostProcessor差别"></a>InstantiationAwareBeanPostProcessor和BeanPostProcessor差别</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">InstantiationAwareBeanPostProcessor里面 </span>方法后缀是 <span class="keyword">Instantiation </span> 表示实例化,对象还未生成</span><br><span class="line"></span><br><span class="line"><span class="keyword">BeanPostProcessor里面 </span>方法后缀 Initialization    表示初始化,对象已经生成</span><br></pre></td></tr></table></figure>
+<h2 id="BeanFactoryPostProcessor接口"><a href="#BeanFactoryPostProcessor接口" class="headerlink" title="BeanFactoryPostProcessor接口"></a>BeanFactoryPostProcessor接口</h2><p>Spring IoC容器允许BeanFactoryPostProcessor在容器实例化任何bean之前读取bean的定义(配置元数据)，并可以修改它。同时可以定义BeanFactoryPostProcessor，通过设置’order’属性来确定各个BeanFactoryPostProcessor执行顺序。<br>   注册一个BeanFactoryPostProcessor实例需要定义一个Java类来实现BeanFactoryPostProcessor接口，并重写该接口的postProcessorBeanFactory方法。通过beanFactory可以获取bean的定义信息，并可以修改bean的定义信息。</p>
+<h3 id="简单来说-就是在实例化之前-可以修改bean定义的数据-切勿getBean进行实例化操作"><a href="#简单来说-就是在实例化之前-可以修改bean定义的数据-切勿getBean进行实例化操作" class="headerlink" title="简单来说 就是在实例化之前 可以修改bean定义的数据(切勿getBean进行实例化操作)"></a>简单来说 就是在实例化之前 可以修改bean定义的数据(切勿getBean进行实例化操作)</h3><h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestBeanFactoryPostProcessor</span> <span class="title">implements</span> <span class="title">BeanFactoryPostProcessor</span> &#123;</span></span><br><span class="line">	@Override</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postProcessBeanFactory</span><span class="params">(ConfigurableListableBeanFactory beanFactory)</span> throws BeansException </span>&#123;</span><br><span class="line">		List&lt;<span class="keyword">String</span>&gt; beanNames = <span class="built_in">Stream</span>.of(beanFactory.getBeanDefinitionNames()).collect(Collectors.toList());</span><br><span class="line">		<span class="keyword">String</span> name = beanNames.stream().filter(e -&gt; e.equals(<span class="string">"person"</span>)).collect(Collectors.joining());</span><br><span class="line"></span><br><span class="line">		<span class="comment">//从BeanFactory获取到Bean定义</span></span><br><span class="line">		BeanDefinition beanDefinition = beanFactory.getBeanDefinition(name);</span><br><span class="line">		<span class="comment">//获取属性</span></span><br><span class="line">		MutablePropertyValues propertyValues = beanDefinition.getPropertyValues();</span><br><span class="line">		<span class="comment">// MutablePropertyValues如果设置了相关属性，可以修改，如果没有设置则可以添加相关属性信息</span></span><br><span class="line">		propertyValues.add(<span class="string">"name"</span>, <span class="string">"1111"</span>);</span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"修改了属性信息"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">需要注意的是 这个部分需要 使用@<span class="keyword">import</span>注册到容器中使用</span><br></pre></td></tr></table></figure>
+<h2 id="BeanDefinitionRegistryPostProcessor-将指定的类注册到spring容器中"><a href="#BeanDefinitionRegistryPostProcessor-将指定的类注册到spring容器中" class="headerlink" title="BeanDefinitionRegistryPostProcessor(将指定的类注册到spring容器中)"></a>BeanDefinitionRegistryPostProcessor(将指定的类注册到spring容器中)</h2><p>继承了BeanFactoryPostProcessor接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据名称和类型获取bean</span></span><br><span class="line">            BeanDefinitionRegistryPostProcessor pp = beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            <span class="comment">//把已经调用过postProcessBeanDefinitionRegistry方法的bean全部放在registryPostProcessors中</span></span><br><span class="line">            registryPostProcessors.add(pp);</span><br><span class="line">            <span class="comment">//把已经调用过postProcessBeanDefinitionRegistry方法的bean的名称全部放在processedBeans中</span></span><br><span class="line">            processedBeans.add(ppName);</span><br><span class="line">            <span class="comment">//执行此bean的postProcessBeanDefinitionRegistry方法</span></span><br><span class="line">            pp.postProcessBeanDefinitionRegistry(registry);</span><br></pre></td></tr></table></figure>
+<h2 id="BeanFactory接口"><a href="#BeanFactory接口" class="headerlink" title="BeanFactory接口"></a>BeanFactory接口</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这个是Spring核心接口之一</span><br><span class="line">BeanFactory接口是Spring容器的核心接口，负责：实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。</span><br></pre></td></tr></table></figure>
+<h2 id="FactoryBean接口"><a href="#FactoryBean接口" class="headerlink" title="FactoryBean接口"></a>FactoryBean接口</h2><p>需要实现FactoryBean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFactoryBean</span> <span class="keyword">implements</span> <span class="title">FactoryBean</span> </span>&#123;</span><br><span class="line">	<span class="comment">//注入属性</span></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">getObject</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"工厂类实例化前"</span>);</span><br><span class="line">		Person pp = <span class="keyword">new</span> Person(name);</span><br><span class="line">		System.out.println(<span class="string">"工厂类实例化后"</span>);</span><br><span class="line">		<span class="keyword">return</span>  pp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">		<span class="keyword">return</span> Person<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="工厂Bean生产两个对象"><a href="#工厂Bean生产两个对象" class="headerlink" title="工厂Bean生产两个对象"></a>工厂Bean生产两个对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> TestFactoryBean <span class="title">xiaoming</span><span class="params">()</span></span>&#123;</span><br><span class="line">		TestFactoryBean testFactoryBean = <span class="keyword">new</span> TestFactoryBean();</span><br><span class="line">		testFactoryBean.setName(<span class="string">"小明"</span>);</span><br><span class="line">		<span class="keyword">return</span> testFactoryBean;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> TestFactoryBean <span class="title">xiaodong</span><span class="params">()</span></span>&#123;</span><br><span class="line">		TestFactoryBean testFactoryBean = <span class="keyword">new</span> TestFactoryBean();</span><br><span class="line">		testFactoryBean.setName(<span class="string">"小东"</span>);</span><br><span class="line">		<span class="keyword">return</span> testFactoryBean;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h3><p>获取到被工厂类生产的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">		AnnotationConfigApplicationContext applicationContext = <span class="keyword">new</span> AnnotationConfigApplicationContext(AppConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//		Person person = (Person) applicationContext.getBean("person");</span></span><br><span class="line">		<span class="comment">//获取工厂类生产的对象</span></span><br><span class="line">		Person person1 = (Person) applicationContext.getBean(<span class="string">"xiaoming"</span>);</span><br><span class="line">		Person person2 = (Person) applicationContext.getBean(<span class="string">"xiaodong"</span>);</span><br><span class="line">		<span class="comment">//获取工厂类 需要加上&amp;</span></span><br><span class="line">		String simpleName = applicationContext.getBean(<span class="string">"&amp;testFactoryBean"</span>).getClass().getSimpleName();</span><br><span class="line">		System.out.println(person1.toString());</span><br><span class="line">		System.out.println(person2.toString());</span><br></pre></td></tr></table></figure>
+<h3 id="主要用处是"><a href="#主要用处是" class="headerlink" title="主要用处是"></a>主要用处是</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>可以实现代理原生类 进行扩展的功能</span><br><span class="line"><span class="number">2.</span>可以实现动态加载  比如载入数据源之类的</span><br></pre></td></tr></table></figure>
+<h2 id="ApplicationListener监听器"><a href="#ApplicationListener监听器" class="headerlink" title="ApplicationListener监听器"></a>ApplicationListener监听器</h2><p>目的为了用来监听 容器注销 容器初始化Refresh完成之后的事件 进行操作</p>
+<h3 id="注入方式"><a href="#注入方式" class="headerlink" title="注入方式"></a>注入方式</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 使用<span class="meta">@Component</span> 注册bean</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 使用<span class="meta">@EventListene</span> 使用EventListenerMethodProcessor处理器来解析方法上的<span class="meta">@EventListener</span>；</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">语法:</span><br><span class="line"> ApplicationListener&lt;ContextRefreshedEvent&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">部分事件</span><br><span class="line">ContextClosedEvent        关闭容器触发   常用  applicationContext.close()<span class="comment">;</span></span><br><span class="line">ContextRefreshedEvent     初始化或者刷新操作的时候触发  常用 applicationContext.refresh()<span class="comment">;</span></span><br><span class="line">ContextStartedEvent       启动触发的事件    applicationContext.start()<span class="comment">; </span></span><br><span class="line">ContextStoppedEvent       停止时触发的事件   applicationContext.stop()<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">发布一个事件：applicationContext.publishEvent()；</span><br></pre></td></tr></table></figure>
+<h3 id="测试-4"><a href="#测试-4" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Application初始化或者刷新操作的监听器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RefreshListener</span> <span class="keyword">implements</span> <span class="title">ApplicationListener</span>&lt;<span class="title">ContextRefreshedEvent</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ContextRefreshedEvent event)</span> </span>&#123;</span><br><span class="line">		ApplicationContext ac = event.getApplicationContext();</span><br><span class="line">		<span class="comment">// 根容器为Spring容器</span></span><br><span class="line">		<span class="comment">//在整合SpringMVC的时候需要判断一下 因为存在父子容器</span></span><br><span class="line">		<span class="keyword">if</span> (ac.getParent() == <span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"RefreshListener-&gt; 监听到初始化或者刷新事件"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" <i class="fa fa-tag"> java</a>
+          
+            <a href="/tags/源码解析/" <i class="fa fa-tag"> 源码解析</a>
+          
+            <a href="/tags/spring/" <i class="fa fa-tag"> spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/13/Junit测试重温/" rel="next" title="Junit测试重温">
+                <i class="fa fa-chevron-left"></i> Junit测试重温
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/16/构建SpringBoot自定义starter包/" rel="prev" title="构建SpringBoot自定义starter包">
+                构建SpringBoot自定义starter包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/WechatIMG230.jpeg" alt="一只写Bug的猫">
+            
+              <p class="site-author-name" itemprop="name">一只写Bug的猫</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">569</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring中的那些接口"><span class="nav-number">1.</span> <span class="nav-text">Spring中的那些接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean的初始化及销毁方法"><span class="nav-number">1.1.</span> <span class="nav-text">Bean的初始化及销毁方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化实现方法-PostConstruct"><span class="nav-number">1.1.1.</span> <span class="nav-text">初始化实现方法 @PostConstruct</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#销毁时实现方法-PreDestroy"><span class="nav-number">1.1.2.</span> <span class="nav-text">销毁时实现方法  @PreDestroy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行顺序"><span class="nav-number">1.1.3.</span> <span class="nav-text">执行顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InitializingBean接口-初始化使用"><span class="nav-number">1.1.4.</span> <span class="nav-text">InitializingBean接口 初始化使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DisposableBean接口-销毁时候使用"><span class="nav-number">1.1.5.</span> <span class="nav-text">DisposableBean接口 销毁时候使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aware接口"><span class="nav-number">1.2.</span> <span class="nav-text">Aware接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationContextAware"><span class="nav-number">1.2.1.</span> <span class="nav-text">ApplicationContextAware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanClassLoaderAware"><span class="nav-number">1.2.2.</span> <span class="nav-text">BeanClassLoaderAware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanFactoryAware"><span class="nav-number">1.2.3.</span> <span class="nav-text">BeanFactoryAware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanNameAware"><span class="nav-number">1.2.4.</span> <span class="nav-text">BeanNameAware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanPostProcessor接口"><span class="nav-number">1.2.5.</span> <span class="nav-text">BeanPostProcessor接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">1.2.6.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">1.2.7.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BeanPostProcessor后置处理器"><span class="nav-number">1.3.</span> <span class="nav-text">BeanPostProcessor后置处理器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#postProcessBeforeInitialization-调用前调用"><span class="nav-number">1.3.1.</span> <span class="nav-text">postProcessBeforeInitialization()调用前调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#postProcessAfterInitialization初始化后调用"><span class="nav-number">1.3.2.</span> <span class="nav-text">postProcessAfterInitialization初始化后调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个BeanPostProcessor执行执行顺序"><span class="nav-number">1.3.3.</span> <span class="nav-text">多个BeanPostProcessor执行执行顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-1"><span class="nav-number">1.3.4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出-1"><span class="nav-number">1.3.5.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InstantiationAwareBeanPostProcessor接口"><span class="nav-number">1.4.</span> <span class="nav-text">InstantiationAwareBeanPostProcessor接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#postProcessBeforeInstantiation-最先执行的方法-实例化之前调用"><span class="nav-number">1.4.1.</span> <span class="nav-text">postProcessBeforeInstantiation 最先执行的方法 实例化之前调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#postProcessAfterInstantiation-实例化之后调用-gt-还未设置属性"><span class="nav-number">1.4.2.</span> <span class="nav-text">postProcessAfterInstantiation 实例化之后调用 -&gt;还未设置属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#postProcessPropertyValues-对属性值进行修改"><span class="nav-number">1.4.3.</span> <span class="nav-text">postProcessPropertyValues 对属性值进行修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出-2"><span class="nav-number">1.4.4.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InstantiationAwareBeanPostProcessor和BeanPostProcessor差别"><span class="nav-number">1.4.5.</span> <span class="nav-text">InstantiationAwareBeanPostProcessor和BeanPostProcessor差别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BeanFactoryPostProcessor接口"><span class="nav-number">1.5.</span> <span class="nav-text">BeanFactoryPostProcessor接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单来说-就是在实例化之前-可以修改bean定义的数据-切勿getBean进行实例化操作"><span class="nav-number">1.5.1.</span> <span class="nav-text">简单来说 就是在实例化之前 可以修改bean定义的数据(切勿getBean进行实例化操作)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-2"><span class="nav-number">1.5.2.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BeanDefinitionRegistryPostProcessor-将指定的类注册到spring容器中"><span class="nav-number">1.6.</span> <span class="nav-text">BeanDefinitionRegistryPostProcessor(将指定的类注册到spring容器中)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BeanFactory接口"><span class="nav-number">1.7.</span> <span class="nav-text">BeanFactory接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FactoryBean接口"><span class="nav-number">1.8.</span> <span class="nav-text">FactoryBean接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂Bean生产两个对象"><span class="nav-number">1.8.1.</span> <span class="nav-text">工厂Bean生产两个对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-3"><span class="nav-number">1.8.2.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要用处是"><span class="nav-number">1.8.3.</span> <span class="nav-text">主要用处是</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ApplicationListener监听器"><span class="nav-number">1.9.</span> <span class="nav-text">ApplicationListener监听器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注入方式"><span class="nav-number">1.9.1.</span> <span class="nav-text">注入方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件"><span class="nav-number">1.9.2.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-4"><span class="nav-number">1.9.3.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一只写Bug的猫</span>
+
+  
+</div>
+
+<span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共543.8k字</span>
+</div>
+
+<div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</body>
+</html>

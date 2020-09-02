@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/飞天小女警_花花.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,django,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="demo地址Django 对各种数据库提供了很好的支持，包括：PostgreSQL、MySQL、SQLite、Oracle。 Django 为这些数据库提供了统一的调用API。 我们可以根据自己业务需求选择不同的数据库。 MySQL 是 Web 应用中最常用的数据库。本章节我们将以 Mysql 作为实例进行介绍。你可以通过本站的 MySQL 教程 了解更多Mysql的基础知识。 如果你没安装 my">
+<meta name="keywords" content="python,django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django的学习-模型连接数据库(三)">
+<meta property="og:url" content="http://www.linjingc.top/2019/12/17/django的学习-模型连接数据库(三)/index.html">
+<meta property="og:site_name" content="emmm读书使我快乐">
+<meta property="og:description" content="demo地址Django 对各种数据库提供了很好的支持，包括：PostgreSQL、MySQL、SQLite、Oracle。 Django 为这些数据库提供了统一的调用API。 我们可以根据自己业务需求选择不同的数据库。 MySQL 是 Web 应用中最常用的数据库。本章节我们将以 Mysql 作为实例进行介绍。你可以通过本站的 MySQL 教程 了解更多Mysql的基础知识。 如果你没安装 my">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-02T02:29:51.028Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="django的学习-模型连接数据库(三)">
+<meta name="twitter:description" content="demo地址Django 对各种数据库提供了很好的支持，包括：PostgreSQL、MySQL、SQLite、Oracle。 Django 为这些数据库提供了统一的调用API。 我们可以根据自己业务需求选择不同的数据库。 MySQL 是 Web 应用中最常用的数据库。本章节我们将以 Mysql 作为实例进行介绍。你可以通过本站的 MySQL 教程 了解更多Mysql的基础知识。 如果你没安装 my">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.linjingc.top/2019/12/17/django的学习-模型连接数据库(三)/">
+
+
+
+
+
+  <title>django的学习-模型连接数据库(三) | emmm读书使我快乐</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsummerCat/AsummerCat.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">emmm读书使我快乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/12/17/django的学习-模型连接数据库(三)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">django的学习-模型连接数据库(三)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-17T15:28:19+08:00">
+                2019-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="demo地址"><a href="#demo地址" class="headerlink" title="demo地址"></a><a href="https://github.com/AsummerCat/gogogo/blob/0f571b4db3e648b2edfd6a5eb786ed6931c4b753/gogogo/dbTest.py" target="_blank" rel="noopener">demo地址</a></h2><p>Django 对各种数据库提供了很好的支持，包括：PostgreSQL、MySQL、SQLite、Oracle。</p>
+<p>Django 为这些数据库提供了统一的调用API。 我们可以根据自己业务需求选择不同的数据库。</p>
+<p>MySQL 是 Web 应用中最常用的数据库。本章节我们将以 Mysql 作为实例进行介绍。你可以通过本站的<a href="https://www.runoob.com/django/mysql/mysql-tutorial.html" target="_blank" rel="noopener"> MySQL 教程</a> 了解更多Mysql的基础知识。</p>
+<p>如果你没安装 mysql 驱动，可以执行以下命令安装：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> mysqlclient</span><br></pre></td></tr></table></figure>
+<h2 id="必须-数据库配置"><a href="#必须-数据库配置" class="headerlink" title="(必须)数据库配置"></a>(必须)数据库配置</h2><p>我们在项目的 settings.py 文件中找到 DATABASES 配置项，将其信息修改为：</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,  <span class="comment"># 或者使用 mysql.connector.django</span></span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">'test'</span>,</span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">'test'</span>,</span><br><span class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'test123'</span>,</span><br><span class="line">        <span class="string">'HOST'</span>:<span class="string">'localhost'</span>,</span><br><span class="line">        <span class="string">'PORT'</span>:<span class="string">'3306'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里添加了中文注释，所以你需要在 HelloWorld/settings.py 文件头部添加 <strong># -*- coding: UTF-8 -*-</strong>。</p>
+<p>上面包含数据库名称和用户的信息，它们与 MySQL 中对应数据库和用户的设置相同。Django 根据这一设置，与 MySQL 中相应的数据库和用户连接起来。</p>
+<h2 id="必须-添加apps"><a href="#必须-添加apps" class="headerlink" title="(必须)添加apps"></a>(必须)添加apps</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">在settings.py中找到INSTALLED_APPS这一项，如下：</span><br><span class="line">INSTALLED_APPS = (</span><br><span class="line">    <span class="string">'django.contrib.admin'</span>,</span><br><span class="line">    <span class="string">'django.contrib.auth'</span>,</span><br><span class="line">    <span class="string">'django.contrib.contenttypes'</span>,</span><br><span class="line">    <span class="string">'django.contrib.sessions'</span>,</span><br><span class="line">    <span class="string">'django.contrib.messages'</span>,</span><br><span class="line">    <span class="string">'django.contrib.staticfiles'</span>,</span><br><span class="line">    <span class="string">'gogogo'</span>,               <span class="comment"># 添加此项</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这边表示添加项目到路径中</p>
+<h2 id="定义模型"><a href="#定义模型" class="headerlink" title="定义模型"></a>定义模型</h2><p>我们修改 TestModel/models.py 文件，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># models.py</span></span><br><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<p>以上的类名代表了数据库表名，且继承了models.Model，类里面的字段代表数据表中的字段(name)，数据类型则由CharField（相当于varchar）、DateField（相当于datetime）， max_length 参数限定长度。</p>
+<p>接下来在settings.py中找到INSTALLED_APPS这一项，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    <span class="string">'django.contrib.admin'</span>,</span><br><span class="line">    <span class="string">'django.contrib.auth'</span>,</span><br><span class="line">    <span class="string">'django.contrib.contenttypes'</span>,</span><br><span class="line">    <span class="string">'django.contrib.sessions'</span>,</span><br><span class="line">    <span class="string">'django.contrib.messages'</span>,</span><br><span class="line">    <span class="string">'django.contrib.staticfiles'</span>,</span><br><span class="line">    <span class="string">'TestModel'</span>,               <span class="comment"># 添加此项</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="如果已经存在的数据库-可以进行导出实体构建"><a href="#如果已经存在的数据库-可以进行导出实体构建" class="headerlink" title="如果已经存在的数据库 可以进行导出实体构建"></a>如果已经存在的数据库 可以进行导出实体构建</h2><p><code>pip install mysqlclient</code></p>
+<p>运行命令：</p>
+<p><code>python manage.py inspectdb &gt; models.py</code></p>
+<p>然后，在 manage.py 的 下面就会出现一个 models.py，里面包含了已有数据库的所有表及结构。<br>内容如下：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class User(models.Model):</span><br><span class="line">    name = models.CharField(<span class="attribute">max_length</span>=255)</span><br><span class="line">    password = models.CharField(<span class="attribute">max_length</span>=255, <span class="attribute">blank</span>=<span class="literal">True</span>, <span class="attribute">null</span>=<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line">    class Meta:</span><br><span class="line">        managed = <span class="literal">False</span></span><br><span class="line">        db_table = <span class="string">'user'</span></span><br></pre></td></tr></table></figure>
+<p>把想要使用的表的 managed 都改成 True。<code>managed = True</code><br>运行命令：<br><code>python manage.py migrate</code><br>成功后就可以对已有数据库进行 ORM 操作了。</p>
+<p>(注意:) 每张表必须都要有主键 不然可能查询失败</p>
+<h2 id="清空数据库"><a href="#清空数据库" class="headerlink" title="清空数据库"></a>清空数据库</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py flush</span><br></pre></td></tr></table></figure>
+<p>此命令会询问是 yes 还是 no, 选择 yes 会把<strong>数据全部清空掉</strong>，只留下空表。</p>
+<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><h2 id="导包处理"><a href="#导包处理" class="headerlink" title="导包处理"></a>导包处理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gogogo.models <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
+<h2 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"> </span><br><span class="line"><span class="keyword">from</span> TestModel.models <span class="keyword">import</span> Test</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 数据库操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">testdb</span><span class="params">(request)</span>:</span></span><br><span class="line">    test1 = Test(name=<span class="string">'runoob'</span>)</span><br><span class="line">    test1.save()</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"&lt;p&gt;数据添加成功！&lt;/p&gt;"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"> </span><br><span class="line"><span class="keyword">from</span> TestModel.models <span class="keyword">import</span> Test</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 数据库操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">testdb</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">    response = <span class="string">""</span></span><br><span class="line">    response1 = <span class="string">""</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 通过objects这个模型管理器的all()获得所有数据行，相当于SQL中的SELECT * FROM</span></span><br><span class="line">    list = Test.objects.all()</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># filter相当于SQL中的WHERE，可设置条件过滤结果</span></span><br><span class="line">    response2 = Test.objects.filter(id=<span class="number">1</span>) </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 获取单个对象</span></span><br><span class="line">    response3 = Test.objects.get(id=<span class="number">1</span>) </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 限制返回的数据 相当于 SQL 中的 OFFSET 0 LIMIT 2;</span></span><br><span class="line">    Test.objects.order_by(<span class="string">'name'</span>)[<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#数据排序</span></span><br><span class="line">    Test.objects.order_by(<span class="string">"id"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 上面的方法可以连锁使用</span></span><br><span class="line">    Test.objects.filter(name=<span class="string">"runoob"</span>).order_by(<span class="string">"id"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 输出所有数据</span></span><br><span class="line">    <span class="keyword">for</span> var <span class="keyword">in</span> list:</span><br><span class="line">        response1 += var.name + <span class="string">" "</span></span><br><span class="line">    response = response1</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"&lt;p&gt;"</span> + response + <span class="string">"&lt;/p&gt;"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h3><p>修改数据可以使用 save() 或 update():</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"> </span><br><span class="line"><span class="keyword">from</span> TestModel.models <span class="keyword">import</span> Test</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 数据库操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">testdb</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># 修改其中一个id=1的name字段，再save，相当于SQL中的UPDATE</span></span><br><span class="line">    test1 = Test.objects.get(id=<span class="number">1</span>)</span><br><span class="line">    test1.name = <span class="string">'Google'</span></span><br><span class="line">    test1.save()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 另外一种方式</span></span><br><span class="line">    <span class="comment">#Test.objects.filter(id=1).update(name='Google')</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 修改所有的列</span></span><br><span class="line">    <span class="comment"># Test.objects.all().update(name='Google')</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"&lt;p&gt;修改成功&lt;/p&gt;"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>删除数据库中的对象只需调用该对象的delete()方法即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"> </span><br><span class="line"><span class="keyword">from</span> TestModel.models <span class="keyword">import</span> Test</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 数据库操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">testdb</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># 删除id=1的数据</span></span><br><span class="line">    test1 = Test.objects.get(id=<span class="number">1</span>)</span><br><span class="line">    test1.delete()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 另外一种方式</span></span><br><span class="line">    <span class="comment"># Test.objects.filter(id=1).delete()</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 删除所有数据</span></span><br><span class="line">    <span class="comment"># Test.objects.all().delete()</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"&lt;p&gt;删除成功&lt;/p&gt;"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="查看django-queryset执行的sql"><a href="#查看django-queryset执行的sql" class="headerlink" title="查看django queryset执行的sql"></a>查看django queryset执行的sql</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">print</span> <span class="selector-tag">str</span>(<span class="selector-tag">Author</span><span class="selector-class">.objects</span><span class="selector-class">.all</span>()<span class="selector-class">.query</span>)</span><br></pre></td></tr></table></figure>
+<p>输出:</p>
+<figure class="highlight ruleslanguage"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">"blog_author"</span>.<span class="string">"id"</span>, <span class="string">"blog_author"</span>.<span class="string">"name"</span>, <span class="string">"blog_author"</span>.<span class="string">"qq"</span>, <span class="string">"blog_author"</span>.<span class="string">"addr"</span>, <span class="string">"blog_author"</span>.<span class="string">"email"</span> <span class="keyword">FROM</span> <span class="string">"blog_author"</span></span><br></pre></td></tr></table></figure>
+<h3 id="以values-list-获取元组形式结果"><a href="#以values-list-获取元组形式结果" class="headerlink" title="以values_list 获取元组形式结果"></a><strong>以values_list 获取元组形式结果</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">authors = Author.objects.values_list(<span class="string">'name'</span>, <span class="string">'qq'</span>)</span><br><span class="line">list(authors)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">[(<span class="string">u'WeizhongTu'</span>, <span class="string">u'336643078'</span>),</span><br><span class="line"></span><br><span class="line"> (<span class="string">u'twz915'</span>, <span class="string">u'915792575'</span>),</span><br><span class="line"></span><br><span class="line"> (<span class="string">u'wangdachui'</span>, <span class="string">u'353506297'</span>),</span><br><span class="line"></span><br><span class="line"> (<span class="string">u'xiaoming'</span>, <span class="string">u'004466315'</span>)]</span><br></pre></td></tr></table></figure>
+<p>如果只需要 1 个字段，可以指定 flat=True</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Author.objects.values_list(<span class="string">'name'</span>, <span class="attribute">flat</span>=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="以values-获取字典形式的结果"><a href="#以values-获取字典形式的结果" class="headerlink" title="以values 获取字典形式的结果"></a><strong>以values 获取字典形式的结果</strong></h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Author.objects.values(<span class="string">'name'</span>, <span class="string">'qq'</span>)</span><br><span class="line"> list(Author.objects.values(<span class="string">'name'</span>, <span class="string">'qq'</span>))</span><br><span class="line"> </span><br><span class="line"> 输出:</span><br><span class="line"> [&#123;<span class="string">'name'</span>: <span class="string">u'WeizhongTu'</span>, <span class="string">'qq'</span>: <span class="string">u'336643078'</span>&#125;,</span><br><span class="line"></span><br><span class="line"> &#123;<span class="string">'name'</span>: <span class="string">u'twz915'</span>, <span class="string">'qq'</span>: <span class="string">u'915792575'</span>&#125;,</span><br><span class="line"></span><br><span class="line"> &#123;<span class="string">'name'</span>: <span class="string">u'wangdachui'</span>, <span class="string">'qq'</span>: <span class="string">u'353506297'</span>&#125;,</span><br><span class="line"></span><br><span class="line"> &#123;<span class="string">'name'</span>: <span class="string">u'xiaoming'</span>, <span class="string">'qq'</span>: <span class="string">u'004466315'</span>&#125;]</span><br></pre></td></tr></table></figure>
+<h3 id="extra-实现-别名，条件，排序等"><a href="#extra-实现-别名，条件，排序等" class="headerlink" title="extra 实现 别名，条件，排序等"></a><strong>extra 实现 别名，条件，排序等</strong></h3><h4 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Tag.objects.all().extra(select=&#123;<span class="string">'tag_name'</span>: <span class="string">'name'</span>&#125;)</span><br><span class="line"></span><br><span class="line">In [<span class="number">45</span>]: tags[<span class="number">0</span>].name</span><br><span class="line">Out[<span class="number">45</span>]: <span class="string">u'Django'</span></span><br><span class="line">In [<span class="number">46</span>]: tags[<span class="number">0</span>].tag_name</span><br><span class="line">Out[<span class="number">46</span>]: <span class="string">u'Django'</span></span><br></pre></td></tr></table></figure>
+<h3 id="defer-排除不需要的字段"><a href="#defer-排除不需要的字段" class="headerlink" title="defer 排除不需要的字段"></a><strong>defer 排除不需要的字段</strong></h3><p>在复杂的情况下，表中可能有些字段内容非常多，取出来转化成 Python 对象会占用大量的资源。</p>
+<p>这时候可以用 defer 来排除这些字段，比如我们在文章列表页，只需要文章的标题和作者，没有必要把文章的内容也获取出来（因为会转换成python对象，浪费内存）</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">原语句</span><br><span class="line"><span class="selector-tag">Article</span><span class="selector-class">.objects</span><span class="selector-class">.all</span>()</span><br><span class="line">忽略<span class="selector-tag">content</span>字段</span><br><span class="line"><span class="selector-tag">Article</span><span class="selector-class">.objects</span><span class="selector-class">.all</span>()<span class="selector-class">.defer</span>(<span class="string">'content'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="only-仅选择需要的字段"><a href="#only-仅选择需要的字段" class="headerlink" title="only 仅选择需要的字段"></a><strong>only 仅选择需要的字段</strong></h3><p>和 defer 相反，only 用于取出需要的字段，假如我们<strong>只需要查出 作者的名称</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Author.objects.all().only(<span class="string">'name'</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" <i class="fa fa-tag"> python</a>
+          
+            <a href="/tags/django/" <i class="fa fa-tag"> django</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/17/django的学习-HTML模板语法(二)/" rel="next" title="django的学习-HTML模板语法(二)">
+                <i class="fa fa-chevron-left"></i> django的学习-HTML模板语法(二)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/18/django的学习-原生数据库语句(四)/" rel="prev" title="django的学习-原生数据库语句(四)">
+                django的学习-原生数据库语句(四) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/WechatIMG230.jpeg" alt="一只写Bug的猫">
+            
+              <p class="site-author-name" itemprop="name">一只写Bug的猫</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">569</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#demo地址"><span class="nav-number">1.</span> <span class="nav-text">demo地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#必须-数据库配置"><span class="nav-number">2.</span> <span class="nav-text">(必须)数据库配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#必须-添加apps"><span class="nav-number">3.</span> <span class="nav-text">(必须)添加apps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义模型"><span class="nav-number">4.</span> <span class="nav-text">定义模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果已经存在的数据库-可以进行导出实体构建"><span class="nav-number">5.</span> <span class="nav-text">如果已经存在的数据库 可以进行导出实体构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清空数据库"><span class="nav-number">6.</span> <span class="nav-text">清空数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库操作"><span class="nav-number">7.</span> <span class="nav-text">数据库操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导包处理"><span class="nav-number">8.</span> <span class="nav-text">导包处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新增"><span class="nav-number">9.</span> <span class="nav-text">新增</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取数据"><span class="nav-number">9.1.</span> <span class="nav-text">获取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新数据"><span class="nav-number">9.2.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据"><span class="nav-number">9.3.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看django-queryset执行的sql"><span class="nav-number">9.4.</span> <span class="nav-text">查看django queryset执行的sql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以values-list-获取元组形式结果"><span class="nav-number">9.5.</span> <span class="nav-text">以values_list 获取元组形式结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以values-获取字典形式的结果"><span class="nav-number">9.6.</span> <span class="nav-text">以values 获取字典形式的结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extra-实现-别名，条件，排序等"><span class="nav-number">9.7.</span> <span class="nav-text">extra 实现 别名，条件，排序等</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#别名"><span class="nav-number">9.7.1.</span> <span class="nav-text">别名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#defer-排除不需要的字段"><span class="nav-number">9.8.</span> <span class="nav-text">defer 排除不需要的字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#only-仅选择需要的字段"><span class="nav-number">9.9.</span> <span class="nav-text">only 仅选择需要的字段</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一只写Bug的猫</span>
+
+  
+</div>
+
+<span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共543.8k字</span>
+</div>
+
+<div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</body>
+</html>
