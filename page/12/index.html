@@ -294,6 +294,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/05/13/线上故障CPU100-处理方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/13/线上故障CPU100-处理方案/" itemprop="url">线上故障CPU100%处理方案</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-13T10:26:35+08:00">
+                2020-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  154
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-top-c-查看进程列表"><a href="#1-top-c-查看进程列表" class="headerlink" title="1. top -c 查看进程列表"></a>1. top -c 查看进程列表</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -c 查看进程列表,然后输入P,按照CPU使用率排序</span><br></pre></td></tr></table></figure>
+<h3 id="2-top-Hp-43987-定位耗费CPU的线程"><a href="#2-top-Hp-43987-定位耗费CPU的线程" class="headerlink" title="2. top -Hp 43987 定位耗费CPU的线程"></a>2. top -Hp 43987 定位耗费CPU的线程</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">top -Hp 进程ID </span><br><span class="line">输入找到的进程ID,然后输入P,按照CPU使用率排序,你会看到</span><br></pre></td></tr></table></figure>
+<h3 id="3-定位到线程后-换算pid为16进制"><a href="#3-定位到线程后-换算pid为16进制" class="headerlink" title="3. 定位到线程后 换算pid为16进制"></a>3. 定位到线程后 换算pid为16进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">获取到到<span class="number">16</span>进制的线程ID</span><br><span class="line">printf <span class="string">"%x\n"</span> <span class="number">16872</span>      获取到比如: <span class="number">41e8</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-使用statck打印进程的堆栈信息"><a href="#4-使用statck打印进程的堆栈信息" class="headerlink" title="4. 使用statck打印进程的堆栈信息"></a>4. 使用statck打印进程的堆栈信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">获取到到<span class="number">16</span>进制的线程ID后, 使用statck打印进程的堆栈信息</span><br><span class="line"></span><br><span class="line">jstatck 进程ID|grep <span class="string">'线程ID'</span> -C5 --color</span><br><span class="line"></span><br><span class="line">例如:</span><br><span class="line">jstatck <span class="number">43987</span>|grep <span class="string">'0X41e8'</span> -C5 --color</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/05/13/指令重排要符合happens-befroe原则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1688,162 +1841,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/05/08/防止缓存穿透方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/08/防止缓存穿透方案/" itemprop="url">防止缓存穿透方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T17:48:35+08:00">
-                2020-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="防止缓存穿透方案"><a href="#防止缓存穿透方案" class="headerlink" title="防止缓存穿透方案"></a>防止缓存穿透方案</h1><p>缓存可以说是我们对数据库的一道保护墙，缓存穿透就是冲破了我们的保护墙，每个缓存都有一个缓存的 Key，当相同的 Key 过来时，我们就直接取缓存中的数据返回给调用方，而不用去查询数据库，如果调用方传来的永远都是我们缓存中不存在的 Key，这样每次都需要去数据库中查询一次，就会导致数据库压力增大，这样缓存就失去意义了，这就是所谓的缓存穿透。</p>
-<h2 id="缓存穿透的危害"><a href="#缓存穿透的危害" class="headerlink" title="缓存穿透的危害"></a>缓存穿透的危害</h2><p>我们已经了解了什么是缓存穿透，其危害显而易见，当大量的请求过来时，首先会从缓存中去寻找数据，当缓存中没有对应的数据时又转到了数据库中去寻找，瞬时数据库的压力会很大，相当于没有用到缓存，同时还增加了去缓存中查找数据的时间。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/08/防止缓存穿透方案/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1896,7 +1893,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">578</span>
+                  <span class="site-state-item-count">579</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1972,7 +1969,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共554.1k字</span>
+  <span class="post-count">全站共555.1k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
