@@ -294,6 +294,319 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/03/30/java的监控工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/30/java的监控工具/" itemprop="url">java的监控工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T16:57:33+08:00">
+                2019-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  427
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="jps-列出java进程"><a href="#jps-列出java进程" class="headerlink" title="jps 列出java进程"></a>jps 列出java进程</h1><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令: jps</span><br><span class="line"></span><br><span class="line">-<span class="ruby"> 列出java进程类似ps命令</span></span><br><span class="line"></span><br><span class="line"><span class="ruby">参数<span class="symbol">:</span></span></span><br><span class="line"><span class="ruby">  -q <span class="symbol">:</span>可以指定jps只输出进程ID,不输出类的短名称</span></span><br><span class="line"><span class="ruby">  -m <span class="symbol">:</span>可以用于输出传递给java进程主函数main的参数</span></span><br><span class="line"><span class="ruby">  -i <span class="symbol">:</span>可以用于输出主函数的完整路径</span></span><br><span class="line"><span class="ruby">  -v <span class="symbol">:</span>可以显示传递给jvm的参数</span></span><br></pre></td></tr></table></figure>
+<h1 id="jinfo-用来查看java应用程序扩展参数-修改部分参数"><a href="#jinfo-用来查看java应用程序扩展参数-修改部分参数" class="headerlink" title="jinfo 用来查看java应用程序扩展参数 修改部分参数"></a>jinfo 用来查看java应用程序扩展参数 修改部分参数</h1><p><img src="/img/2019-3-30/jinfo.png" alt="jinfo"></p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令: jinfo</span><br><span class="line"></span><br><span class="line">- 用来查看java应用程序扩展参数 修改部分参数 (简单的 比如 -PringGCDetail)</span><br><span class="line"></span><br><span class="line">命令格式:  jinfo -<span class="built_in">flag</span> xxxx pid </span><br><span class="line"></span><br><span class="line">参数:</span><br><span class="line"> -<span class="built_in">flag</span>  &lt;<span class="built_in">name</span>&gt; 打印指定jvm参数</span><br><span class="line"> -<span class="built_in">flag</span> +-&lt;<span class="built_in">name</span>&gt; 设置指定jvm参数的布尔值</span><br><span class="line"> -<span class="built_in">flag</span> &lt;<span class="built_in">name</span>&gt;=&lt;value&gt; 设置指定jvm参数的值</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/30/java的监控工具/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/03/30/linux系统监控命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/30/linux系统监控命令/" itemprop="url">linux系统监控命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T15:48:55+08:00">
+                2019-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  365
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="系统监控类的命令"><a href="#系统监控类的命令" class="headerlink" title="系统监控类的命令"></a>系统监控类的命令</h1><h2 id="uptime-查看系统基本情况"><a href="#uptime-查看系统基本情况" class="headerlink" title="uptime  查看系统基本情况"></a>uptime  查看系统基本情况</h2><p><img src="/img/2019-3-30/uptime.png" alt="top命令"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">uptime</span><br><span class="line">--系统时间</span><br><span class="line"></span><br><span class="line">--运行时间</span><br><span class="line">  * 案例中为 开机后运行 <span class="number">6</span> mins</span><br><span class="line">  </span><br><span class="line">--连接数</span><br><span class="line">  * 每一个终端算一个连接 <span class="number">1</span> users</span><br><span class="line">  </span><br><span class="line">--<span class="number">1</span>,<span class="number">5</span>,<span class="number">15</span>分钟内系统平均负载</span><br><span class="line">   * 运行队列中的平均负载  数值越大 负载越高</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/30/linux系统监控命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/03/27/echarts图表生成工具/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1522,318 +1835,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/03/05/List分片取余/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/05/List分片取余/" itemprop="url">List分片取余</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T20:07:38+08:00">
-                2019-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  140
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="javaList分片"><a href="#javaList分片" class="headerlink" title="javaList分片"></a>javaList分片</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//分片  </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; List&lt;List&lt;T&gt;&gt; splitList(List&lt;T&gt; list, <span class="keyword">int</span> blockSize)   &#123;  </span><br><span class="line">        List&lt;List&lt;T&gt;&gt; lists = <span class="keyword">new</span> ArrayList&lt;List&lt;T&gt;&gt;();  </span><br><span class="line">        <span class="keyword">if</span>(blockSize == <span class="number">1</span>)&#123;  </span><br><span class="line">            lists.add(list);  </span><br><span class="line">            <span class="keyword">return</span> lists;  </span><br><span class="line">        &#125;    </span><br><span class="line">        <span class="keyword">if</span> (list != <span class="keyword">null</span> &amp;&amp; blockSize &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">            <span class="keyword">int</span> listSize = list.size();  </span><br><span class="line">            <span class="keyword">if</span>(listSize&lt;=blockSize)&#123;  </span><br><span class="line">                lists.add(list);  </span><br><span class="line">                <span class="keyword">return</span> lists;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">int</span> batchSize = listSize / blockSize;  </span><br><span class="line">            <span class="keyword">int</span> remain = listSize % blockSize;  </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; batchSize; i++) &#123;  </span><br><span class="line">                <span class="keyword">int</span> fromIndex = i * blockSize;  </span><br><span class="line">                <span class="keyword">int</span> toIndex = fromIndex + blockSize;  </span><br><span class="line">                System.out.println(<span class="string">"fromIndex="</span> + fromIndex + <span class="string">", toIndex="</span> + toIndex);  </span><br><span class="line">                lists.add(list.subList(fromIndex, toIndex));  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">if</span>(remain&gt;<span class="number">0</span>)&#123;  </span><br><span class="line">                System.out.println(<span class="string">"fromIndex="</span> + (listSize-remain) + <span class="string">", toIndex="</span> + (listSize));  </span><br><span class="line">                lists.add(list.subList(listSize-remain, listSize));  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> lists;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/03/05/JRebel插件安装配置与破解激活详细教程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/05/JRebel插件安装配置与破解激活详细教程/" itemprop="url">JRebel插件安装配置与破解激活详细教程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T20:01:53+08:00">
-                2019-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  368
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="JRebel插件安装配置与破解激活（多方案）详细教程"><a href="#JRebel插件安装配置与破解激活（多方案）详细教程" class="headerlink" title="JRebel插件安装配置与破解激活（多方案）详细教程"></a>JRebel插件安装配置与破解激活（多方案）详细教程</h1><p><a href="https://www.cnblogs.com/wang1024/p/7211194.html" target="_blank" rel="noopener">JRebel插件安装配置与破解激活（多方案）详细教程</a></p>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull ilanyu/golang-reverseproxy</span><br><span class="line">docker run -d -p <span class="number">8888</span>:<span class="number">8888</span> ilanyu/golang-reverseproxy</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/JRebel插件安装配置与破解激活详细教程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/38/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><span class="page-number current">39</span><a class="page-number" href="/page/40/">40</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/">58</a><a class="extend next" rel="next" href="/page/40/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/38/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><span class="page-number current">39</span><a class="page-number" href="/page/40/">40</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" href="/page/40/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1881,7 +1887,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">579</span>
+                  <span class="site-state-item-count">581</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1957,7 +1963,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共555.1k字</span>
+  <span class="post-count">全站共556.3k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
