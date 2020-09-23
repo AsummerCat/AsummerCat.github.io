@@ -294,6 +294,1415 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/Myabtis源码解析-加载顺序一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/Myabtis源码解析-加载顺序一/" itemprop="url">Myabtis源码解析-加载顺序一</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T15:35:42+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  918
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="mybatis-加载顺序"><a href="#mybatis-加载顺序" class="headerlink" title="mybatis 加载顺序"></a>mybatis 加载顺序</h1><h1 id="一"><a href="#一" class="headerlink" title="一"></a>一</h1><p>1、加载配置文件，解析配置文件，MyBatis基于XML配置文件创建Configuration对象的过程</p>
+<p>2、SqlSessionFactoryBuilder根据传入的数据流生成Configuration对象，然后根据Configuration对象创建默认的SqlSessionFactory实例。创建SqlSessionFactoryBean，生产出来sqlSession，</p>
+<p>3、SqlSession对象完成和数据库的交互<br>a.使用传统的MyBatis提供的API；<br> 这是传统的传递Statement Id 和查询参数给 SqlSession 对象，使用 SqlSession对象完成和数据库的交互；<br>b. 使用Mapper接口<br> MyBatis 将配置文件中的每一个<mapper> 节点抽象为一个 Mapper 接口，而这个接口中声明的方法和跟<mapper> 节点中的&lt;select|update|delete|insert&gt; 节点项对应</mapper></mapper></p>
+<p>4、Executor作为Mybatis的核心器，负责sql动态语句的生成和查询缓存的维护<br>StatementHandler 封装了JDBC Statement操作，负责对JDBC statement 的操作，如设置参数等<br>ParameterHandler 负责对用户传递的参数转换成JDBC Statement 所对应的数据类型<br>ResultSetHandler 负责将JDBC返回的ResultSet结果集对象转换成List类型的集合<br>TypeHandler 负责java数据类型和jdbc数据类型(也可以说是数据表列类型)之间的映射和转换<br>MappedStatement  MappedStatement维护一条&lt;select|update|delete|insert&gt;节点的封装</p>
+<p>5、Executor依靠MappedStatement  和数据库进行交互</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/26/Myabtis源码解析-加载顺序一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/java使用拦截器统计每个http请求的响应时间/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/java使用拦截器统计每个http请求的响应时间/" itemprop="url">java使用拦截器统计每个http请求的响应时间</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T15:03:06+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  245
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="java使用拦截器统计每个http请求的响应时间"><a href="#java使用拦截器统计每个http请求的响应时间" class="headerlink" title="java使用拦截器统计每个http请求的响应时间"></a>java使用拦截器统计每个http请求的响应时间</h1><h1 id="创建拦截器"><a href="#创建拦截器" class="headerlink" title="创建拦截器"></a>创建拦截器</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.extern.log4j.Log4j2;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.handler.HandlerInterceptorAdapter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Http请求时间统计</span></span><br><span class="line"><span class="comment"> * 拦截所有请求</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Log</span>4j2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpRquestTimeInterceptor</span> <span class="keyword">extends</span> <span class="title">HandlerInterceptorAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//这里还可以优化一下 记录指标啥的 客户端ip之类</span></span><br><span class="line"></span><br><span class="line">    ThreadLocal&lt;Long&gt; localThread = <span class="keyword">new</span> ThreadLocal&lt;Long&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">         <span class="comment">//线程方式</span></span><br><span class="line">        localThread.set(System.currentTimeMillis());</span><br><span class="line">        <span class="comment">//request方式</span></span><br><span class="line">        request.setAttribute(<span class="string">"_startTime"</span>, System.currentTimeMillis());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Long endTime = System.currentTimeMillis();</span><br><span class="line">        Long startTime = (Long) request.getAttribute(<span class="string">"_startTime"</span>);</span><br><span class="line">        System.out.println(request.getServletPath() + <span class="string">" &gt;&gt; http请求结束:"</span> + (endTime - startTime)+<span class="string">"毫秒"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/26/java使用拦截器统计每个http请求的响应时间/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/HttpServletRequest常用属性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/HttpServletRequest常用属性/" itemprop="url">HttpServletRequest常用属性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T15:02:21+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  396
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="HttpServletRequest常用属性"><a href="#HttpServletRequest常用属性" class="headerlink" title="HttpServletRequest常用属性"></a>HttpServletRequest常用属性</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">setAttribute(String name,Object)：设置名字为name的request 的参数值 </span><br><span class="line"></span><br><span class="line">getAttribute(String name)：返回由name指定的属性值 </span><br><span class="line"></span><br><span class="line">getAttributeNames()：返回request 对象所有属性的名字集合，结果是一个枚举的实例 </span><br><span class="line"></span><br><span class="line">getCookies()：返回客户端的所有 Cookie 对象，结果是一个Cookie 数组 </span><br><span class="line"></span><br><span class="line">getCharacterEncoding() ：返回请求中的字符编码方式 </span><br><span class="line"></span><br><span class="line">getContentLength() ：返回请求的 Body的长度 </span><br><span class="line"></span><br><span class="line">getHeader(String name) ：获得HTTP协议定义的文件头信息 </span><br><span class="line"></span><br><span class="line">getHeaders(String name) ：返回指定名字的request Header 的所有值，结果是一个枚举的实例 </span><br><span class="line"></span><br><span class="line">getHeaderNames() ：返回所以request Header 的名字，结果是一个枚举的实例 </span><br><span class="line"></span><br><span class="line">getInputStream() ：返回请求的输入流，用于获得请求中的数据 </span><br><span class="line"></span><br><span class="line">getMethod() ：获得客户端向服务器端传送数据的方法 </span><br><span class="line"></span><br><span class="line">getParameter(String name) ：获得客户端传送给服务器端的有 name指定的参数值 </span><br><span class="line"></span><br><span class="line">getParameterNames() ：获得客户端传送给服务器端的所有参数的名字，结果是一个枚举的实</span><br><span class="line"></span><br><span class="line">例 </span><br><span class="line"></span><br><span class="line">getParameterValues(String name)：获得有name指定的参数的所有值 </span><br><span class="line"></span><br><span class="line">getProtocol()：获取客户端向服务器端传送数据所依据的协议名称 </span><br><span class="line"></span><br><span class="line">getQueryString() ：获得查询字符串 </span><br><span class="line"></span><br><span class="line">getRequestURI() ：获取发出请求字符串的客户端地址 </span><br><span class="line"></span><br><span class="line">getRemoteAddr()：获取客户端的 IP 地址 </span><br><span class="line"></span><br><span class="line">getRemoteHost() ：获取客户端的名字 </span><br><span class="line"></span><br><span class="line">getSession([Boolean create]) ：返回和请求相关 Session </span><br><span class="line"></span><br><span class="line">getServerName() ：获取服务器的名字 </span><br><span class="line"></span><br><span class="line">getServletPath()：获取客户端所请求的脚本文件的路径 </span><br><span class="line"></span><br><span class="line">getServerPort()：获取服务器的端口号 </span><br><span class="line"></span><br><span class="line">removeAttribute(String name)：删除请求中的一个属性</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/dubbo开启qos功能命令行操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/dubbo开启qos功能命令行操作/" itemprop="url">dubbo开启qos功能命令行操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T14:48:42+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  513
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="dubbo开启qos功能"><a href="#dubbo开启qos功能" class="headerlink" title="dubbo开启qos功能"></a>dubbo开启qos功能</h1><p><a href="http://dubbo.apache.org/zh-cn/docs/user/references/qos.html" target="_blank" rel="noopener">文档地址</a></p>
+<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>dubbo <code>2.5.8</code> 新版本增加了 QOS 模块，提供了新的 telnet 命令支持。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/26/dubbo开启qos功能命令行操作/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/springboot整合dubbo两个注解的引用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/springboot整合dubbo两个注解的引用/" itemprop="url">springboot整合dubbo两个注解的引用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T14:48:29+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="dubbo两个注解的引用"><a href="#dubbo两个注解的引用" class="headerlink" title="dubbo两个注解的引用"></a>dubbo两个注解的引用</h1><h2 id="参数详细解释"><a href="#参数详细解释" class="headerlink" title="参数详细解释"></a>参数详细解释</h2><p><a href="http://dubbo.apache.org/zh-cn/docs/user/references/xml/dubbo-service.html" target="_blank" rel="noopener">官网文档</a></p>
+<p>首先需要导入</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- https:<span class="comment">//mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter --&gt;</span></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.7.3&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.2.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/26/springboot整合dubbo两个注解的引用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/springboot整合dubbo基础版本一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/springboot整合dubbo基础版本一/" itemprop="url">springboot整合dubbo基础版本一</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T14:47:31+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  663
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="springboot整合dubbo-一-基础版本"><a href="#springboot整合dubbo-一-基础版本" class="headerlink" title="springboot整合dubbo(一)基础版本"></a>springboot整合dubbo(一)基础版本</h1><p><a href="https://github.com/AsummerCat/dubbo-demo" target="_blank" rel="noopener">demo地址</a></p>
+<p>分三个模块</p>
+<ul>
+<li>消费者</li>
+<li>生产者</li>
+<li>api   这边放接口引入</li>
+<li>如果后期还有实体的话 创建一个 entity的模块</li>
+</ul>
+<h1 id="首先还是导入pom"><a href="#首先还是导入pom" class="headerlink" title="首先还是导入pom"></a>首先还是导入pom</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- https:<span class="comment">//mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter --&gt;</span></span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;2.7.3&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;4.2.0&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/26/springboot整合dubbo基础版本一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/重新复习dubbo构建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/重新复习dubbo构建/" itemprop="url">重新复习dubbo构建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T14:46:31+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  91
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>大型微服务架构 springcloud</p>
+<p>小微服务架构 dubbo 远程调用就好了 不用cloud全家桶</p>
+<p>架构图</p>
+<p><img src="/img/2019-09-09/dubbo1.png" alt></p>
+<h1 id="搭建模型"><a href="#搭建模型" class="headerlink" title="搭建模型"></a>搭建模型</h1><p><img src="/img/2019-09-09/2.png" alt></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/26/重新复习dubbo构建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/借助ImportBeanDefinitionRegistrar接口实现bean的动态注入/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/借助ImportBeanDefinitionRegistrar接口实现bean的动态注入/" itemprop="url">借助ImportBeanDefinitionRegistrar接口实现bean的动态注入</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T14:44:09+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  729
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="借助ImportBeanDefinitionRegistrar接口实现bean的动态注入"><a href="#借助ImportBeanDefinitionRegistrar接口实现bean的动态注入" class="headerlink" title="借助ImportBeanDefinitionRegistrar接口实现bean的动态注入"></a>借助ImportBeanDefinitionRegistrar接口实现bean的动态注入</h1><h3 id="ImportBeanDefinitionRegistrar"><a href="#ImportBeanDefinitionRegistrar" class="headerlink" title="ImportBeanDefinitionRegistrar"></a><em>ImportBeanDefinitionRegistrar</em></h3><h4 id="spring官方就是用这种方式，实现了-Component、-Service等注解的动态注入机制。定义一个ImportBeanDefinitionRegistrar的实现类，然后在有-Configuration注解的配置类上使用-Import导入"><a href="#spring官方就是用这种方式，实现了-Component、-Service等注解的动态注入机制。定义一个ImportBeanDefinitionRegistrar的实现类，然后在有-Configuration注解的配置类上使用-Import导入" class="headerlink" title="spring官方就是用这种方式，实现了@Component、@Service等注解的动态注入机制。定义一个ImportBeanDefinitionRegistrar的实现类，然后在有@Configuration注解的配置类上使用@Import导入"></a>spring官方就是用这种方式，实现了<code>@Component</code>、<code>@Service</code>等注解的动态注入机制。定义一个ImportBeanDefinitionRegistrar的实现类，然后在有<code>@Configuration</code>注解的配置类上使用<code>@Import</code>导入</h4><h4 id="这里我们用一个简单的例子，我们需要实现类似-Componet的功能，添加了-Mapper注解的类会被自动加入到spring容器中。"><a href="#这里我们用一个简单的例子，我们需要实现类似-Componet的功能，添加了-Mapper注解的类会被自动加入到spring容器中。" class="headerlink" title="这里我们用一个简单的例子，我们需要实现类似@Componet的功能，添加了@Mapper注解的类会被自动加入到spring容器中。"></a>这里我们用一个简单的例子，我们需要实现类似<code>@Componet</code>的功能，添加了<code>@Mapper</code>注解的类会被自动加入到spring容器中。</h4><h4 id="首先创建一个-Mapper注解，再新建一个CountryMapper类，使用该Mapper注解。"><a href="#首先创建一个-Mapper注解，再新建一个CountryMapper类，使用该Mapper注解。" class="headerlink" title="首先创建一个@Mapper注解，再新建一个CountryMapper类，使用该Mapper注解。"></a>首先创建一个<code>@Mapper</code>注解，再新建一个<code>CountryMapper</code>类，使用该Mapper注解。</h4>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/26/借助ImportBeanDefinitionRegistrar接口实现bean的动态注入/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/itext横向pdf生成/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/itext横向pdf生成/" itemprop="url">itext横向pdf生成</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T14:42:41+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  86
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="itext-横向pdf生成"><a href="#itext-横向pdf生成" class="headerlink" title="itext 横向pdf生成"></a>itext 横向pdf生成</h1><p>Document doc = new Document(PageSize.A4);</p>
+<p>这个是用PageSize.A4设置的是纵向A4大小</p>
+<p>进入 com.itextpdf.text.PageSize的源码 可以看到这些常量</p>
+<p>调用PageSize.A4其实就是调用new RectangleReadOnly(595F, 842F);<br>那么在定义Document时可以这样<br>Document doc = new Document(new RectangleReadOnly(842F, 595F));这样就设置成A4的横向大小了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/系统调优相关知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -437,1415 +1846,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/16/Maven获取本地路径/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/Maven获取本地路径/" itemprop="url">Maven获取本地路径</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T22:50:49+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  39
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Maven-获取本地路径"><a href="#Maven-获取本地路径" class="headerlink" title="Maven 获取本地路径"></a>Maven 获取本地路径</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;scope&gt;system&lt;/scope&gt;        </span><br><span class="line">&lt;systemPath&gt;$&#123;project.basedir&#125;/src/main/webapp/WEB-INF/lib/jeecg-p3-biz-chat-1.0.5.jar&lt;/systemPath&gt;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/16/Java中SPI机制深入及源码解析纯拷贝内容/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/Java中SPI机制深入及源码解析纯拷贝内容/" itemprop="url">Java中SPI机制深入及源码解析纯拷贝内容</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T22:50:04+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  14
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Java中SPI机制深入及源码解析纯拷贝内容"><a href="#Java中SPI机制深入及源码解析纯拷贝内容" class="headerlink" title="Java中SPI机制深入及源码解析纯拷贝内容"></a>Java中SPI机制深入及源码解析纯拷贝内容</h1><p>SPI，Service Provider Interface，主要是被框架的开发人员使用，比如<code>java.sql.Driver</code>接口，其他不同厂商可以针对同一接口做出不同的实现，mysql和postgresql都有不同的实现提供给用户，而Java的SPI机制可以为某个接口寻找服务实现。</p>
-<p>当服务的提供者提供了一种接口的实现之后，需要在classpath下的<code>META-INF/services/</code>目录里创建一个以服务接口命名的文件，这个文件里的内容就是这个接口的具体的实现类。当其他的程序需要这个服务的时候，就可以通过查找这个jar包（一般都是以jar包做依赖）的<code>META-INF/services/</code>中的配置文件，配置文件中有接口的具体实现类名，可以根据这个类名进行加载实例化，就可以使用该服务了。JDK中查找服务的实现的工具类是：<code>java.util.ServiceLoader</code>。</p>
-<h1 id="SPI实例"><a href="#SPI实例" class="headerlink" title="SPI实例"></a>SPI实例</h1><p>有很多的SPI扩展机制应用的实例，比如common-logging，JDBC等等，我们这里以JDBC为例。</p>
-<h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><p>在JDBC4.0之前，我们开发有连接数据库的时候，通常会用<code>Class.forName(&quot;com.mysql.jdbc.Driver&quot;)</code>这句先加载数据库相关的驱动，然后再进行获取连接等的操作。而JDBC4.0之后不需要用<code>Class.forName(&quot;com.mysql.jdbc.Driver&quot;)</code>来加载驱动，直接获取连接就可以了，现在这种方式就是使用了Java的SPI扩展机制来实现。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/16/Java中SPI机制深入及源码解析纯拷贝内容/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/16/docker安装zookeeper/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/docker安装zookeeper/" itemprop="url">docker安装zookeeper</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T22:49:28+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  41
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="docker安装zookeeper"><a href="#docker安装zookeeper" class="headerlink" title="docker安装zookeeper"></a>docker安装zookeeper</h1><h2 id="下载Zookeeper镜像"><a href="#下载Zookeeper镜像" class="headerlink" title="下载Zookeeper镜像"></a>下载Zookeeper镜像</h2><p><code>docker pull zookeeper</code></p>
-<h2 id="启动容器并添加映射"><a href="#启动容器并添加映射" class="headerlink" title="启动容器并添加映射"></a>启动容器并添加映射</h2><p><code>docker run --privileged=true -d --name zookeeper --publish 2181:2181  -d zookeeper:latest</code></p>
-<h2 id="查看容器是否启动"><a href="#查看容器是否启动" class="headerlink" title="查看容器是否启动"></a>查看容器是否启动</h2><p><code>docker ps</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/10/SpringMVC源码解析之请求处理流程三/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/10/SpringMVC源码解析之请求处理流程三/" itemprop="url">SpringMVC源码解析之请求处理流程三</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T23:45:43+08:00">
-                2019-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.7k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="SpringMVC源码解析之请求处理流程-三"><a href="#SpringMVC源码解析之请求处理流程-三" class="headerlink" title="SpringMVC源码解析之请求处理流程(三)"></a>SpringMVC源码解析之请求处理流程(三)</h1><p><img src="/img/2019-09-03/1.png" alt="执行总流程"></p>
-<h2 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h2><h3 id="DispatcherServlet-前端控制器"><a href="#DispatcherServlet-前端控制器" class="headerlink" title="DispatcherServlet 前端控制器"></a>DispatcherServlet 前端控制器</h3><p>因为从流程图看，用户的请求最先到达就是DispatcherServlet。他是springmvc的核心，也是中央出处理器。因此我们分析源码，先看看他是什么样的流程：通过源码可看到：他是继承FrameworkServlet，它也是springmvc提供的类，继续往下继承关系看，FrameworkServlet继承HttpServletBean，她依旧是spring提供的.最终直到他继承HttpServlet</p>
-<p>而这个类他就是servlet。因此既然是Servlet类，那么他有一个最终的方法，就是service()方法，他是serlet最核心的方法。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/10/SpringMVC源码解析之请求处理流程三/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/10/SpringMVC源码解析之初始化handlerMapping二/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/10/SpringMVC源码解析之初始化handlerMapping二/" itemprop="url">SpringMVC源码解析之初始化handlerMapping二</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T23:44:30+08:00">
-                2019-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  634
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="SpringMVC源码解析之初始化handlerMapping二"><a href="#SpringMVC源码解析之初始化handlerMapping二" class="headerlink" title="SpringMVC源码解析之初始化handlerMapping二"></a>SpringMVC源码解析之初始化handlerMapping二</h1><p>我们根据工作机制中三部分来分析 Spring MVC 的源代码.</p>
-<ol>
-<li>ApplicationContext初始化时建立所有url和controller类的对应关系(用Map保存);</li>
-<li>根据请求url找到对应的controller,并从controller中找到处理请求的方法;</li>
-<li>request参数绑定到方法的形参,执行方法处理请求,并返回结果视图.</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/10/SpringMVC源码解析之初始化handlerMapping二/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/10/SpringMVC源码解析之初始化流程一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/10/SpringMVC源码解析之初始化流程一/" itemprop="url">SpringMVC源码解析之初始化流程一</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T23:41:30+08:00">
-                2019-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  527
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="SpringMVC源码解析之初始化流程-一"><a href="#SpringMVC源码解析之初始化流程-一" class="headerlink" title="SpringMVC源码解析之初始化流程(一)"></a>SpringMVC源码解析之初始化流程(一)</h1><p><a href="https://blog.csdn.net/gududedabai/article/details/83375156" target="_blank" rel="noopener">https://blog.csdn.net/gududedabai/article/details/83375156</a></p>
-<p><a href="https://www.liangzl.com/get-article-detail-126117.html" target="_blank" rel="noopener">https://www.liangzl.com/get-article-detail-126117.html</a> </p>
-<h1 id="初始化流程"><a href="#初始化流程" class="headerlink" title="初始化流程"></a>初始化流程</h1><p>初始化方法-&gt;DispatcherServlet 执行onRefresh()</p>
-<h2 id="onRefresh"><a href="#onRefresh" class="headerlink" title="onRefresh()"></a>onRefresh()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRefresh</span><span class="params">(ApplicationContext context)</span> </span>&#123;</span><br><span class="line">    initStrategies(context);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initStrategies</span><span class="params">(ApplicationContext context)</span> </span>&#123;</span><br><span class="line">   initMultipartResolver(context);</span><br><span class="line">   initLocaleResolver(context);</span><br><span class="line">   initThemeResolver(context);</span><br><span class="line">   initHandlerMappings(context);</span><br><span class="line">   initHandlerAdapters(context);</span><br><span class="line">   initHandlerExceptionResolvers(context);</span><br><span class="line">   initRequestToViewNameTranslator(context);</span><br><span class="line">   initViewResolvers(context);</span><br><span class="line">   initFlashMapManager(context);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>这里就是初始化handlerMapping 适配器 等等的初始化过程</p>
-<h2 id="initHandlerMappings"><a href="#initHandlerMappings" class="headerlink" title="initHandlerMappings"></a>initHandlerMappings</h2><p><img src="/img/2019-09-03/16.png" alt="initHandlerMappings初始化"></p>
-<p>获取出 三个HandlerMapping</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/10/SpringMVC源码解析之初始化流程一/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/10/消除if-策略模式-工厂模式-单例模式-全包获取注解BUG修复关于被spring代理后出现无法获取源class的问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/10/消除if-策略模式-工厂模式-单例模式-全包获取注解BUG修复关于被spring代理后出现无法获取源class的问题/" itemprop="url">消除if-策略模式+工厂模式+单例模式-全包获取注解BUG修复关于被spring代理后出现无法获取源class的问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T23:39:29+08:00">
-                2019-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  542
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="消除if-策略模式-工厂模式-单例模式-全包获取注解-BUG修复-关于被spring代理后出现无法获取源class的问题"><a href="#消除if-策略模式-工厂模式-单例模式-全包获取注解-BUG修复-关于被spring代理后出现无法获取源class的问题" class="headerlink" title="消除if-策略模式+工厂模式+单例模式-全包获取注解(BUG修复)关于被spring代理后出现无法获取源class的问题"></a>消除if-策略模式+工厂模式+单例模式-全包获取注解(BUG修复)关于被spring代理后出现无法获取源class的问题</h1><p>在原先的版本中</p>
-<p>获取注解的方式是这样的:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContextRefreshedListener</span> <span class="keyword">implements</span> <span class="title">ApplicationListener</span>&lt;<span class="title">ContextRefreshedEvent</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> IndexBiFactory biFactory;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ContextRefreshedEvent event)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;String, String&gt; indexBiMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">// 根容器为Spring容器</span></span><br><span class="line">        <span class="keyword">if</span> (event.getApplicationContext().getParent() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            Map&lt;String, Object&gt; beans = event.getApplicationContext().getBeansWithAnnotation(IndexBi<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            <span class="keyword">for</span> (Object bean : beans.values()) &#123;</span><br><span class="line">                bean.getClass().getAnnotation(IndexBi<span class="class">.<span class="keyword">class</span>).<span class="title">value</span>()</span>;</span><br><span class="line">                indexBiMap.put(bean.getClass().getAnnotation(IndexBi<span class="class">.<span class="keyword">class</span>).<span class="title">value</span>(), <span class="title">bean</span>.<span class="title">getClass</span>().<span class="title">getName</span>())</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            biFactory.setIndexBiMap(indexBiMap);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/10/消除if-策略模式-工厂模式-单例模式-全包获取注解BUG修复关于被spring代理后出现无法获取源class的问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/06/排查JAVA问题常用工具单/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/06/排查JAVA问题常用工具单/" itemprop="url">排查JAVA问题常用工具单</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-06T22:46:04+08:00">
-                2019-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  778
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h1><h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -<span class="number">300</span>f shopbase.<span class="built_in">log</span> <span class="meta">#倒数300行并进入实时监听文件写入模式</span></span><br></pre></td></tr></table></figure>
-<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grep</span> forest f.txt     <span class="comment">#文件查找</span></span><br><span class="line"><span class="keyword">grep</span> forest f.txt cpf.txt <span class="comment">#多文件查找</span></span><br><span class="line"><span class="keyword">grep</span> <span class="string">'log'</span> /home/admin -r -n <span class="comment">#目录下查找所有符合关键字的文件</span></span><br><span class="line">cat f.txt | <span class="keyword">grep</span> -i shopbase    </span><br><span class="line"><span class="keyword">grep</span> <span class="string">'shopbase'</span> /home/admin -r -n --include *.&#123;vm,java&#125; <span class="comment">#指定文件后缀</span></span><br><span class="line"><span class="keyword">grep</span> <span class="string">'shopbase'</span> /home/admin -r -n --exclude *.&#123;vm,java&#125; <span class="comment">#反匹配</span></span><br><span class="line">seq <span class="number">10</span> | <span class="keyword">grep</span> <span class="number">5</span> -A <span class="number">3</span>    <span class="comment">#上匹配</span></span><br><span class="line">seq <span class="number">10</span> | <span class="keyword">grep</span> <span class="number">5</span> -B <span class="number">3</span>    <span class="comment">#下匹配</span></span><br><span class="line">seq <span class="number">10</span> | <span class="keyword">grep</span> <span class="number">5</span> -C <span class="number">3</span>    <span class="comment">#上下匹配，平时用这个就妥了</span></span><br><span class="line">cat f.txt | <span class="keyword">grep</span> -c <span class="string">'SHOPBASE'</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/06/排查JAVA问题常用工具单/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/04/springboot整合JTA丶atomikos实现XA分布式事务事务方式二推荐/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/04/springboot整合JTA丶atomikos实现XA分布式事务事务方式二推荐/" itemprop="url">springboot整合JTA丶atomikos实现XA分布式事务事务方式二推荐</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-04T08:14:08+08:00">
-                2019-09-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="springboot整合JTA丶atomikos实现XA分布式事务事务方式二-推荐"><a href="#springboot整合JTA丶atomikos实现XA分布式事务事务方式二-推荐" class="headerlink" title="springboot整合JTA丶atomikos实现XA分布式事务事务方式二 推荐"></a>springboot整合JTA丶atomikos实现XA分布式事务事务方式二 推荐</h1><h1 id="pom文件添加"><a href="#pom文件添加" class="headerlink" title="pom文件添加"></a>pom文件添加</h1><p><code>跟方式一的一样就不写了</code></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/04/springboot整合JTA丶atomikos实现XA分布式事务事务方式二推荐/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1898,7 +1898,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">581</span>
+                  <span class="site-state-item-count">590</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1920,7 +1920,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-count">154</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1974,7 +1974,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共556.3k字</span>
+  <span class="post-count">全站共566k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>

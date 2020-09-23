@@ -294,6 +294,1402 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/23/java时间转换为岁月天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/23/java时间转换为岁月天/" itemprop="url">java时间转换为岁月天</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-23T19:33:06+08:00">
+                2020-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  202
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据时间字符串转换为 岁月天</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getDateToYearAndMonthAndDays</span><span class="params">(String date)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">		LocalDate today = LocalDate.now();</span><br><span class="line"><span class="comment">//		LocalDate playerDate = LocalDate.from(DateTimeFormatter.ofPattern("yyyy-MM-dd").parse("2019-09-22"));</span></span><br><span class="line">		LocalDate playerDate = LocalDate.from(DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd"</span>).parse(date));</span><br><span class="line">		<span class="comment">//是否当前日期在当日之后</span></span><br><span class="line">		<span class="keyword">if</span> (playerDate.isAfter(today)) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"传入的日期在当前日期之后"</span>+today.toString());</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//获取出生月份的天数</span></span><br><span class="line">		<span class="keyword">int</span> playerDatetoDay = playerDate.getDayOfMonth();</span><br><span class="line">		<span class="comment">//获取当前月份的天数</span></span><br><span class="line">		<span class="keyword">int</span> nowDayBetween = today.getDayOfMonth();</span><br><span class="line">		<span class="keyword">long</span> days;</span><br><span class="line">		<span class="keyword">if</span> (playerDatetoDay &gt; nowDayBetween) &#123;</span><br><span class="line">			<span class="comment">//获取出生的月份的最后一天</span></span><br><span class="line">			LocalDate lastDay = playerDate.with(TemporalAdjusters.lastDayOfMonth());</span><br><span class="line">			days = lastDay.getDayOfMonth() - playerDatetoDay + nowDayBetween;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			days = nowDayBetween - playerDatetoDay;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">long</span> years = ChronoUnit.YEARS.between(playerDate, today); <span class="comment">//准确年份</span></span><br><span class="line">		<span class="keyword">long</span> months = ChronoUnit.MONTHS.between(playerDate, today) % <span class="number">12</span>; <span class="comment">//精确月份</span></span><br><span class="line">		<span class="comment">//获取复位的时间</span></span><br><span class="line"><span class="comment">//		System.out.println(playerDate.plusDays(days).plusMonths(months).plusYears(years));</span></span><br><span class="line">		<span class="comment">//输出拆分的时间</span></span><br><span class="line">		<span class="keyword">return</span> years + <span class="string">"岁"</span> + months + <span class="string">"月"</span> + days + <span class="string">"天"</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/12/rabbitMQ笔记在linux下安装及其集群的搭建-八/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/12/rabbitMQ笔记在linux下安装及其集群的搭建-八/" itemprop="url">rabbitMQ笔记在linux下安装及其集群的搭建(八)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-12T14:39:36+08:00">
+                2020-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="rabbitMQ笔记在linux下安装及其集群的搭建-八"><a href="#rabbitMQ笔记在linux下安装及其集群的搭建-八" class="headerlink" title="rabbitMQ笔记在linux下安装及其集群的搭建(八)"></a>rabbitMQ笔记在linux下安装及其集群的搭建(八)</h1><p>在安装(搭建集群)之前 确定两个点<br>1:防火墙关掉<br>2:打开网络  </p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/12/rabbitMQ笔记在linux下安装及其集群的搭建-八/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/12/rabbitMQ笔记生产者相关-七/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/12/rabbitMQ笔记生产者相关-七/" itemprop="url">rabbitMQ笔记生产者相关(七)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-12T14:38:59+08:00">
+                2020-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="rabbitMQ笔记生产者相关-七"><a href="#rabbitMQ笔记生产者相关-七" class="headerlink" title="rabbitMQ笔记生产者相关(七)"></a>rabbitMQ笔记生产者相关(七)</h1><h1 id="生产者如何保证消息一定发送成功"><a href="#生产者如何保证消息一定发送成功" class="headerlink" title="生产者如何保证消息一定发送成功"></a>生产者如何保证消息一定发送成功</h1><p>需要两步</p>
+<ol>
+<li>生产发送到交换机确认发送成功</li>
+<li>交换机发送给队列失败需要回调
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/12/rabbitMQ笔记生产者相关-七/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ol></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/12/rabbitMQ笔记消费者相关-六/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/12/rabbitMQ笔记消费者相关-六/" itemprop="url">rabbitMQ笔记消费者相关(六)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-12T14:38:24+08:00">
+                2020-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="rabbitMQ笔记消费者相关-六"><a href="#rabbitMQ笔记消费者相关-六" class="headerlink" title="rabbitMQ笔记消费者相关(六)"></a>rabbitMQ笔记消费者相关(六)</h1><h1 id="常规消费消息"><a href="#常规消费消息" class="headerlink" title="常规消费消息"></a>常规消费消息</h1><h3 id="基于方法"><a href="#基于方法" class="headerlink" title="基于方法"></a>基于方法</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">基于方法:</span><br><span class="line"><span class="number">1.</span>接收多个队列</span><br><span class="line">    @RabbitListener(queues = &#123;<span class="string">"firstQueue"</span>, <span class="string">"secondQueue"</span>&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receiveFirstQueue</span><span class="params">(<span class="keyword">String</span> name)</span> </span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"fanout交换机分配请求"</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>接收单个队列</span><br><span class="line">    @RabbitListener(queues = RabbitConfig.TOPIC_QUEUE1)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receiveTopicQueue</span><span class="params">(<span class="keyword">String</span> name)</span> </span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"topic1交换机分配请求"</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>消息回调确认 ACK机制</span><br><span class="line">    @RabbitListener(queues = RabbitConfig.BASIC_QUEUE)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(Message message, Channel channel)</span> throws IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 采用手动应答模式, 手动确认应答更为安全稳定</span></span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"客户端接收到请求"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            channel.basicQos(<span class="number">1</span>);</span><br><span class="line">            Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">            <span class="comment">//手动ack 告诉服务器收到这条消息 已经被我消费了 可以在队列删掉 这样以后就不会再发了 否则消息服务器以为这条消息没处理掉 后续还会在发</span></span><br><span class="line">            channel.basicAck(message.getMessageProperties().getDeliveryTag(), <span class="literal">false</span>);</span><br><span class="line">            System.out.<span class="built_in">println</span>(<span class="string">"receive: "</span> + <span class="keyword">new</span> <span class="keyword">String</span>(message.getBody()));</span><br><span class="line"></span><br><span class="line">            <span class="comment">//int i = 1 / 0;</span></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="comment">//重新放入队列中</span></span><br><span class="line">            <span class="comment">//channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, true);</span></span><br><span class="line">            <span class="comment">//丢弃这条消息</span></span><br><span class="line">            channel.basicNack(message.getMessageProperties().getDeliveryTag(), <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">            <span class="comment">//拒绝单条消息 重新丢回队列中</span></span><br><span class="line">            <span class="comment">//channel.basicReject(message.getMessageProperties().getDeliveryTag(), true);</span></span><br><span class="line">            System.out.<span class="built_in">println</span>(<span class="string">"receiver fail"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/12/rabbitMQ笔记消费者相关-六/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/12/rabbitMQ笔记消息持久和ACK确认机制-五/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/12/rabbitMQ笔记消息持久和ACK确认机制-五/" itemprop="url">rabbitMQ笔记消息持久和ACK确认机制(五)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-12T14:37:52+08:00">
+                2020-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="rabbitMQ笔记消息持久和ACK确认机制-五"><a href="#rabbitMQ笔记消息持久和ACK确认机制-五" class="headerlink" title="rabbitMQ笔记消息持久和ACK确认机制(五)"></a>rabbitMQ笔记消息持久和ACK确认机制(五)</h1><h2 id="消息队列持久化"><a href="#消息队列持久化" class="headerlink" title="消息队列持久化"></a>消息队列持久化</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@RabbitListener</span>在该注解里 </span><br><span class="line"><span class="variable">@queue</span>和<span class="variable">@Exchange</span> 都不要设置autoDelete=<span class="string">"true"</span>;</span><br><span class="line">不然就会变成临时的消息 不持久化</span><br><span class="line"></span><br><span class="line"><span class="variable">@autoDelete</span></span><br><span class="line">写在:</span><br><span class="line"> <span class="variable">@Queue</span>中: 当所有消费客户端断开后,是否自动删除队列</span><br><span class="line"> <span class="attribute">true</span>:是 <span class="attribute">false</span>:否</span><br><span class="line"></span><br><span class="line">写在:</span><br><span class="line"> <span class="variable">@Exchange</span>中: 当所有绑定队列都不在使用时,是否自动删除交换器</span><br><span class="line"> <span class="attribute">true</span>:是 <span class="attribute">false</span>:否</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/12/rabbitMQ笔记消息持久和ACK确认机制-五/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/12/rabbitMQ笔记优化方面的问题-四/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/12/rabbitMQ笔记优化方面的问题-四/" itemprop="url">rabbitMQ笔记优化方面的问题(四)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-12T14:37:20+08:00">
+                2020-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  975
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="rabbitMQ笔记优化方面的问题-四"><a href="#rabbitMQ笔记优化方面的问题-四" class="headerlink" title="rabbitMQ笔记优化方面的问题(四)"></a>rabbitMQ笔记优化方面的问题(四)</h1><h1 id="如何确保消息一定发送到Rabbitmq了"><a href="#如何确保消息一定发送到Rabbitmq了" class="headerlink" title="如何确保消息一定发送到Rabbitmq了?"></a>如何确保消息一定发送到Rabbitmq了?</h1><p>在正常情况下 是没问题的， 但是实际开发中 我们往往要考虑一些非正常的情况，我们从<br>消息的发送开始：<br>默认情况下，我们不知道我们的消息到底有没有发送到rabbitmq当中， 这肯定是不可取的， 假设我们是一个电商<br>项目的话 用户下了订单 订单发送消息给库存 结果这个消息没发送到rabbitmq当中 但是订单还是下了，这时候 因<br>为没有消息 库存不会去减少库存， 这种问题是非常严重的， 所以 接下来就讲一种解决方案：<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/12/rabbitMQ笔记优化方面的问题-四/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/12/rabbitMQ笔记整合rabbitMQ-三/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/12/rabbitMQ笔记整合rabbitMQ-三/" itemprop="url">rabbitMQ笔记整合rabbitMQ(三)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-12T14:36:39+08:00">
+                2020-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  724
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="rabbitMQ笔记整合rabbitMQ-三"><a href="#rabbitMQ笔记整合rabbitMQ-三" class="headerlink" title="rabbitMQ笔记整合rabbitMQ(三)"></a>rabbitMQ笔记整合rabbitMQ(三)</h1><h2 id="导入pom"><a href="#导入pom" class="headerlink" title="导入pom"></a>导入pom</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">还要加入一个json的依赖</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/12/rabbitMQ笔记整合rabbitMQ-三/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/12/rabbitMQ笔记Exchange交换机-二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/12/rabbitMQ笔记Exchange交换机-二/" itemprop="url">rabbitMQ笔记Exchange交换机(二)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-12T14:36:00+08:00">
+                2020-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="rabbitMQ笔记Exchange交换机-二"><a href="#rabbitMQ笔记Exchange交换机-二" class="headerlink" title="rabbitMQ笔记Exchange交换机(二)"></a>rabbitMQ笔记Exchange交换机(二)</h1><h2 id="Exchange交换机"><a href="#Exchange交换机" class="headerlink" title="Exchange交换机"></a>Exchange交换机</h2><p>常用的三种交换机<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1<span class="selector-class">.direct</span> (发布与订阅 完全匹配) 也就是点对点</span><br><span class="line"></span><br><span class="line">2<span class="selector-class">.fanout</span> (广播)</span><br><span class="line"></span><br><span class="line">3<span class="selector-class">.topic</span> (主题,规则匹配)</span><br><span class="line"></span><br><span class="line">如果没有绑定交换机怎么办呢？ 没有绑定交换机的话， 消息会发给<span class="selector-tag">rabbitmq</span>默认的交换机</span><br><span class="line">里面 默认的交换机隐式的绑定了所有的队列，默认的交换机类型是<span class="selector-tag">direct</span> 路由建就是队列的名字</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/12/rabbitMQ笔记Exchange交换机-二/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/12/rabbitMQ笔记概念-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/12/rabbitMQ笔记概念-一/" itemprop="url">rabbitMQ笔记概念(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-12T14:35:21+08:00">
+                2020-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="rabbitMQ笔记概念-一"><a href="#rabbitMQ笔记概念-一" class="headerlink" title="rabbitMQ笔记概念(一)"></a>rabbitMQ笔记概念(一)</h1><h2 id="什么是队列"><a href="#什么是队列" class="headerlink" title="什么是队列"></a>什么是队列</h2><p>队列就像存放了商品的仓库或商店,是生产商品的工厂和购买商品的用户之间的中转站</p>
+<h2 id="队列里存储了什么"><a href="#队列里存储了什么" class="headerlink" title="队列里存储了什么"></a>队列里存储了什么</h2><p>在  rabbitMQ中,信息流从你的应用出发,来到rabbitMQ的队列,所有的消息可以只存储在一个队列中.队列可以存储很多信息,因为它基本上是一个无限制的缓冲区,前提是你的机器有足够的存储空间</p>
+<h2 id="队列和应用程序的关系"><a href="#队列和应用程序的关系" class="headerlink" title="队列和应用程序的关系"></a>队列和应用程序的关系</h2><p>  多个生产者可以将消息发送到同一队列中,多个消费者也可以只从一个队列接收数据</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/12/rabbitMQ笔记概念-一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/10/ElasticSearch笔记优化建议-四十五/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -439,1417 +1835,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/10/ElasticSearch笔记慢搜索日志-四十四/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/10/ElasticSearch笔记慢搜索日志-四十四/" itemprop="url">ElasticSearch笔记慢搜索日志(四十四)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-10T21:51:39+08:00">
-                2020-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  142
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>跟sql慢查询日志一个道理的</p>
-<h1 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h1><p><code>elasticsearch.yml</code><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">index</span><span class="selector-class">.search</span><span class="selector-class">.slowlog</span><span class="selector-class">.threshold</span><span class="selector-class">.query</span><span class="selector-class">.warn</span>: 10<span class="selector-tag">s</span></span><br><span class="line"><span class="selector-tag">index</span><span class="selector-class">.search</span><span class="selector-class">.slowlog</span><span class="selector-class">.threshold</span><span class="selector-class">.query</span><span class="selector-class">.info</span>: 10<span class="selector-tag">s</span></span><br><span class="line"><span class="selector-tag">index</span><span class="selector-class">.search</span><span class="selector-class">.slowlog</span><span class="selector-class">.threshold</span><span class="selector-class">.query</span><span class="selector-class">.debug</span>: 2<span class="selector-tag">s</span></span><br><span class="line"><span class="selector-tag">index</span><span class="selector-class">.search</span><span class="selector-class">.slowlog</span><span class="selector-class">.threshold</span><span class="selector-class">.query</span><span class="selector-class">.trace</span>: 500<span class="selector-tag">ms</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">index</span><span class="selector-class">.search</span><span class="selector-class">.slowlog</span><span class="selector-class">.threshold</span><span class="selector-class">.fetch</span><span class="selector-class">.warn</span>: 10<span class="selector-tag">s</span></span><br><span class="line"><span class="selector-tag">index</span><span class="selector-class">.search</span><span class="selector-class">.slowlog</span><span class="selector-class">.threshold</span><span class="selector-class">.fetch</span><span class="selector-class">.info</span>: 10<span class="selector-tag">s</span></span><br><span class="line"><span class="selector-tag">index</span><span class="selector-class">.search</span><span class="selector-class">.slowlog</span><span class="selector-class">.threshold</span><span class="selector-class">.fetch</span><span class="selector-class">.debug</span>: 2<span class="selector-tag">s</span></span><br><span class="line"><span class="selector-tag">index</span><span class="selector-class">.search</span><span class="selector-class">.slowlog</span><span class="selector-class">.threshold</span><span class="selector-class">.fetch</span><span class="selector-class">.trace</span>: 500<span class="selector-tag">ms</span></span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/10/ElasticSearch笔记慢搜索日志-四十四/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/09/ElasticSearch笔记运维之升级方案-四十三/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/09/ElasticSearch笔记运维之升级方案-四十三/" itemprop="url">ElasticSearch笔记运维之升级方案(四十三)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-09T08:44:47+08:00">
-                2020-09-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="es版本的升级"><a href="#es版本的升级" class="headerlink" title="es版本的升级"></a>es版本的升级</h1><h2 id="es版本升级的通用步骤"><a href="#es版本升级的通用步骤" class="headerlink" title="es版本升级的通用步骤"></a>es版本升级的通用步骤</h2><ol>
-<li>看一下最新的版本的changes 文档,每个小版本之间的升级,都有哪些变化,新功能,bugfix</li>
-<li>在开发环境下的机器中,先实验一下版本的升级,定一下升级的步骤和操作方案的文档</li>
-<li>对数据进行全量的备份-&gt;最次的情况 升级失败,还能安装回原来版本</li>
-<li>检查升级之后plugin是否跟es主版本兼容,升级完es之后,还要重新安装一下你的plugin</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/09/ElasticSearch笔记运维之升级方案-四十三/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/08/ElasticSearch笔记运维集群备份恢复之分布式文件存储系统-四十二/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/08/ElasticSearch笔记运维集群备份恢复之分布式文件存储系统-四十二/" itemprop="url">ElasticSearch笔记运维集群备份恢复之分布式文件存储系统(四十二)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-08T00:00:03+08:00">
-                2020-09-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  964
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="hadoop-hdfs分布式文件存储系统-推荐"><a href="#hadoop-hdfs分布式文件存储系统-推荐" class="headerlink" title="hadoop hdfs分布式文件存储系统 (推荐)"></a>hadoop hdfs分布式文件存储系统 (推荐)</h1><h2 id="snapshot-hdfs进行数据备份"><a href="#snapshot-hdfs进行数据备份" class="headerlink" title="snapshot+ hdfs进行数据备份"></a>snapshot+ hdfs进行数据备份</h2><p>replica没法进行容灾性的数据保护,比如所有机子宕机等情况.<br>这样我们就需要对集群中所有的数据进行备份了</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/08/ElasticSearch笔记运维集群备份恢复之分布式文件存储系统-四十二/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/06/ElasticSearch笔记运维集群节点之间优雅启停-四十一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/06/ElasticSearch笔记运维集群节点之间优雅启停-四十一/" itemprop="url">ElasticSearch笔记运维集群节点之间优雅启停(四十一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-06T22:10:17+08:00">
-                2020-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  94
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="以后台模式运行"><a href="#以后台模式运行" class="headerlink" title="以后台模式运行"></a>以后台模式运行</h1><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="keyword">bin/elasticsearch </span>-d -p pid</span><br></pre></td></tr></table></figure>
-<p>上面的命令中<code>-d option</code>用来指定es以<code>daemon</code>进程方式启动,<br>并且<code>-p option</code>指定将进程id近路在指定文件中</p>
-<p>此外,启动es进程的时候,还开业直接覆盖一些配置,是用<code>-E</code>即可 ,方便调试<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="regexp">/bin/</span>elasticsearch -d  -Epath.conf=<span class="regexp">/etc/</span>elasticsearch</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/06/ElasticSearch笔记运维集群节点之间优雅启停-四十一/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/06/ElasticSearch笔记运维集群之操作系统参数修改-四十/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/06/ElasticSearch笔记运维集群之操作系统参数修改-四十/" itemprop="url">ElasticSearch笔记运维集群之操作系统参数修改(四十)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-06T22:08:17+08:00">
-                2020-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  474
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="优化操作系统保证es稳定高效运行"><a href="#优化操作系统保证es稳定高效运行" class="headerlink" title="优化操作系统保证es稳定高效运行"></a>优化操作系统保证es稳定高效运行</h1><h2 id="在生产环境下的一些设置必须配置"><a href="#在生产环境下的一些设置必须配置" class="headerlink" title="在生产环境下的一些设置必须配置"></a>在生产环境下的一些设置必须配置</h2><ol>
-<li>禁止swapping (内存转磁盘)</li>
-<li>确保拥有足够的虚拟内存</li>
-<li>确保拥有足够的线程数量</li>
-<li>调整进程的句柄数 ulimit 65536</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/06/ElasticSearch笔记运维集群之操作系统参数修改-四十/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/06/ElasticSearch笔记运维集群jvm和服务器内存分配的最佳实践-三十九/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/06/ElasticSearch笔记运维集群jvm和服务器内存分配的最佳实践-三十九/" itemprop="url">ElasticSearch笔记运维集群jvm和服务器内存分配的最佳实践(三十九)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-06T22:07:05+08:00">
-                2020-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  335
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="es的jvm内存大小设置"><a href="#es的jvm内存大小设置" class="headerlink" title="es的jvm内存大小设置"></a>es的jvm内存大小设置</h1><p>大于大部分生产环境来说的 2g的jvm heap size 太小了</p>
-<p>1.可以设置个环境变量来替换 es的默认配置<br>2.直接修改配置文件 <code>jvm.options</code><br>3.启动设置参数 </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/06/ElasticSearch笔记运维集群jvm和服务器内存分配的最佳实践-三十九/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/03/ElasticSearch笔记运维集群针专门定制的重要参数-三十八/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/03/ElasticSearch笔记运维集群针专门定制的重要参数-三十八/" itemprop="url">ElasticSearch笔记运维集群针专门定制的重要参数(三十八)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-03T22:17:35+08:00">
-                2020-09-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  832
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="针对脑裂问题的重要参数"><a href="#针对脑裂问题的重要参数" class="headerlink" title="针对脑裂问题的重要参数"></a>针对脑裂问题的重要参数</h1><p>重要的就这个参数 用来处理出现脑裂的情况: 参数含义最小参与master选举的node数量</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">discovery</span><span class="selector-class">.zen</span><span class="selector-class">.minimum_master_nodes</span></span><br></pre></td></tr></table></figure>
-<h2 id="脑裂原因"><a href="#脑裂原因" class="headerlink" title="脑裂原因"></a>脑裂原因</h2><p>如果因为网络的故障,导致一个集群被划分成连两片,每片都有多个node,以及一个master.那么集群中就出现了两个master了,<br>但是因为master是集群中非常重要的一个角色,住在了集群状态的维护,以及shard的分配,因此如果有两个master的话,可能会导致破坏数据.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/03/ElasticSearch笔记运维集群针专门定制的重要参数-三十八/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/03/ElasticSearch笔记运维集群搭建-三十七/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/03/ElasticSearch笔记运维集群搭建-三十七/" itemprop="url">ElasticSearch笔记运维集群搭建(三十七)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-03T22:17:32+08:00">
-                2020-09-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="es目录结构"><a href="#es目录结构" class="headerlink" title="es目录结构"></a>es目录结构</h1><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'bin'</span>: 存放es的一些可执行脚本,比如用于启动进程的elasticsearch命令,</span><br><span class="line">以及用来安装插件的elastic<span class="built_in">search-plugin</span>插件</span><br><span class="line"></span><br><span class="line"><span class="string">'conf'</span>:用于存放es的配置文件,比如elasticsearch.yml</span><br><span class="line"></span><br><span class="line"><span class="string">'data'</span>:用于存放es的数据文件,就是每个索引的shard的数据文件</span><br><span class="line"></span><br><span class="line"><span class="string">'logs'</span>: 用于存放es的日志文件</span><br><span class="line"></span><br><span class="line"><span class="string">'plugins'</span>: 用于存放es的插件</span><br><span class="line"></span><br><span class="line"><span class="string">'script'</span>: 用于存放一些脚本文件 比如 搜索模板</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/03/ElasticSearch笔记运维集群搭建-三十七/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/03/ElasticSearch笔记运维硬件和JVM-三十六/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/03/ElasticSearch笔记运维硬件和JVM-三十六/" itemprop="url">ElasticSearch笔记运维硬件和JVM(三十六)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-03T22:16:40+08:00">
-                2020-09-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  996
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="运维管理"><a href="#运维管理" class="headerlink" title="运维管理"></a>运维管理</h1><h2 id="内存设置"><a href="#内存设置" class="headerlink" title="内存设置"></a>内存设置</h2><p>尽可能大于8G以上 因为es进程需要分配足够的<code>jvm heap</code>和<code>os cache</code><br>一般来说es用<code>jvm heap</code>还是用的比较少,主要吃的是你的机器内存</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/03/ElasticSearch笔记运维硬件和JVM-三十六/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1902,7 +1887,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">581</span>
+                  <span class="site-state-item-count">590</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1924,7 +1909,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-count">154</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1978,7 +1963,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共556.3k字</span>
+  <span class="post-count">全站共566k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
