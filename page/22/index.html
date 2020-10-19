@@ -294,6 +294,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/01/04/python-urllib库的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/04/python-urllib库的使用/" itemprop="url">python-urllib库的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T16:49:13+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  165
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="python-urllib库的使用"><a href="#python-urllib库的使用" class="headerlink" title="python-urllib库的使用"></a>python-urllib库的使用</h1><h2 id="模块导入"><a href="#模块导入" class="headerlink" title="模块导入"></a>模块导入</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line"><span class="comment"># 生成POST请求数据</span></span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br></pre></td></tr></table></figure>
+<h2 id="创建GET请求"><a href="#创建GET请求" class="headerlink" title="创建GET请求"></a>创建GET请求</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">req=request.Request(<span class="string">"http://www.baidu.com"</span>)</span><br><span class="line">req.add_header(<span class="string">"User-Agent"</span>,<span class="string">"模拟用户浏览器"</span>)</span><br><span class="line">resp=request.urlopen(req)</span><br><span class="line"><span class="comment"># 返回输出</span></span><br><span class="line">print(resp.read().decode(<span class="string">"utf-8"</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resp=request.urlopen(<span class="string">"http://www.baidu.com"</span>)</span><br><span class="line"><span class="comment"># 返回输出</span></span><br><span class="line">print(resp.read().decode(<span class="string">"utf-8"</span>))</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/04/python-urllib库的使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/01/03/python-机器学习基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1689,163 +1846,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/12/31/python爬虫-scrapy如何反爬虫和控制爬虫的速度-setting设置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/31/python爬虫-scrapy如何反爬虫和控制爬虫的速度-setting设置/" itemprop="url">python爬虫-scrapy如何反爬虫和控制爬虫的速度-setting设置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-31T11:36:44+08:00">
-                2019-12-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  359
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="如何反爬虫和控制爬虫的速度-setting设置"><a href="#如何反爬虫和控制爬虫的速度-setting设置" class="headerlink" title="如何反爬虫和控制爬虫的速度-setting设置"></a>如何反爬虫和控制爬虫的速度-setting设置</h1><h2 id="修改是否遵守爬虫协议为False"><a href="#修改是否遵守爬虫协议为False" class="headerlink" title="修改是否遵守爬虫协议为False"></a>修改是否遵守爬虫协议为False</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Obey robots.txt rules</span></span><br><span class="line">ROBOTSTXT_OBEY = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<h2 id="修改并发请求数，修改为1，或者2，越小爬取速度越慢，太快容易被识别到"><a href="#修改并发请求数，修改为1，或者2，越小爬取速度越慢，太快容易被识别到" class="headerlink" title="修改并发请求数，修改为1，或者2，越小爬取速度越慢，太快容易被识别到"></a>修改并发请求数，修改为1，或者2，越小爬取速度越慢，太快容易被识别到</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span></span><br><span class="line">CONCURRENT_REQUESTS = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h2 id="修改下载延迟时间，DOWNLOAD-DELAY设置越大请求越慢"><a href="#修改下载延迟时间，DOWNLOAD-DELAY设置越大请求越慢" class="headerlink" title="修改下载延迟时间，DOWNLOAD_DELAY设置越大请求越慢"></a>修改下载延迟时间，DOWNLOAD_DELAY设置越大请求越慢</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Configure a delay for requests for the same website (default: 0)</span></span><br><span class="line"><span class="comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span></span><br><span class="line"><span class="comment"># See also autothrottle settings and docs</span></span><br><span class="line">DOWNLOAD_DELAY = <span class="number">3</span></span><br><span class="line"><span class="comment">#默认False;为True表示启用AUTOTHROTTLE扩展</span></span><br><span class="line">AUTOTHROTTLE_ENABLED = <span class="literal">True</span></span><br><span class="line"><span class="comment">#默认5秒;初始下载延迟时间</span></span><br><span class="line">AUTOTHROTTLE_START_DELAY = <span class="number">1</span></span><br><span class="line"><span class="comment">#默认60秒；在高延迟情况下最大的下载延迟</span></span><br><span class="line">AUTOTHROTTLE_MAX_DELAY = <span class="number">3</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/31/python爬虫-scrapy如何反爬虫和控制爬虫的速度-setting设置/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1898,7 +1898,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">598</span>
+                  <span class="site-state-item-count">599</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1974,7 +1974,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共569.2k字</span>
+  <span class="post-count">全站共570.3k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
