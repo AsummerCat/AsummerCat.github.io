@@ -294,6 +294,630 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/07/11/SpringSecurity整合Oauth2实现使用过期后刷新token四/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/11/SpringSecurity整合Oauth2实现使用过期后刷新token四/" itemprop="url">SpringSecurity整合Oauth2实现使用过期后刷新token四</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-11T22:25:18+08:00">
+                2019-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  242
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="SpringSecurity整合Oauth2实现使用过期后刷新token四"><a href="#SpringSecurity整合Oauth2实现使用过期后刷新token四" class="headerlink" title="SpringSecurity整合Oauth2实现使用过期后刷新token四"></a>SpringSecurity整合Oauth2实现使用过期后刷新token四</h1><h1 id="在认证服务器上添加"><a href="#在认证服务器上添加" class="headerlink" title="在认证服务器上添加"></a>在认证服务器上添加</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthorizationServerEndpointsConfigurer endpoints)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 为解决获取token并发问题</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        endpoints</span><br><span class="line">                .tokenStore(<span class="keyword">new</span> RedisTokenStore(redisConnectionFactory))</span><br><span class="line">                .authenticationManager(authenticationManager)</span><br><span class="line">                <span class="comment">//允许 GET、POST 请求获取 token，即访问端点：oauth/token</span></span><br><span class="line">                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 为解决获取token并发问题</span></span><br><span class="line">        DefaultTokenServices tokenServices = <span class="keyword">new</span> DefaultTokenServices();</span><br><span class="line">        tokenServices.setTokenStore(endpoints.getTokenStore());</span><br><span class="line">        <span class="comment">//这里表示可以使用刷新token</span></span><br><span class="line">        tokenServices.setSupportRefreshToken(<span class="keyword">true</span>);</span><br><span class="line">        tokenServices.setClientDetailsService(endpoints.getClientDetailsService());</span><br><span class="line">        tokenServices.setTokenEnhancer(endpoints.getTokenEnhancer());</span><br><span class="line">        endpoints.tokenServices(tokenServices);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/11/SpringSecurity整合Oauth2实现使用过期后刷新token四/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/07/11/SpringSecurity整合Oauth2构建授权码模式三/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/11/SpringSecurity整合Oauth2构建授权码模式三/" itemprop="url">SpringSecurity整合Oauth2构建授权码模式三</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-11T22:24:29+08:00">
+                2019-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  982
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="SpringSecurity整合Oauth2构建授权码模式三"><a href="#SpringSecurity整合Oauth2构建授权码模式三" class="headerlink" title="SpringSecurity整合Oauth2构建授权码模式三"></a>SpringSecurity整合Oauth2构建授权码模式三</h1><p><a href="https://github.com/AsummerCat/oauthdemo" target="_blank" rel="noopener">demo地址</a> 里面的</p>
+<p> <a href="https://github.com/AsummerCat/oauthdemo/tree/master/authentication-qq" target="_blank" rel="noopener">authentication-qq</a></p>
+<p><a href="https://github.com/AsummerCat/oauthdemo/tree/master/client-qq" target="_blank" rel="noopener">client-qq</a></p>
+<h1 id="首先还是导入pom"><a href="#首先还是导入pom" class="headerlink" title="首先还是导入pom"></a>首先还是导入pom</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这不就写了</span><br></pre></td></tr></table></figure>
+<h1 id="授权流程"><a href="#授权流程" class="headerlink" title="授权流程"></a>授权流程</h1><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例如 第三方登录:</span><br><span class="line">   浏览器              客户端             认证端          资源端</span><br><span class="line">  请求客户端微信登录  -&gt; 发送请求给认证端带上客户端信息及其回调地址-&gt; 认证端要求用户登录-&gt;登录后授权后获取<span class="keyword">code</span> -&gt;再根据回调地址返回<span class="keyword">code</span>-&gt; 客户端接收<span class="keyword">code</span> 进行请求认证端 获取token-&gt;</span><br><span class="line">  获取token后请求资源端获取用户信息-&gt;客户端进行数据库匹配用户信息 匹配成功后 关闭页面 返回session 登录成功;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/11/SpringSecurity整合Oauth2构建授权码模式三/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/07/11/oauth携带token的方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/11/oauth携带token的方式/" itemprop="url">oauth携带token的方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-11T22:23:10+08:00">
+                2019-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  52
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="oauth携带token的方式"><a href="#oauth携带token的方式" class="headerlink" title="oauth携带token的方式"></a>oauth携带token的方式</h1><h2 id="在Header中携带"><a href="#在Header中携带" class="headerlink" title="在Header中携带"></a>在Header中携带</h2><p><code>http://localhost:8080/order/1</code><br>Header：<br><figure class="highlight plain"><figcaption><span>f732723d-af7f-41bb-bd06-2636ab2be135```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 拼接在url中作为requestParam </span><br><span class="line"></span><br><span class="line">```http://localhost:8080/order/1?access_token=f732723d-af7f-41bb-bd06-2636ab2be135</span><br></pre></td></tr></table></figure></p>
+<h2 id="在form表单中携带"><a href="#在form表单中携带" class="headerlink" title="在form表单中携带"></a>在form表单中携带</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">form param： </span><br><span class="line">access_token=f732723d-af7f-41bb-bd06-2636ab2be135</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/07/10/SpringSecurity整合Oauth2构建基本可用的服务二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/10/SpringSecurity整合Oauth2构建基本可用的服务二/" itemprop="url">SpringSecurity整合Oauth2构建基本可用的服务二</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T22:03:57+08:00">
+                2019-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  20
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="SpringSecurity整合Oauth2构建基本可用的服务-二"><a href="#SpringSecurity整合Oauth2构建基本可用的服务-二" class="headerlink" title="SpringSecurity整合Oauth2构建基本可用的服务(二)"></a>SpringSecurity整合Oauth2构建基本可用的服务(二)</h1><p><a href="https://github.com/AsummerCat/oauthdemo" target="_blank" rel="noopener">demo地址</a></p>
+<h1 id="第一步-老规矩-导入pom"><a href="#第一步-老规矩-导入pom" class="headerlink" title="第一步 老规矩 导入pom"></a>第一步 老规矩 导入pom</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   &lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--redis 相关配置信息   <span class="number">2</span>.x版本之后默认使用lettuce --&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.lettuce&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lettuce-core&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;   </span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-pool2&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">       &lt;!--oauth2整合security的包--&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-oauth2&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/10/SpringSecurity整合Oauth2构建基本可用的服务二/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/07/10/SpringSecurity整合Oauth2初步认识一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1221,636 +1845,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/07/10/spring-security整合JWT实现token登录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/10/spring-security整合JWT实现token登录/" itemprop="url">spring-security整合JWT实现token登录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T21:56:21+08:00">
-                2019-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  12
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="spring-security整合JWT实现token登录"><a href="#spring-security整合JWT实现token登录" class="headerlink" title="spring-security整合JWT实现token登录"></a>spring-security整合JWT实现token登录</h1><p><a href="https://github.com/AsummerCat/springcloudAll/tree/master/loginServer-token" target="_blank" rel="noopener">demo地址</a>  demo中的loginServer-token模块</p>
-<h1 id="SpirngBoot-和cloud版本"><a href="#SpirngBoot-和cloud版本" class="headerlink" title="SpirngBoot 和cloud版本"></a>SpirngBoot 和cloud版本</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;2.1.6.RELEASE&lt;/version&gt;</span><br><span class="line">  &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">&lt;/parent&gt;</span><br><span class="line">  &lt;spring-cloud.version&gt;Greenwich.SR1&lt;/spring-cloud.version&gt;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/10/spring-security整合JWT实现token登录/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/07/02/springsecurity控制session/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/02/springsecurity控制session/" itemprop="url">springsecurity控制session</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T20:10:04+08:00">
-                2019-07-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  912
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="spring-security控制session"><a href="#spring-security控制session" class="headerlink" title="spring security控制session"></a>spring security控制session</h1><h2 id="创建session时机"><a href="#创建session时机" class="headerlink" title="创建session时机"></a>创建session时机</h2><p>我们可以准确地控制什么时机创建session，有以下选项进行控制：</p>
-<p>always – 如果session不存在总是需要创建； </p>
-<p>ifRequired – 仅当需要时，创建session(默认配置)； </p>
-<p>never – 框架从不创建session，但如果已经存在，会使用该session </p>
-<p>stateless – Spring Security不会创建session，或使用session；</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/02/springsecurity控制session/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/06/30/Springcloud如何在Zuul中使用fallback功能/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/30/Springcloud如何在Zuul中使用fallback功能/" itemprop="url">SpringCloud如何在Zuul中使用fallback功能zuul服务连接失败后的回退处理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T23:37:34+08:00">
-                2019-06-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  452
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="zuul服务连接失败后的回退处理"><a href="#zuul服务连接失败后的回退处理" class="headerlink" title="zuul服务连接失败后的回退处理"></a>zuul服务连接失败后的回退处理</h1><h1 id="Spring-cloud-如何在Zuul中使用fallback功能"><a href="#Spring-cloud-如何在Zuul中使用fallback功能" class="headerlink" title="Spring cloud 如何在Zuul中使用fallback功能"></a>Spring cloud 如何在Zuul中使用fallback功能</h1><p>我们在项目中使用Spring cloud zuul的时候，有一种这样的需求，就是当我们的zuul进行路由分发时，如果后端服务没有启动，或者调用超时，这时候我们希望Zuul提供一种降级功能，而不是将异常暴露出来。</p>
-<h2 id="自定义Zuul回退机制处理器"><a href="#自定义Zuul回退机制处理器" class="headerlink" title=" 自定义Zuul回退机制处理器"></a><em> 自定义Zuul回退机制处理器</em></h2><p>需要实现 ZuulFallbackProvider 接口  1.x版本</p>
-<p>需要实现 FallbackProvider 接口 2.x版本</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/30/Springcloud如何在Zuul中使用fallback功能/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/06/27/SpringCloud中eureka-instance为前缀的的常用配置参数说明/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/27/SpringCloud中eureka-instance为前缀的的常用配置参数说明/" itemprop="url">SpringCloud中eureka_instance为前缀的的常用配置参数说明</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-27T21:41:16+08:00">
-                2019-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  245
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Spring-Cloud中eureka-instance为前缀的的常用配置参数说明"><a href="#Spring-Cloud中eureka-instance为前缀的的常用配置参数说明" class="headerlink" title="Spring Cloud中eureka.instance为前缀的的常用配置参数说明"></a>Spring Cloud中eureka.instance为前缀的的常用配置参数说明</h1><h2 id="参数详情"><a href="#参数详情" class="headerlink" title="参数详情"></a>参数详情</h2><p>eureka.instance</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">* preferIpAddress                  是否优先使用IP地址作为主机名的标识                   <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">* leaseRenewalIntervalInSeconds    Eureka客户端向服务端发送心跳的时间间隔，单位为秒       <span class="number">30</span></span><br><span class="line"></span><br><span class="line">* leaseExpirationDurationInSeconds   Eureka服务端在收到最后一次心跳之后等待的时间上限     <span class="number">90</span></span><br><span class="line">                                 ，单位为秒。超过该时间之后服务端会将该服务实例从服务</span><br><span class="line">                                 清单中剔除，从而禁止服务调用请求被发送到该示例上</span><br><span class="line">                                </span><br><span class="line">* nonSecurePort                   非安全的通信端口号                                    <span class="number">80</span></span><br><span class="line"></span><br><span class="line">* securePort                      安全的通信端口号                                      <span class="number">443</span></span><br><span class="line"></span><br><span class="line">* nonSecurePortEnabled            是否启用非安全的通信端口号                             <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">* securePortEnabled               是否启用安全的通信端口号</span><br><span class="line"></span><br><span class="line">* appname                         服务名，默认取spring.application.name的配置值</span><br><span class="line"></span><br><span class="line">* hostname                        主机名，不配置的时候将根据操作系统的主机名来获取</span><br></pre></td></tr></table></figure>
-<p>注意：org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean类中，可以查看各个参数的默认值。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/35/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><span class="page-number current">36</span><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/60/">60</a><a class="extend next" rel="next" href="/page/37/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/35/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><span class="page-number current">36</span><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/37/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1898,7 +1897,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">599</span>
+                  <span class="site-state-item-count">603</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1920,7 +1919,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">155</span>
+                  <span class="site-state-item-count">156</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1974,7 +1973,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共570.3k字</span>
+  <span class="post-count">全站共573.2k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
