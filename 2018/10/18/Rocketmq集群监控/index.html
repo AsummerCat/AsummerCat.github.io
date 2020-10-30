@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content=".....">
+  <meta name="keywords" content="RocketMQ,消息队列,">
 
 
 
@@ -86,13 +86,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="emmm读书使我快乐">
-<meta property="og:url" content="http://www.linjingc.top/tags/进一步学习/index.html">
+<meta name="description" content="安装可视化界面1it clone https://github.com/apache/rocketmq-externals.git 然后进入rocketmq-console的目录： 1cd rocketmq-externals/rocketmq-console 执行以下命令对rocketmq-cosole进行打包，把他做成一个jar包： 1mvn package -DskipTests 然后进入t">
+<meta name="keywords" content="RocketMQ,消息队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rocketmq集群监控">
+<meta property="og:url" content="http://www.linjingc.top/2018/10/18/Rocketmq集群监控/index.html">
 <meta property="og:site_name" content="emmm读书使我快乐">
+<meta property="og:description" content="安装可视化界面1it clone https://github.com/apache/rocketmq-externals.git 然后进入rocketmq-console的目录： 1cd rocketmq-externals/rocketmq-console 执行以下命令对rocketmq-cosole进行打包，把他做成一个jar包： 1mvn package -DskipTests 然后进入t">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-10-30T08:31:01.850Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="emmm读书使我快乐">
+<meta name="twitter:title" content="Rocketmq集群监控">
+<meta name="twitter:description" content="安装可视化界面1it clone https://github.com/apache/rocketmq-externals.git 然后进入rocketmq-console的目录： 1cd rocketmq-externals/rocketmq-console 执行以下命令对rocketmq-cosole进行打包，把他做成一个jar包： 1mvn package -DskipTests 然后进入t">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://www.linjingc.top/tags/进一步学习/">
+  <link rel="canonical" href="http://www.linjingc.top/2018/10/18/Rocketmq集群监控/">
 
 
 
 
 
-  <title>标签: 进一步学习 | emmm读书使我快乐</title>
+  <title>Rocketmq集群监控 | emmm读书使我快乐</title>
   
 
 
@@ -151,7 +156,7 @@
   <canvas id="canvas"></canvas>
 </div>
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
 <a href="https://github.com/AsummerCat/AsummerCat.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -279,52 +284,192 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>进一步学习<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2018/10/18/Rocketmq集群监控/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/01/02/进一步学习/" itemprop="url">
-              
-                <span itemprop="name">进一步学习</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Rocketmq集群监控</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-02T11:18:27+08:00" content="2019-01-02">
-          01-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T17:53:51+08:00">
+                2018-10-18
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  208
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安装可视化界面"><a href="#安装可视化界面" class="headerlink" title="安装可视化界面"></a>安装可视化界面</h1><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">it <span class="keyword">clone</span> <span class="title">https</span>://github.com/apache/rocketmq-externals.git</span><br></pre></td></tr></table></figure>
+<p>然后进入rocketmq-console的目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> rocketmq-externals/rocketmq-console</span><br></pre></td></tr></table></figure>
+<p>执行以下命令对rocketmq-cosole进行打包，把他做成一个jar包：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn <span class="keyword">package</span> <span class="title">-DskipTests</span></span><br></pre></td></tr></table></figure>
+<p>然后进入target目录下，可以看到一个jar包，接着执行下面的命令启动工作台：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar rocketmq-console-ng-1.0.1.jar --server.<span class="attribute">port</span>=8080 --rocketmq.config.<span class="attribute">namesrvAddr</span>=127.0.0.1:9876</span><br></pre></td></tr></table></figure>
+<p>这里务必要在启动的时候设置好NameServer的地址，如果有多个地址可以用分号隔开，接着就会看到工作台启动了，然后就通过浏览<br>器访问那台机器的8080端口就可以了，就可以看到精美的工作台界面。</p>
+<p>这样可以看到 集群中的内容  可以配置其他的内容非常方便</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RocketMQ/" <i class="fa fa-tag"> RocketMQ</a>
+          
+            <a href="/tags/消息队列/" <i class="fa fa-tag"> 消息队列</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/18/SpringBoot整合Rocketmq/" rel="next" title="SpringBoot整合Rocketmq">
+                <i class="fa fa-chevron-left"></i> SpringBoot整合Rocketmq
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/19/RockMQ的一些基本概念/" rel="prev" title="RockMQ的一些基本概念">
+                RockMQ的一些基本概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -332,6 +477,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -352,8 +501,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -370,21 +528,12 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">603</span>
+                  <span class="site-state-item-count">601</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
             
 
             
@@ -392,7 +541,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">149</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -415,6 +564,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装可视化界面"><span class="nav-number">1.</span> <span class="nav-text">安装可视化界面</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -446,7 +611,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共573.2k字</span>
+  <span class="post-count">全站共564.9k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
@@ -575,6 +740,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
