@@ -294,6 +294,327 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/02/13/TreeMap解析红黑树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/13/TreeMap解析红黑树/" itemprop="url">TreeMap解析红黑树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-13T11:06:15+08:00">
+                2019-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  351
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考:<a href="https://www.cnblogs.com/chenssy/p/3746600.html" target="_blank" rel="noopener"><a href="https://www.cnblogs.com/chenssy/p/3746600.html" target="_blank" rel="noopener">Java提高篇（二七）—–TreeMap</a></a></p>
+<p>参考<a href="https://www.cnblogs.com/skywang12345/p/3310928.html" target="_blank" rel="noopener">Java 集合系列12之 TreeMap详细介绍(源码解析)和使用示例</a></p>
+<h1 id="TreeMap-未完成-后期学习红黑树"><a href="#TreeMap-未完成-后期学习红黑树" class="headerlink" title="TreeMap(未完成 后期学习红黑树 )"></a>TreeMap(未完成 后期学习红黑树 )</h1><h2 id="TreeMap的定义如下"><a href="#TreeMap的定义如下" class="headerlink" title="TreeMap的定义如下"></a>TreeMap的定义如下</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">NavigableMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="TreeMap-简介"><a href="#TreeMap-简介" class="headerlink" title="TreeMap 简介"></a><strong>TreeMap 简介</strong></h2><ul>
+<li>TreeMap 是一个<strong>有序的key-value集合</strong>，它是通过<a href="http://www.cnblogs.com/skywang12345/p/3245399.html" target="_blank" rel="noopener">红黑树</a>实现的。</li>
+<li>TreeMap <strong>继承于AbstractMap</strong>，所以它是一个Map，即一个key-value集合。</li>
+<li>TreeMap 实现了NavigableMap接口，意味着它<strong>支持一系列的导航方法。</strong>比如返回有序的key集合。</li>
+<li>TreeMap 实现了Cloneable接口，意味着<strong>它能被克隆</strong>。</li>
+<li>TreeMap 实现了java.io.Serializable接口，意味着<strong>它支持序列化</strong>。</li>
+</ul>
+<p>TreeMap基于<strong>红黑树（Red-Black tree）实现</strong>。该映射根据<strong>其键的自然顺序进行排序</strong>，或者根据<strong>创建映射时提供的 Comparator 进行排序</strong>，具体取决于使用的构造方法。<br>TreeMap的基本操作 containsKey、get、put 和 remove 的时间复杂度是 log(n) 。<br>另外，TreeMap是<strong>非同步</strong>的。 它的iterator 方法返回的<strong>迭代器是fail-fastl</strong>的。</p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认构造函数。使用该构造函数，TreeMap中的元素按照自然排序进行排列。</span></span><br><span class="line">TreeMap()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建的TreeMap包含Map</span></span><br><span class="line">TreeMap(Map&lt;? extends K, ? extends V&gt; copyFrom)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定Tree的比较器</span></span><br><span class="line">TreeMap(Comparator&lt;? <span class="keyword">super</span> K&gt; comparator)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建的TreeSet包含copyFrom</span></span><br><span class="line">TreeMap(SortedMap&lt;K, ? extends V&gt; copyFrom)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/02/13/hashSet解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/13/hashSet解析/" itemprop="url">hashSet解析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-13T10:25:05+08:00">
+                2019-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  519
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="hashSet"><a href="#hashSet" class="headerlink" title="hashSet"></a>hashSet</h1><p><code>该容器中只能存储不重复的对象</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashSet</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractSet</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Set</span>&lt;<span class="title">E</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+<p>public boolean add(Object o)方法用来在Set中添加元素，当元素值重复时则会立即返回false，如果成功添加的话会返回true。</p>
+<p>底层还是使用hashMap实现的</p>
+<p>这边就是将值 作为hashMap的key  利用一个定义的虚拟的object对象当做全部key的value</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/13/hashSet解析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/01/30/LinkedList解析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1559,329 +1880,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/01/19/安装Nacos环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/19/安装Nacos环境/" itemprop="url">安装Nacos环境</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-19T10:19:23+08:00">
-                2019-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  402
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="https://nacos.io/zh-cn/docs/quick-start.html" target="_blank" rel="noopener">官网文档</a></p>
-<h1 id="预备环境准备"><a href="#预备环境准备" class="headerlink" title="预备环境准备"></a>预备环境准备</h1><p>Nacos 依赖 <a href="https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/" target="_blank" rel="noopener">Java</a> 环境来运行。如果您是从代码开始构建并运行Nacos，还需要为此配置 <a href="https://maven.apache.org/index.html" target="_blank" rel="noopener">Maven</a>环境，请确保是在以下版本环境中安装使用:</p>
-<ol>
-<li>64 bit OS，支持 Linux/Unix/Mac/Windows，推荐选用 Linux/Unix/Mac。</li>
-<li>64 bit JDK 1.8+；<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">下载</a> &amp; <a href="https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/" target="_blank" rel="noopener">配置</a>。</li>
-<li>Maven 3.2.x+；<a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">下载</a> &amp; <a href="https://maven.apache.org/settings.html" target="_blank" rel="noopener">配置</a>。</li>
-<li>默认密码: admin password</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/19/安装Nacos环境/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/01/19/使用Nacos来实现分布式环境下的配置管理和服务注册发现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/19/使用Nacos来实现分布式环境下的配置管理和服务注册发现/" itemprop="url">使用Nacos来实现分布式环境下的配置管理和服务注册发现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-19T10:12:48+08:00">
-                2019-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  374
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Nacos-discovery" target="_blank" rel="noopener">服务发现文档</a></p>
-<p><a href="https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Nacos-config" target="_blank" rel="noopener">配置信息文档 替代SpringCloudConfig</a></p>
-<p>Spring Cloud Alibaba项目由两部分组成：阿里巴巴开源组件和阿里云产品组件，旨在为Java开发人员在使用阿里巴巴产品的同时，通过利用 Spring 框架的设计模式和抽象能力，注入Spring Boot和Spring Cloud的优势。</p>
-<blockquote>
-<p>Spring Cloud Alibaba 项目是由阿里巴巴维护的社区项目。</p>
-<p><strong>注意</strong>： 版本 0.2.0.RELEASE 对应的是 Spring Boot 2.x 版本，版本 0.1.0.RELEASE 对应的是 Spring Boot 1.x 版本.</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/19/使用Nacos来实现分布式环境下的配置管理和服务注册发现/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1934,7 +1932,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">602</span>
+                  <span class="site-state-item-count">604</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1947,7 +1945,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">149</span>
+                  <span class="site-state-item-count">151</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2001,7 +1999,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共565.3k字</span>
+  <span class="post-count">全站共565.5k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>

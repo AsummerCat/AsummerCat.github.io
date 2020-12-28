@@ -294,6 +294,324 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/10/09/kafka笔记之高可用的问题-六/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/09/kafka笔记之高可用的问题-六/" itemprop="url">kafka笔记之高可用的问题(六)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-09T09:05:43+08:00">
+                2020-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  301
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">kafka</span>    <span class="string">天生分布式</span>    <span class="string">每个topic可以指定多个partition</span>    <span class="string">每个mq一个partition</span> <span class="string">也就是说</span> <span class="string">一个topic的消息会被分配到多个mq里面</span>  <span class="string">比如</span> <span class="string">A</span> <span class="number">2</span><span class="string">个消息</span> <span class="string">B</span> <span class="number">3</span><span class="string">个消息</span></span><br><span class="line"></span><br><span class="line">  <span class="string">|HA机制</span>  <span class="string">:</span> <span class="number">0.8</span><span class="string">版本以后</span> <span class="string">有一个副本机制-&gt;生成副本partiion被在其他机子(follower)上会生成副本</span>  <span class="string">并进行选举</span></span><br><span class="line">    <span class="string">写入lader同步到follower</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/10/09/kafka笔记之高可用的问题-六/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/10/09/kafka笔记之Partition分区的副本机制-五/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/09/kafka笔记之Partition分区的副本机制-五/" itemprop="url">kafka笔记之Partition分区的副本机制-五</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-09T05:42:26+08:00">
+                2020-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  722
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>topic是存储消息的逻辑概念</p>
+<p>partition</p>
+<ol>
+<li>每个topic可以划分多个分区</li>
+<li>相同topic下的不同分区的消息是不同的</li>
+<li>默认50个分区</li>
+</ol>
+<h1 id="kafka笔记之消息分发策略"><a href="#kafka笔记之消息分发策略" class="headerlink" title="kafka笔记之消息分发策略"></a>kafka笔记之消息分发策略</h1><p>根据partition(分区列表)进行分发消息<br>具体:<br>根据key来分发消息<br>默认算法(hash取模路由key)进行选择分区  </p>
+<p>注意:<br>kafka中一个partition不允许有并发,<br>所以如果消费者大于分区数量会有部分消费者不会消费消息<br>如果消费者小于分区数量会有部分消费者会消费多个分区消息<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/10/09/kafka笔记之Partition分区的副本机制-五/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/10/09/kafka笔记之Spring整合kafka-四/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1527,316 +1845,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/12/rabbitMQ笔记消费者相关-六/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/12/rabbitMQ笔记消费者相关-六/" itemprop="url">rabbitMQ笔记消费者相关(六)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-12T14:38:24+08:00">
-                2020-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.6k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="rabbitMQ笔记消费者相关-六"><a href="#rabbitMQ笔记消费者相关-六" class="headerlink" title="rabbitMQ笔记消费者相关(六)"></a>rabbitMQ笔记消费者相关(六)</h1><h1 id="常规消费消息"><a href="#常规消费消息" class="headerlink" title="常规消费消息"></a>常规消费消息</h1><h3 id="基于方法"><a href="#基于方法" class="headerlink" title="基于方法"></a>基于方法</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">基于方法:</span><br><span class="line"><span class="number">1.</span>接收多个队列</span><br><span class="line">    @RabbitListener(queues = &#123;<span class="string">"firstQueue"</span>, <span class="string">"secondQueue"</span>&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receiveFirstQueue</span><span class="params">(<span class="keyword">String</span> name)</span> </span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"fanout交换机分配请求"</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>接收单个队列</span><br><span class="line">    @RabbitListener(queues = RabbitConfig.TOPIC_QUEUE1)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receiveTopicQueue</span><span class="params">(<span class="keyword">String</span> name)</span> </span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"topic1交换机分配请求"</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>消息回调确认 ACK机制</span><br><span class="line">    @RabbitListener(queues = RabbitConfig.BASIC_QUEUE)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(Message message, Channel channel)</span> throws IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 采用手动应答模式, 手动确认应答更为安全稳定</span></span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"客户端接收到请求"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            channel.basicQos(<span class="number">1</span>);</span><br><span class="line">            Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">            <span class="comment">//手动ack 告诉服务器收到这条消息 已经被我消费了 可以在队列删掉 这样以后就不会再发了 否则消息服务器以为这条消息没处理掉 后续还会在发</span></span><br><span class="line">            channel.basicAck(message.getMessageProperties().getDeliveryTag(), <span class="literal">false</span>);</span><br><span class="line">            System.out.<span class="built_in">println</span>(<span class="string">"receive: "</span> + <span class="keyword">new</span> <span class="keyword">String</span>(message.getBody()));</span><br><span class="line"></span><br><span class="line">            <span class="comment">//int i = 1 / 0;</span></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="comment">//重新放入队列中</span></span><br><span class="line">            <span class="comment">//channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, true);</span></span><br><span class="line">            <span class="comment">//丢弃这条消息</span></span><br><span class="line">            channel.basicNack(message.getMessageProperties().getDeliveryTag(), <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">            <span class="comment">//拒绝单条消息 重新丢回队列中</span></span><br><span class="line">            <span class="comment">//channel.basicReject(message.getMessageProperties().getDeliveryTag(), true);</span></span><br><span class="line">            System.out.<span class="built_in">println</span>(<span class="string">"receiver fail"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/12/rabbitMQ笔记消费者相关-六/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/09/12/rabbitMQ笔记消息持久和ACK确认机制-五/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/12/rabbitMQ笔记消息持久和ACK确认机制-五/" itemprop="url">rabbitMQ笔记消息持久和ACK确认机制(五)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-12T14:37:52+08:00">
-                2020-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="rabbitMQ笔记消息持久和ACK确认机制-五"><a href="#rabbitMQ笔记消息持久和ACK确认机制-五" class="headerlink" title="rabbitMQ笔记消息持久和ACK确认机制(五)"></a>rabbitMQ笔记消息持久和ACK确认机制(五)</h1><h2 id="消息队列持久化"><a href="#消息队列持久化" class="headerlink" title="消息队列持久化"></a>消息队列持久化</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@RabbitListener</span>在该注解里 </span><br><span class="line"><span class="variable">@queue</span>和<span class="variable">@Exchange</span> 都不要设置autoDelete=<span class="string">"true"</span>;</span><br><span class="line">不然就会变成临时的消息 不持久化</span><br><span class="line"></span><br><span class="line"><span class="variable">@autoDelete</span></span><br><span class="line">写在:</span><br><span class="line"> <span class="variable">@Queue</span>中: 当所有消费客户端断开后,是否自动删除队列</span><br><span class="line"> <span class="attribute">true</span>:是 <span class="attribute">false</span>:否</span><br><span class="line"></span><br><span class="line">写在:</span><br><span class="line"> <span class="variable">@Exchange</span>中: 当所有绑定队列都不在使用时,是否自动删除交换器</span><br><span class="line"> <span class="attribute">true</span>:是 <span class="attribute">false</span>:否</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/12/rabbitMQ笔记消息持久和ACK确认机制-五/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1889,7 +1897,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">602</span>
+                  <span class="site-state-item-count">604</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1902,7 +1910,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">149</span>
+                  <span class="site-state-item-count">151</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1956,7 +1964,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共565.3k字</span>
+  <span class="post-count">全站共565.5k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
