@@ -294,6 +294,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/11/11/oracle11G分区大表月度形式建表和查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/11/oracle11G分区大表月度形式建表和查询/" itemprop="url">oracle11G分区大表月度形式建表和查询</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-11T14:34:00+08:00">
+                2019-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  418
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="oracle11G分区大表月度形式建表和查询"><a href="#oracle11G分区大表月度形式建表和查询" class="headerlink" title="oracle11G分区大表月度形式建表和查询"></a>oracle11G分区大表月度形式建表和查询</h1><h2 id="分区模式"><a href="#分区模式" class="headerlink" title="分区模式"></a>分区模式</h2><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">根据年<span class="symbol">:</span> INTERVAL(NUMTOYMINTERVAL(<span class="number">1</span>,'<span class="built_in">YEAR</span>'))</span><br><span class="line"></span><br><span class="line">根据月<span class="symbol">:</span> INTERVAL(NUMTOYMINTERVAL(<span class="number">1</span>,'<span class="built_in">MONTH</span>'))</span><br><span class="line">根据天<span class="symbol">:</span> INTERVAL(NUMTODSINTERVAL(<span class="number">1</span>,'<span class="built_in">DAY</span>'))</span><br><span class="line"></span><br><span class="line">根据时分秒<span class="symbol">:</span> NUMTODSINTERVAL( <span class="built_in">n</span>, &#123; '<span class="built_in">DAY</span>'|'<span class="built_in">HOUR</span>'|'<span class="built_in">MINUTE</span>'|'<span class="built_in">SECOND</span>'&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="1-重命名原表名称"><a href="#1-重命名原表名称" class="headerlink" title="1.重命名原表名称"></a>1.重命名原表名称</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> P_DRUG_SUI_ANALYSIS_OUT <span class="keyword">rename</span> <span class="keyword">to</span> P_DRUG_SUI_ANALYSIS_OUT_temp; <span class="comment">--重命名原表名称</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-按月创建分区表"><a href="#2-按月创建分区表" class="headerlink" title="2.按月创建分区表"></a>2.按月创建分区表</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">create table P_DRUG_SUI_ANALYSIS_OUT ---按月创建分区表</span><br><span class="line">( </span><br><span class="line">	<span class="function">ID <span class="title">VARCHAR2</span><span class="params">(<span class="number">32</span>)</span> not <span class="keyword">null</span></span></span><br><span class="line"><span class="function">	PATIENT_NO <span class="title">NVARCHAR2</span><span class="params">(<span class="number">50</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">	SICK_NAME <span class="title">NVARCHAR2</span><span class="params">(<span class="number">50</span>)</span>,</span></span><br><span class="line"><span class="function">	AMOUNT NUMBER,</span></span><br><span class="line"><span class="function">	QUANTITY NUMBER,</span></span><br><span class="line"><span class="function">	ZONE_ID <span class="title">NVARCHAR2</span><span class="params">(<span class="number">36</span>)</span>,</span></span><br><span class="line"><span class="function">	DEPART_ID <span class="title">NVARCHAR2</span><span class="params">(<span class="number">50</span>)</span>,</span></span><br><span class="line"><span class="function">	DEPARTMENT <span class="title">NVARCHAR2</span><span class="params">(<span class="number">50</span>)</span>,</span></span><br><span class="line"><span class="function">	DOC_ID <span class="title">NVARCHAR2</span><span class="params">(<span class="number">50</span>)</span>,</span></span><br><span class="line"><span class="function">	DOC_NAME <span class="title">NVARCHAR2</span><span class="params">(<span class="number">50</span>)</span>,</span></span><br><span class="line"><span class="function">	RESULT_TYPE <span class="title">VARCHAR2</span><span class="params">(<span class="number">50</span>)</span>,</span></span><br><span class="line"><span class="function">	ANALYSIS_RESULT_TYPE <span class="title">VARCHAR2</span><span class="params">(<span class="number">50</span>)</span>,</span></span><br><span class="line"><span class="function">	PRES_TIME DATE not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">	PRES_NO <span class="title">NVARCHAR2</span><span class="params">(<span class="number">50</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">	ANALYSIS_TYPE <span class="title">VARCHAR2</span><span class="params">(<span class="number">50</span>)</span>,</span></span><br><span class="line"><span class="function">	DRUG_NAME <span class="title">NVARCHAR2</span><span class="params">(<span class="number">200</span>)</span>,</span></span><br><span class="line"><span class="function">	GRADE <span class="title">NUMBER</span><span class="params">(<span class="number">10</span>)</span></span></span><br><span class="line"><span class="function">)</span></span><br><span class="line"><span class="function">PARTITION BY <span class="title">RANGE</span> <span class="params">(PRES_TIME)</span> <span class="title">INTERVAL</span> <span class="params">(numtoyminterval(<span class="number">1</span>, <span class="string">'month'</span>)</span>)</span></span><br><span class="line"><span class="function"><span class="params">(partition part_t1 values less than(to_date(<span class="string">'2019-05-01'</span>, <span class="string">'yyyy-mm-dd'</span>)</span>))</span>;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/11/oracle11G分区大表月度形式建表和查询/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/11/11/利用B表数据批量更新A表数据/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1693,166 +1850,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/10/08/gateway的各种路由配置断言工厂/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/08/gateway的各种路由配置断言工厂/" itemprop="url">gateway的各种路由配置断言工厂</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T16:34:15+08:00">
-                2019-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  731
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="断言工厂"><a href="#断言工厂" class="headerlink" title="断言工厂"></a>断言工厂</h1><p><a href="http://c.biancheng.net/spring_cloud/" target="_blank" rel="noopener">Spring Cloud</a> Gateway 内置了许多路由断言工厂，可以通过配置的方式直接使用，也可以组合使用多个路由断言工厂。接下来为大家介绍几个常用的路由断言工厂类。</p>
-<p>可以用来匹配不同的路由规则</p>
-<h2 id="Path-路由断言工厂"><a href="#Path-路由断言工厂" class="headerlink" title="Path 路由断言工厂"></a>Path 路由断言工厂</h2><p>Path 路由断言工厂接收一个参数，根据 Path 定义好的规则来判断访问的 URI 是否匹配。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">        - id: host_route</span><br><span class="line">    uri: http:<span class="comment">//c.biancheng.net</span></span><br><span class="line">    predicates:</span><br><span class="line">      - Path=/blog/detail/&#123;segment&#125;</span><br></pre></td></tr></table></figure>
-<p>  如果请求路径为 /blog/detail/xxx，则此路由将匹配。也可以使用正则，例如 /blog/detail/** 来匹配 /blog/detail/ 开头的多级 URI。</p>
-<p>我们访问本地的网关：<a href="http://localhost：2001/blog/detail/36185" target="_blank" rel="noopener">http://localhost：2001/blog/detail/36185</a> ，可以看到显示的是 <a href="http://c.biancheng.net/blog/detail/36185" target="_blank" rel="noopener">http://c.biancheng.net/blog/detail/36185</a> 对应的内容。  </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/08/gateway的各种路由配置断言工厂/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1905,7 +1902,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">604</span>
+                  <span class="site-state-item-count">605</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1956,7 +1953,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1972,7 +1969,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共565.5k字</span>
+  <span class="post-count">全站共566.5k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
