@@ -294,6 +294,331 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/05/06/面试相关-redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/06/面试相关-redis/" itemprop="url">面试相关-redis</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-06T14:15:29+08:00">
+                2020-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">好处:   单线程 使用多路I/O复用模型，非阻塞IO<span class="comment">(IO多路复用)</span>  支持持久化 多数据结构</span><br></pre></td></tr></table></figure>
+<h3 id="6-0以后采用IO多线程模型"><a href="#6-0以后采用IO多线程模型" class="headerlink" title="6.0以后采用IO多线程模型"></a>6.0以后采用IO多线程模型</h3><p><a href="http://antirez.com/news/126" target="_blank" rel="noopener">http://antirez.com/news/126</a></p>
+<h3 id="Redis6-0多线程的实现机制"><a href="#Redis6-0多线程的实现机制" class="headerlink" title="Redis6.0多线程的实现机制"></a>Redis6.0多线程的实现机制</h3><p><img src="/img/2020-05-09/redis6.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">流程简述如下：</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>、主线程负责接收建立连接请求，获取 socket 放入全局等待读处理队列</span><br><span class="line"><span class="number">2</span>、主线程处理完读事件之后，通过 RR(Round Robin) 将这些连接分配给这些 IO 线程</span><br><span class="line"><span class="number">3</span>、主线程阻塞等待 IO 线程读取 socket 完毕</span><br><span class="line"><span class="number">4</span>、主线程通过单线程的方式执行请求命令，请求数据读取并解析完成，但并不执行</span><br><span class="line"><span class="number">5</span>、主线程阻塞等待 IO 线程将数据回写 socket 完毕</span><br><span class="line"><span class="number">6</span>、解除绑定，清空等待队列</span><br></pre></td></tr></table></figure>
+<p><img src="/img/2020-05-09/redis61.png" alt></p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">网络通信仍然使用单线程模型  -&gt;IO处理部分使用多线程, 其他模块也是多线程</span><br><span class="line">(Redis 的多线程部分只是用来处理网络数据的读写和协议解析)</span><br><span class="line"></span><br><span class="line">引入原因:</span><br><span class="line">  目前对于单线程 Redis 来说，性能瓶颈主要在于网络的 <span class="built_in">IO</span> 消耗，优化主要有两个方向:</span><br><span class="line"><span class="number">1</span>、提高网络 <span class="built_in">IO</span> 性能，典型的实现像使用 DPDK 来替代内核网络栈的方式</span><br><span class="line"><span class="number">2</span>、使用多线程充分利用多核，典型的实现像 Memcached</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/06/面试相关-redis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/04/28/SpringCloudAlibaba-nacos源码编译解决当前问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/28/SpringCloudAlibaba-nacos源码编译解决当前问题/" itemprop="url">SpringCloudAlibaba-nacos源码编译解决当前问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-28T16:25:46+08:00">
+                2020-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  548
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="由于发现个md5解析的问题查看了源码"><a href="#由于发现个md5解析的问题查看了源码" class="headerlink" title="由于发现个md5解析的问题查看了源码"></a>由于发现个md5解析的问题查看了源码</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">单机调试需要加入:</span><br><span class="line">VM options：-Dnacos.standalone=<span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">执行打包命令</span><br><span class="line">mvn -Prelease-nacos clean <span class="keyword">install</span> -U  -Dmaven.<span class="keyword">test</span>.skip=<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="当前版本"><a href="#当前版本" class="headerlink" title="当前版本"></a>当前版本</h2><p>2020年4月28日16:27:46</p>
+<p>nacos整合sentinel </p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">默认使用的nacos-client是<span class="number">1.14</span>版本的</span><br><span class="line">里面的<span class="built_in">md5</span>解析 与nacos-config解析的<span class="built_in">md5</span> 不一致 </span><br><span class="line">初步判断两边的<span class="built_in">md5</span>算法不一致 </span><br><span class="line"></span><br><span class="line">源码中查看了提交记录 发现有人提交了<span class="built_in">md5</span>算法 并且修改了nacos-config里面的<span class="built_in">md5</span>算法 其他部分都没有替换</span><br></pre></td></tr></table></figure>
+<h2 id="问题点"><a href="#问题点" class="headerlink" title="问题点:"></a>问题点:</h2><p><img src="/img/2020-04-26/nacos-md51.png" alt="nacos-client"></p>
+<p><img src="/img/2020-04-26/nacos-md52.png" alt="nacos-config"></p>
+<p>解析的算法不一致</p>
+<p>还有部分内容是用<code>MD5.getInstance().getMD5String(content);</code>实现的</p>
+<p>跟着这个BUG梳理了整个nacos的流程</p>
+<p>本来打算提交issue 发现7天前被解决了 但是没有发布到spring-cloud-alibaba-dependencies版本中 </p>
+<p>这样会导致你加载的时候可能会导致 无限刷新数据就是匹配不进去</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/28/SpringCloudAlibaba-nacos源码编译解决当前问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/04/27/SpringCloudAlibaba-nacos整合sentinel后的工作流程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1535,313 +1860,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/04/09/解决哈希冲突常用的两种方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/09/解决哈希冲突常用的两种方法/" itemprop="url">解决哈希冲突常用的两种方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-09T14:39:00+08:00">
-                2020-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  268
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="解决哈希冲突常用的两种方法是：开放定址法和链地址法"><a href="#解决哈希冲突常用的两种方法是：开放定址法和链地址法" class="headerlink" title="解决哈希冲突常用的两种方法是：开放定址法和链地址法"></a>解决哈希冲突常用的两种方法是：开放定址法和链地址法</h2><p> 开放定址法：当冲突发生时，使用某种探查(亦称探测)技术在散列表中形成一个探查(测)序列。沿此序列逐个单元地查找，直到找到给定的关键字，或者碰到一个开放的地址(即该地址单元为空)为止（若要插入，在探查到开放的地址，则可将待插入的新结点存人该地址单元）。查找时探查到开放的 地址则表明表中无待查的关键字，即查找失败。 </p>
-<p>   链地址法：将所有关键字为同义词的结点链接在同一个单链表中。若选定的散列表长度为m，则可将散列表定义为一个由m个头指针组成的指针数 组T[0..m-1]。凡是散列地址为i的结点，均插入到以T[i]为头指针的单链表中。T中各分量的初值均应为空指针。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/04/09/java操作orcle返回存储过程带参数传入和返回/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/09/java操作orcle返回存储过程带参数传入和返回/" itemprop="url">java操作orcle返回存储过程带参数传入和返回</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-09T14:37:08+08:00">
-                2020-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="java操作orcle返回存储过程带参数传入和返回"><a href="#java操作orcle返回存储过程带参数传入和返回" class="headerlink" title="java操作orcle返回存储过程带参数传入和返回"></a>java操作orcle返回存储过程带参数传入和返回</h1><h2 id="这边需要注意的一点是"><a href="#这边需要注意的一点是" class="headerlink" title="这边需要注意的一点是"></a>这边需要注意的一点是</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">如果传入自定义数组的话 最好新建一个</span><br><span class="line">CREATE <span class="keyword">OR</span> REPLACE<span class="built_in"> TYPE </span><span class="string">"TYPE_APPLY_RECORD"</span>  AS OBJECT(</span><br><span class="line">   APPLY_NO       NUMBER(20),</span><br><span class="line">   ITEM_CODE      VARCHAR2(400)</span><br><span class="line"> )</span><br><span class="line"></span><br><span class="line">CREATE <span class="keyword">OR</span> REPLACE<span class="built_in"> TYPE </span><span class="string">"TYPE_APPLY_RECORD_PIPELINE"</span></span><br><span class="line">                                      AS TABLE OF TYPE_APPLY_RECORD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">不要使用包里的</span><br><span class="line">定义类型</span><br><span class="line">type type_pres_apply_records is record();</span><br><span class="line"> 自定义数组</span><br><span class="line"> <span class="built_in"> type </span>pres_apply_records_pipeline is table of type_pres_apply_records index by binary_integer;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/09/java操作orcle返回存储过程带参数传入和返回/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1894,7 +1912,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">611</span>
+                  <span class="site-state-item-count">613</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1907,7 +1925,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-count">154</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1961,7 +1979,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共570.7k字</span>
+  <span class="post-count">全站共570.8k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
