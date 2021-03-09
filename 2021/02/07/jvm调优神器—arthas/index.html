@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="直接下载一个可以启动的jar包然后用java -jar的方式启动1java -jar arthas-boot.jar 启动后 选择应用,下载相关包后就可以执行了 相关命令thread 获取线程信息可查看CPU过高,或者死锁信息1通过thread加线程id输出当前线程的栈信息 查询死锁1thread -b dashboard 查看监控面板可以查看内存使用情况">
+<meta name="description" content="直接下载一个可以启动的jar包然后用java -jar的方式启动1java -jar arthas-boot.jar 启动后 选择应用,下载相关包后就可以执行了 相关命令thread 获取线程信息1234查看当前最忙的几个线程并打印堆栈信息 : thread -n 数量查看当前最忙的几个线程并打印堆栈信息 : thread -n查看指定线程的堆栈信息:         thread id (可查看">
 <meta name="keywords" content="java,虚拟机调优,arthas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jvm调优神器—arthas">
 <meta property="og:url" content="http://www.linjingc.top/2021/02/07/jvm调优神器—arthas/index.html">
 <meta property="og:site_name" content="emmm读书使我快乐">
-<meta property="og:description" content="直接下载一个可以启动的jar包然后用java -jar的方式启动1java -jar arthas-boot.jar 启动后 选择应用,下载相关包后就可以执行了 相关命令thread 获取线程信息可查看CPU过高,或者死锁信息1通过thread加线程id输出当前线程的栈信息 查询死锁1thread -b dashboard 查看监控面板可以查看内存使用情况">
+<meta property="og:description" content="直接下载一个可以启动的jar包然后用java -jar的方式启动1java -jar arthas-boot.jar 启动后 选择应用,下载相关包后就可以执行了 相关命令thread 获取线程信息1234查看当前最忙的几个线程并打印堆栈信息 : thread -n 数量查看当前最忙的几个线程并打印堆栈信息 : thread -n查看指定线程的堆栈信息:         thread id (可查看">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-02-07T08:56:48.599Z">
+<meta property="og:updated_time" content="2021-03-04T06:46:40.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jvm调优神器—arthas">
-<meta name="twitter:description" content="直接下载一个可以启动的jar包然后用java -jar的方式启动1java -jar arthas-boot.jar 启动后 选择应用,下载相关包后就可以执行了 相关命令thread 获取线程信息可查看CPU过高,或者死锁信息1通过thread加线程id输出当前线程的栈信息 查询死锁1thread -b dashboard 查看监控面板可以查看内存使用情况">
+<meta name="twitter:description" content="直接下载一个可以启动的jar包然后用java -jar的方式启动1java -jar arthas-boot.jar 启动后 选择应用,下载相关包后就可以执行了 相关命令thread 获取线程信息1234查看当前最忙的几个线程并打印堆栈信息 : thread -n 数量查看当前最忙的几个线程并打印堆栈信息 : thread -n查看指定线程的堆栈信息:         thread id (可查看">
 
 
 
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  377
+                  417
                 </span>
               
 
@@ -398,8 +398,7 @@
       
         <p>直接下载一个可以启动的jar包然后用java -jar的方式启动<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">java </span>-<span class="keyword">jar </span>arthas-<span class="keyword">boot.jar</span></span><br></pre></td></tr></table></figure></p>
 <p>启动后 选择应用,下载相关包后就可以执行了</p>
-<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><h3 id="thread-获取线程信息"><a href="#thread-获取线程信息" class="headerlink" title="thread 获取线程信息"></a>thread 获取线程信息</h3><p>可查看CPU过高,或者死锁信息<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通过thread加线程<span class="built_in">id</span>输出当前线程的栈信息</span><br></pre></td></tr></table></figure></p>
-<p>查询死锁<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">thread</span> -b</span><br></pre></td></tr></table></figure></p>
+<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><h3 id="thread-获取线程信息"><a href="#thread-获取线程信息" class="headerlink" title="thread 获取线程信息"></a>thread 获取线程信息</h3><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">查看当前最忙的几个线程并打印堆栈信息 :</span> <span class="keyword">thread</span> -n 数量</span><br><span class="line"><span class="title">查看当前最忙的几个线程并打印堆栈信息 :</span> <span class="keyword">thread</span> -n</span><br><span class="line"><span class="title">查看指定线程的堆栈信息:</span>         <span class="keyword">thread</span> id (可查看CPU过高,或者死锁信息)</span><br><span class="line"><span class="title">查看死锁:</span>                  <span class="keyword">thread</span> -b</span><br></pre></td></tr></table></figure>
 <h2 id="dashboard-查看监控面板"><a href="#dashboard-查看监控面板" class="headerlink" title="dashboard 查看监控面板"></a>dashboard 查看监控面板</h2><p>可以查看内存使用情况<br><a id="more"></a></p>
 <p>如果内容使用率在不断上升，而且gc后也不下降，后面还发现gc越来越频繁，很可能就是内存泄漏了。</p>
 <p>这个时候我们可以直接用heapdump命令把内存快照dump出来，作用和jmap工具一样<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[arthas@<span class="number">23581</span>]$ heapdump --live <span class="regexp">/root/</span>jvm.hprof</span><br><span class="line">Dumping heap to <span class="regexp">/root/</span>jvm.hprof...</span><br><span class="line">Heap <span class="keyword">dump</span> <span class="keyword">file</span> created</span><br></pre></td></tr></table></figure></p>
@@ -536,7 +535,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">614</span>
+                  <span class="site-state-item-count">615</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -619,7 +618,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共571.2k字</span>
+  <span class="post-count">全站共571.6k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>

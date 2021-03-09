@@ -294,6 +294,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2021/03/09/短链接生成方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/09/短链接生成方案/" itemprop="url">短链接生成方案</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-09T16:25:02+08:00">
+                2021-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  391
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="大致流程"><a href="#大致流程" class="headerlink" title="大致流程"></a>大致流程</h1><p><a href="https://github.com/AsummerCat/smalllink" target="_blank" rel="noopener">demo地址</a><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">.</span> <span class="string">获取原链接</span></span><br><span class="line"><span class="number">2</span><span class="string">.创建</span> <span class="string">数据库自增id</span>  </span><br><span class="line"><span class="number">3</span><span class="string">.根据id</span> <span class="string">进行62进制转换</span></span><br><span class="line"><span class="number">4</span><span class="string">.</span> <span class="string">生成数据库记录:自增id</span>  <span class="number">62</span><span class="string">进制转换后的地址</span>  <span class="string">源地址</span></span><br><span class="line"><span class="number">5</span><span class="string">.</span> <span class="string">生成短链接</span></span><br><span class="line"><span class="number">6</span><span class="string">.</span> <span class="string">页面跳转后</span> <span class="string">根据64位转换后的地址转换为自增id查询出源地址</span></span><br><span class="line"><span class="number">7</span><span class="string">.然后进行重定向</span> <span class="string">跳转到源地址</span></span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/03/09/短链接生成方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2021/03/03/Arthas远程访问设置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -816,7 +971,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  377
+                  417
                 </span>
               
 
@@ -856,8 +1011,7 @@
         
           <p>直接下载一个可以启动的jar包然后用java -jar的方式启动<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">java </span>-<span class="keyword">jar </span>arthas-<span class="keyword">boot.jar</span></span><br></pre></td></tr></table></figure></p>
 <p>启动后 选择应用,下载相关包后就可以执行了</p>
-<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><h3 id="thread-获取线程信息"><a href="#thread-获取线程信息" class="headerlink" title="thread 获取线程信息"></a>thread 获取线程信息</h3><p>可查看CPU过高,或者死锁信息<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通过thread加线程<span class="built_in">id</span>输出当前线程的栈信息</span><br></pre></td></tr></table></figure></p>
-<p>查询死锁<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">thread</span> -b</span><br></pre></td></tr></table></figure></p>
+<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><h3 id="thread-获取线程信息"><a href="#thread-获取线程信息" class="headerlink" title="thread 获取线程信息"></a>thread 获取线程信息</h3><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">查看当前最忙的几个线程并打印堆栈信息 :</span> <span class="keyword">thread</span> -n 数量</span><br><span class="line"><span class="title">查看当前最忙的几个线程并打印堆栈信息 :</span> <span class="keyword">thread</span> -n</span><br><span class="line"><span class="title">查看指定线程的堆栈信息:</span>         <span class="keyword">thread</span> id (可查看CPU过高,或者死锁信息)</span><br><span class="line"><span class="title">查看死锁:</span>                  <span class="keyword">thread</span> -b</span><br></pre></td></tr></table></figure>
 <h2 id="dashboard-查看监控面板"><a href="#dashboard-查看监控面板" class="headerlink" title="dashboard 查看监控面板"></a>dashboard 查看监控面板</h2><p>可以查看内存使用情况<br>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1684,165 +1838,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2021/01/04/JAVA造假数据jFairy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/04/JAVA造假数据jFairy/" itemprop="url">JAVA造假数据jFairy</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-04T17:58:54+08:00">
-                2021-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  936
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="快速创建测试数据"><a href="#快速创建测试数据" class="headerlink" title="快速创建测试数据"></a>快速创建测试数据</h1><h1 id="DEMO地址"><a href="#DEMO地址" class="headerlink" title="DEMO地址"></a><a href="https://github.com/AsummerCat/jfairy_demo" target="_blank" rel="noopener">DEMO地址</a></h1><h2 id="方案有两种"><a href="#方案有两种" class="headerlink" title="方案有两种"></a>方案有两种</h2><ol>
-<li>java-faker</li>
-<li>jFairy</li>
-</ol>
-<h3 id="以下部分是创建jFairy的过程"><a href="#以下部分是创建jFairy的过程" class="headerlink" title="以下部分是创建jFairy的过程"></a>以下部分是创建jFairy的过程</h3><h3 id="导入pom依赖"><a href="#导入pom依赖" class="headerlink" title="导入pom依赖"></a>导入pom依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--jfairy创建测试数据--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.codearte.jfairy<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jfairy<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.5.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/04/JAVA造假数据jFairy/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1895,7 +1890,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">614</span>
+                  <span class="site-state-item-count">615</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1962,7 +1957,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共571.2k字</span>
+  <span class="post-count">全站共571.6k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>

@@ -294,6 +294,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/04/08/spi扩展机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/08/spi扩展机制/" itemprop="url">spi扩展机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T21:29:57+08:00">
+                2020-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  73
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SPI扩展机制"><a href="#SPI扩展机制" class="headerlink" title="SPI扩展机制"></a>SPI扩展机制</h1><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">代码中加载</span><br><span class="line">ServiceLoader&lt;接口名称&gt; docs= ServiceLoader.load(接口<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"></span><br><span class="line">docs.xxxxxx()</span><br><span class="line"></span><br><span class="line">配置文件中修改</span><br><span class="line">resourcess-&gt;META-INF-&gt;sercices</span><br><span class="line">创建接口全类名 </span><br><span class="line">里面写入需要实现的实现类全类名</span><br><span class="line"></span><br><span class="line">这样load出来的就是实现类了</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/04/08/docker部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1682,162 +1832,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/02/20/面试相关-微服务-限流熔断降级/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/20/面试相关-微服务-限流熔断降级/" itemprop="url">面试相关-微服务-限流熔断降级</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T14:00:05+08:00">
-                2020-02-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="hystrix"><a href="#hystrix" class="headerlink" title="hystrix"></a>hystrix</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">资源隔离 限流 熔断 降级 资源监控</span><br></pre></td></tr></table></figure>
-<h3 id="八大工作流程"><a href="#八大工作流程" class="headerlink" title="八大工作流程"></a>八大工作流程</h3><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>构建一个<span class="type">HystrixCommand</span></span><br><span class="line">   </span><br><span class="line"><span class="number">2.</span>调用<span class="type">Command</span>方法</span><br><span class="line">  -&gt;execute() 调用后直接block住,属于同步调用,知道依赖服务返回单条数据或者抛出异常</span><br><span class="line">  -&gt;queue()   返回一个<span class="type">Future</span>,属于异步调用,后面可以通过<span class="type">Future</span>获取单条数据</span><br><span class="line">  -&gt;observe() 订阅一个<span class="type">Observable</span>对象,<span class="type">Observable</span>代表的是依赖服务返回的结果,获取到一个代表结果的<span class="type">Observable</span>对象的拷贝对象</span><br><span class="line">  -&gt;toObservable() 返回一个<span class="type">Observable</span>对象,如果我们订阅了这个对象则会调用<span class="type">Command</span>并且获取返回结果</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>检查是否开启缓存</span><br><span class="line">   -&gt;如果<span class="keyword">command</span>开启了请求缓存 ,而且调用结果在缓存中,则直接返回</span><br><span class="line">   -&gt;否则继续下一步</span><br><span class="line">   </span><br><span class="line"><span class="number">4.</span>检查是否打开短路器</span><br><span class="line">   -&gt;如果打开短路器 则不执行<span class="keyword">command</span>,而去直接执行fallback降级机制</span><br><span class="line">   -&gt;否则继续下一步</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span>检查线程池/队列/信号量 是否已满</span><br><span class="line">   -&gt;如果满了之后,则不执行<span class="keyword">command</span>方法,而去直接执行fallback降级机制</span><br><span class="line">   -&gt;否则继续下一步</span><br><span class="line">   </span><br><span class="line"><span class="number">6.</span>执行<span class="type">Command</span>方法</span><br><span class="line"></span><br><span class="line"><span class="number">7.</span>短路健康检查</span><br><span class="line">    -&gt; 如果<span class="keyword">command</span>方法 执行超时 失败 ,会发送给断路器记录 ,多次以后调用降级</span><br><span class="line">  </span><br><span class="line"><span class="number">8.</span>调用fallback降级机制</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/02/20/面试相关-微服务-限流熔断降级/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1890,7 +1884,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">614</span>
+                  <span class="site-state-item-count">615</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1957,7 +1951,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共571.2k字</span>
+  <span class="post-count">全站共571.6k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
