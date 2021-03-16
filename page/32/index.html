@@ -294,6 +294,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/10/08/gateway的各种路由配置过滤器工厂/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/08/gateway的各种路由配置过滤器工厂/" itemprop="url">gateway的各种路由配置过滤器工厂</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T16:39:42+08:00">
+                2019-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>atewayFilter Factory 是 <a href="http://c.biancheng.net/spring_cloud/" target="_blank" rel="noopener">Spring Cloud</a> Gateway 中提供的过滤器工厂。<a href="http://c.biancheng.net/spring/" target="_blank" rel="noopener">Spring</a> Cloud Gateway 的路由过滤器允许以某种方式修改传入的 HTTP 请求或输出的 HTTP 响应，只作用于特定的路由。</p>
+<h2 id="AddRequestHeader-过滤器工厂"><a href="#AddRequestHeader-过滤器工厂" class="headerlink" title="AddRequestHeader 过滤器工厂"></a>AddRequestHeader 过滤器工厂</h2><p>  通过名称我们可以快速明白这个过滤器工厂的作用是添加请求头。</p>
+<p>符合规则匹配成功的请求，将添加 X-Request-Foo：bar 请求头，将其传递到后端服务中，后方服务可以直接获取请求头信息。代码如下所示。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    System.err.println(request.getHeader(<span class="string">"X-Request-Foo"</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/10/08/gateway的各种路由配置过滤器工厂/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/10/08/gateway的各种路由配置断言工厂/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1708,157 +1866,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/09/26/HttpServletRequest常用属性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/26/HttpServletRequest常用属性/" itemprop="url">HttpServletRequest常用属性</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T15:02:21+08:00">
-                2019-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  396
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="HttpServletRequest常用属性"><a href="#HttpServletRequest常用属性" class="headerlink" title="HttpServletRequest常用属性"></a>HttpServletRequest常用属性</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">setAttribute(String name,Object)：设置名字为name的request 的参数值 </span><br><span class="line"></span><br><span class="line">getAttribute(String name)：返回由name指定的属性值 </span><br><span class="line"></span><br><span class="line">getAttributeNames()：返回request 对象所有属性的名字集合，结果是一个枚举的实例 </span><br><span class="line"></span><br><span class="line">getCookies()：返回客户端的所有 Cookie 对象，结果是一个Cookie 数组 </span><br><span class="line"></span><br><span class="line">getCharacterEncoding() ：返回请求中的字符编码方式 </span><br><span class="line"></span><br><span class="line">getContentLength() ：返回请求的 Body的长度 </span><br><span class="line"></span><br><span class="line">getHeader(String name) ：获得HTTP协议定义的文件头信息 </span><br><span class="line"></span><br><span class="line">getHeaders(String name) ：返回指定名字的request Header 的所有值，结果是一个枚举的实例 </span><br><span class="line"></span><br><span class="line">getHeaderNames() ：返回所以request Header 的名字，结果是一个枚举的实例 </span><br><span class="line"></span><br><span class="line">getInputStream() ：返回请求的输入流，用于获得请求中的数据 </span><br><span class="line"></span><br><span class="line">getMethod() ：获得客户端向服务器端传送数据的方法 </span><br><span class="line"></span><br><span class="line">getParameter(String name) ：获得客户端传送给服务器端的有 name指定的参数值 </span><br><span class="line"></span><br><span class="line">getParameterNames() ：获得客户端传送给服务器端的所有参数的名字，结果是一个枚举的实</span><br><span class="line"></span><br><span class="line">例 </span><br><span class="line"></span><br><span class="line">getParameterValues(String name)：获得有name指定的参数的所有值 </span><br><span class="line"></span><br><span class="line">getProtocol()：获取客户端向服务器端传送数据所依据的协议名称 </span><br><span class="line"></span><br><span class="line">getQueryString() ：获得查询字符串 </span><br><span class="line"></span><br><span class="line">getRequestURI() ：获取发出请求字符串的客户端地址 </span><br><span class="line"></span><br><span class="line">getRemoteAddr()：获取客户端的 IP 地址 </span><br><span class="line"></span><br><span class="line">getRemoteHost() ：获取客户端的名字 </span><br><span class="line"></span><br><span class="line">getSession([Boolean create]) ：返回和请求相关 Session </span><br><span class="line"></span><br><span class="line">getServerName() ：获取服务器的名字 </span><br><span class="line"></span><br><span class="line">getServletPath()：获取客户端所请求的脚本文件的路径 </span><br><span class="line"></span><br><span class="line">getServerPort()：获取服务器的端口号 </span><br><span class="line"></span><br><span class="line">removeAttribute(String name)：删除请求中的一个属性</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1911,7 +1918,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">615</span>
+                  <span class="site-state-item-count">616</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1978,7 +1985,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共571.6k字</span>
+  <span class="post-count">全站共572k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>

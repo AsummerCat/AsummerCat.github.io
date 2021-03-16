@@ -294,6 +294,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/04/08/aop代理方法的传递/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/08/aop代理方法的传递/" itemprop="url">aop代理方法的传递</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T21:30:40+08:00">
+                2020-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  163
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="aop代理方法的传递"><a href="#aop代理方法的传递" class="headerlink" title="aop代理方法的传递"></a>aop代理方法的传递</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">默认在 <span class="selector-tag">aop</span>方法中 同类下的方法调用不继续调用</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">this</span><span class="selector-class">.Amethod</span>()是默认调用本类</span><br><span class="line"><span class="selector-tag">AopContext</span><span class="selector-class">.currentProxy</span>()是调用代理类实现</span><br></pre></td></tr></table></figure>
+<p>比如:</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">method</span> <span class="title">A</span><span class="params">()</span><span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">    this.B方法 </span></span></span><br><span class="line"><span class="function"><span class="comment">    this.C方法</span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">这样的话 切面代理的是<span class="title">A</span>方法</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/08/aop代理方法的传递/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/04/08/spi扩展机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1677,161 +1834,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2020/02/25/面试相关-微服务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/25/面试相关-微服务/" itemprop="url">面试相关-微服务</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-25T11:16:10+08:00">
-                2020-02-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  605
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="真题"><a href="#真题" class="headerlink" title="真题"></a>真题</h1><h3 id="生产环境下的服务如何配置超时和重试参数的"><a href="#生产环境下的服务如何配置超时和重试参数的" class="headerlink" title="生产环境下的服务如何配置超时和重试参数的?"></a>生产环境下的服务如何配置超时和重试参数的?</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">Spring生产优化</span> <span class="string">,系统第一次启动的时候,调用经常timeout</span></span><br><span class="line"></span><br><span class="line"><span class="string">每个服务第一次被请求的时候,他回去初始化一个ribbon组件,初始化这些组件需要消耗一定的时间可能会导致超时</span></span><br><span class="line"></span><br><span class="line"><span class="string">解决:</span>  <span class="string">饥饿加载ribbion</span></span><br><span class="line">  <span class="string">-&gt;</span> <span class="string">启动的时候就直接初始化ribbon相关的组件,避免第一次请求初始化</span></span><br><span class="line">  <span class="string">-&gt;ribbon:</span> </span><br><span class="line">      <span class="attr">eager-load:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        </span><br><span class="line">  <span class="string">-&gt;zuul:</span> </span><br><span class="line">      <span class="attr">ribbon:</span></span><br><span class="line">        <span class="attr">eager-load:</span></span><br><span class="line">          <span class="attr">enabled:</span> <span class="literal">true</span> </span><br><span class="line">   </span><br><span class="line">   <span class="string">-&gt;feign:</span></span><br><span class="line">       <span class="attr">hystrix:</span></span><br><span class="line">         <span class="attr">enabled:</span> <span class="literal">false</span> <span class="string">(是否开启hystrix)</span></span><br><span class="line">         </span><br><span class="line"> <span class="string">服务上线一般要设置相关的超时时间和重试次数</span></span><br><span class="line"> </span><br><span class="line"> <span class="string">解决:</span></span><br><span class="line">   <span class="attr">ribbion:</span></span><br><span class="line">     <span class="string">ConnectTimeout:3000</span>  <span class="string">(连接超时)</span></span><br><span class="line">     <span class="string">ReadTimeout:3000</span>   <span class="string">(调用其他服务超时)</span></span><br><span class="line">     <span class="string">OkToRetryOnAllOperations:true</span>  <span class="string">(是否所有操作都进行重试)</span></span><br><span class="line">     <span class="string">MaxAutoRetries:1</span>  <span class="string">(同一实例最大重试次数，不包括首次调用)</span></span><br><span class="line">     <span class="string">MaxAutoRetriesNextServer:1</span> <span class="string">(重试其他实例的最大重试次数，不包括首次所选的server)</span></span><br><span class="line">     </span><br><span class="line">     <span class="comment">#Hystrix超时时间（默认1000ms，单位：ms）</span></span><br><span class="line"><span class="string">hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=95000</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/02/25/面试相关-微服务/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1884,7 +1886,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">615</span>
+                  <span class="site-state-item-count">616</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1951,7 +1953,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共571.6k字</span>
+  <span class="post-count">全站共572k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
