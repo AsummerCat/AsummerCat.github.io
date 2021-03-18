@@ -294,6 +294,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/01/21/nacos初探-作为配置中心/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/21/nacos初探-作为配置中心/" itemprop="url">nacos初探--作为配置中心</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T10:57:13+08:00">
+                2019-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  493
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Nacos 支持基于 DNS 和基于 RPC 的服务发现（可以作为springcloud的注册中心）、动态配置服务（可以做配置中心）、动态 DNS 服务。</p>
+<p>官方网址：<a href="http://nacos.io/" target="_blank" rel="noopener">http://nacos.io</a></p>
+<p>官方文档:<a href="https://github.com/spring-cloud-incubator/spring-cloud-alibaba/wiki/Nacos-config" target="_blank" rel="noopener">Nacos config</a></p>
+<h1 id="nacos作为注册中心"><a href="#nacos作为注册中心" class="headerlink" title="nacos作为注册中心"></a>nacos作为注册中心</h1><p>先在官网上下载nacos中间件 下面教程有启动步骤</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//nacos.io/zh-cn/docs/quick-start.html</span></span><br></pre></td></tr></table></figure>
+<p>程序启动默认占用的端口是8848（珠穆朗玛峰的高度），我们可以对端口进行修改，用编辑器打开bin目录下的startup.cmd文件 添加一行代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set <span class="string">"JAVA_OPT=%JAVA_OPT% --server.port=9090</span></span><br></pre></td></tr></table></figure>
+<p>修改启动端口 为9090 </p>
+<p>还可以在conf文件下的application.properties中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.port=<span class="number">9090</span></span><br></pre></td></tr></table></figure>
+<h1 id="开始正文"><a href="#开始正文" class="headerlink" title="开始正文"></a>开始正文</h1><p>先新建一个springboot项目</p>
+<h2 id="添加pom"><a href="#添加pom" class="headerlink" title="添加pom"></a>添加pom</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- dependency management <span class="number">0.2</span><span class="number">.0</span> springboot	<span class="number">2.0</span>  <span class="number">0.1</span> <span class="number">1.0</span>+--&gt;</span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;Finchley.SR1&lt;/version&gt;</span><br><span class="line">				&lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-alibaba-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;0.2.0.RELEASE&lt;/version&gt;</span><br><span class="line">				&lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- dependencies --&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-discovery&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!--这里是config--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-config-server&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.2.1.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="创建bootstrap-yml"><a href="#创建bootstrap-yml" class="headerlink" title="创建bootstrap.yml"></a>创建bootstrap.yml</h2><p>这边就不描述了 bootstrap.properties 启动在application之前</p>
+<p>把nacos服务器添加进去</p>
+<p>这边基本跟spring cloud config 差不多</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=nacos-config</span><br><span class="line">spring.cloud.nacos.config.server-addr=<span class="number">112.74</span><span class="number">.43</span><span class="number">.136</span>:<span class="number">8848</span></span><br></pre></td></tr></table></figure>
+<p>这边基本上就算配置完成了 </p>
+<p><strong>但是呢 需要注意的是 首先要在nacos中配置一下需要获取的值 不然启动报错</strong> </p>
+<h2 id="进入nacos中添加键"><a href="#进入nacos中添加键" class="headerlink" title="进入nacos中添加键"></a>进入nacos中添加键</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/01/20/elk环境下的登录安全/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1701,162 +1869,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2019/01/17/SpringBoot整合rabbitMq接收消息的各个参数含义/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/17/SpringBoot整合rabbitMq接收消息的各个参数含义/" itemprop="url">SpringBoot整合rabbitMq接收消息的各个参数含义</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-17T11:15:01+08:00">
-                2019-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="new-queue-基本队列"><a href="#new-queue-基本队列" class="headerlink" title="new queue() 基本队列"></a>new queue() 基本队列</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Queue</span><span class="params">(String name, <span class="keyword">boolean</span> durable, <span class="keyword">boolean</span> exclusive, <span class="keyword">boolean</span> autoDelete, Map&lt;String, Object&gt; arguments)</span> </span>&#123;</span><br><span class="line">       Assert.notNull(name, <span class="string">"'name' cannot be null"</span>);</span><br><span class="line">       <span class="keyword">this</span>.name = name;</span><br><span class="line">       <span class="keyword">this</span>.actualName = StringUtils.hasText(name) ? name : Base64UrlNamingStrategy.DEFAULT.generateName() + <span class="string">"_awaiting_declaration"</span>;</span><br><span class="line">       <span class="keyword">this</span>.durable = durable;</span><br><span class="line">       <span class="keyword">this</span>.exclusive = exclusive;</span><br><span class="line">       <span class="keyword">this</span>.autoDelete = autoDelete;</span><br><span class="line">       <span class="keyword">this</span>.arguments = (Map)(arguments != <span class="keyword">null</span> ? arguments : <span class="keyword">new</span> HashMap());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name: 当前队列的名称</span><br><span class="line">durable: 是否持久化到硬盘 若要使队列中消息不丢失，同时也需要将消息声明为持久化 默认:<span class="keyword">true</span></span><br><span class="line">exclusive:是否声明该队列是否为连接独占，若为独占，连接关闭后队列即被删除 默认:<span class="keyword">false</span></span><br><span class="line">Auto-delete：若没有消费者订阅该队列，队列将被删除 默认:<span class="keyword">false</span></span><br><span class="line">Arguments：可选map类型参数，可以指定队列长度，消息生存时间，镜相设置等</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/17/SpringBoot整合rabbitMq接收消息的各个参数含义/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1909,7 +1921,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">616</span>
+                  <span class="site-state-item-count">617</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1922,7 +1934,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">155</span>
+                  <span class="site-state-item-count">156</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1976,7 +1988,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共572k字</span>
+  <span class="post-count">全站共572.2k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>

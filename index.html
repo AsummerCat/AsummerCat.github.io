@@ -294,6 +294,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2021/03/18/SpringCloud微服务系统中在服务相互调时传递/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一只写Bug的猫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="emmm读书使我快乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/18/SpringCloud微服务系统中在服务相互调时传递/" itemprop="url">jwt如何在SpringCloud微服务系统中在服务相互调时传递</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-18T17:41:43+08:00">
+                2021-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  256
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在微服务系统中，为了保证微服务系统的安全,常常使用jwt来鉴权，但是服务内部的相互调用呢。经常有人在微信上问我，我给出一个解决办法，采用Feign的拦截器。</p>
+<p>在Feign中开启了hystrix，hystrix默认采用的是线程池作为隔离策略。线程隔离有一个难点需要处理，即隔离的线程无法获取当前请求线程的Jwt，这用ThredLocal类可以去解决，但是比较麻烦，所以我才用的是信号量模式。 在application.yml配置文件中使用一下配置：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">hystrix</span><span class="selector-class">.command</span><span class="selector-class">.default</span><span class="selector-class">.execution</span><span class="selector-class">.isolation</span><span class="selector-class">.strategy</span>: <span class="selector-tag">SEMAPHORE</span></span><br></pre></td></tr></table></figure>
+<p>写一个Feign的拦截器，Feign在发送网络请求之前会执行以下的拦截器，代码如下：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> feign.RequestInterceptor;</span><br><span class="line"><span class="keyword">import</span> feign.RequestTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by fangzhipeng on 2017/7/28.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">@Component</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JwtFeignInterceptor</span> <span class="title">implements</span> <span class="title">RequestInterceptor</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">String</span> key = <span class="string">"Authorization"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">(RequestTemplate <span class="keyword">template</span>)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">template</span>.headers().containsKey(key)) &#123;</span><br><span class="line">            <span class="keyword">String</span> currentToken = UserUtils.getCurrentToken();</span><br><span class="line">            <span class="keyword">if</span> (!StrUtil.isEmpty(currentToken))&#123;</span><br><span class="line">                <span class="keyword">template</span>.header(key, currentToken);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2021/03/16/ab简单压测/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1683,163 +1837,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.linjingc.top/2021/01/11/LiquiBase数据库导入语句工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一只写Bug的猫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/img/WechatIMG230.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="emmm读书使我快乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/11/LiquiBase数据库导入语句工具/" itemprop="url">LiquiBase数据库导入语句工具</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-11T17:19:50+08:00">
-                2021-01-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  791
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="LiquiBase数据库导入语句工具"><a href="#LiquiBase数据库导入语句工具" class="headerlink" title="LiquiBase数据库导入语句工具"></a>LiquiBase数据库导入语句工具</h1><p>目的是用来 项目中维护增删改数据库结构和语句的一个管理工具<br>方便后期维护,回滚之类的</p>
-<p>Liquibase是一个用于跟踪、管理和应用数据库变化的开源的数据库重构工具。它将所有数据库的变化（包括结构和数据）都保存在XML文件中，便于版本控制</p>
-<h2 id="运行ChangeSet-跑批"><a href="#运行ChangeSet-跑批" class="headerlink" title="运行ChangeSet  跑批"></a>运行ChangeSet  跑批</h2><p>　　有很多方式都可以运行change log 包括：<br>　　<a href="https://docsstage.liquibase.com/tools-integrations/cli/home.html" target="_blank" rel="noopener">command line</a>,<br>　　<a href="https://docs.liquibase.com/tools-integrations/ant/home.html" target="_blank" rel="noopener">Ant</a>,<br>　　<a href="https://docs.liquibase.com/tools-integrations/maven/home.html" target="_blank" rel="noopener">Maven</a>,<br>　　<a href="https://docs.liquibase.com/tools-integrations/springboot/using-springboot-with-maven.html" target="_blank" rel="noopener">Spring</a></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/11/LiquiBase数据库导入语句工具/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1892,7 +1889,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">616</span>
+                  <span class="site-state-item-count">617</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1905,7 +1902,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">155</span>
+                  <span class="site-state-item-count">156</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1959,7 +1956,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共572k字</span>
+  <span class="post-count">全站共572.2k字</span>
 </div>
 
 <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a> </div>
